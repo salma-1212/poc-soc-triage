@@ -1,0 +1,157 @@
+# POC SOC Triage — Priorisation ML + XAI
+
+## Vue d'ensemble
+
+Proof-of-concept de priorisation automatique des alertes de sécurité pour analystes N1, combinant Machine Learning supervisé (XGBoost) et non-supervisé (Isolation Forest) avec des explications XAI (SHAP).
+
+**Dataset** : Microsoft GUIDE — Security Incident Prediction (Kaggle)  
+**Cible** : classer chaque incident en TP / BenignPositive / FP et calculer un score de priorisation 0-100
+
+---
+
+## Structure du projet
+
+```
+poc-soc-triage/
+├── 01_extract_and_simulate.py   # Extraction dataset + génération données simulées
+├── 02_feature_engineering.ipynb # Construction des ~40 features ML
+├── 03_ml_models.ipynb           # Isolation Forest + XGBoost + évaluation
+├── 04_xai.ipynb                 # SHAP global + local + counterfactuals
+├── 05_demo_app.py               # Dashboard Streamlit analyste N1
+├── data/                        # Généré automatiquement
+│   ├── guide_extract_raw.csv
+│   ├── incidents_aggregated.csv
+│   ├── TI_database.csv          # Threat Intel simulée (air-gap)
+│   ├── CMDB.csv                 # CMDB simulée (air-gap)
+│   ├── Sandbox.csv              # Résultats sandbox simulés (air-gap)
+│   ├── features_ml.csv
+│   ├── predictions_sample.csv   # 500 incidents pour la démo
+│   └── explanations_sample.csv
+├── models/
+│   ├── isolation_forest.pkl
+│   └── xgboost_model.pkl
+└── README.md
+```
+
+---
+
+## Installation
+
+```bash
+pip install pandas numpy matplotlib seaborn scikit-learn xgboost imbalanced-learn shap streamlit joblib kaggle
+```
+
+---
+
+## Étapes d'exécution
+
+### 1. Télécharger le dataset
+
+```bash
+# Configurer l'API Kaggle : kaggle.com > Account > Create New Token > kaggle.json dans ~/.kaggle/
+kaggle datasets download -d Microsoft/microsoft-security-incident-prediction
+unzip microsoft-security-incident-prediction.zip
+```
+
+### 2. Extraire un échantillon représentatif + générer les données simulées
+
+```bash
+python 01_extract_and_simulate.py --input GUIDE_train.csv --n_incidents 15000
+# Durée : ~10-15 min selon la machine
+# Output : ./data/*.csv
+```
+
+### 3. Feature engineering
+
+Ouvrir et exécuter `02_feature_engineering.ipynb` cellule par cellule.
+
+**Features construites (~40) :**
+| Famille | Features clés |
+|---------|--------------|
+| Alerte brute | alert_title_tp_rate, category_fp_rate, nb_alerts, nb_detectors |
+| Temporelle | hour_sin/cos, is_weekend, alert_rate_per_hour |
+| Threat Intelligence | ip_ti_score, hash_ti_score, any_ioc_in_blocklist |
+| CMDB / Asset | asset_criticality_score, asset_sensitivity_score |
+| Sandbox | sandbox_malware_score, sandbox_c2_beaconing |
+| Historique SOC | detector_fp_rate, detector_tp_rate ⬅ feature n°1 |
+| Contexte | entity_diversity, suspicion_level_encoded, has_threat_family |
+
+### 4. Entraînement ML
+
+Exécuter `03_ml_models.ipynb` :
+- **Isolation Forest** (non-supervisé) : score anomalie sans labels
+- **XGBoost** (supervisé) : classification TP/BP/FP avec SMOTE + évaluation F2-score
+- **Simulation feedback loop** : amélioration du modèle avec les validations analyste
+
+### 5. XAI
+
+Exécuter `04_xai.ipynb` :
+- SHAP summary plot global
+- Waterfall SHAP par incident
+- Counterfactuals (sensibilité aux features)
+- Génération des textes d'explication pour Streamlit
+
+### 6. Démo Streamlit
+
+```bash
+streamlit run 05_demo_app.py
+```
+
+---
+
+## Architecture ML
+
+### Isolation Forest (non-supervisé)
+- Entraîné SANS labels → applicable dès le jour 1 en production
+- Score d'anomalie 0-100 : 100 = incident le plus atypique statistiquement
+- Évaluation : AUC-ROC (TP vs reste) et précision dans le top 20% des scores
+
+### XGBoost (supervisé)
+- Labels GUIDE utilisés : TP=2, BenignPositive=1, FP=0
+- SMOTE pour rééquilibrer les classes
+- Split stratifié par OrgId (évite le data leakage organisationnel)
+- Métriques : F2-score (macro), AUC-ROC multi-classe, Precision-Recall
+
+### Score de priorisation (0-100)
+Basé sur P(TP) du modèle XGBoost, avec seuils :
+| Score | Sévérité | Décision suggérée |
+|-------|----------|-------------------|
+| ≥ 75  | CRITIQUE | Action urgente (isolation) |
+| 45–74 | HAUTE    | Escalade N2/N3 |
+| 20–44 | MOYENNE  | Investigation N1 |
+| < 20  | FAIBLE   | Clôture FP probable |
+
+---
+
+## Données simulées (compatible air-gap / banque)
+
+Les fichiers TI_database.csv, CMDB.csv et Sandbox.csv sont générés localement à partir des valeurs réelles du dataset GUIDE (IPs, hashes, noms de machines). En production bancaire, ces fichiers seraient remplacés par des connecteurs internes :
+
+| Fichier simulé | Source réelle en banque |
+|----------------|------------------------|
+| TI_database.csv | MISP interne, Threat Intel feed offline |
+| CMDB.csv | ServiceNow, IBM MAXIMO, ou CMDB propriétaire |
+| Sandbox.csv | Cuckoo/Cape en réseau isolé, CrowdStrike Falcon |
+
+Aucune donnée ne sort du réseau interne.
+
+---
+
+## Feedback loop (théorique)
+
+Chaque décision de l'analyste (confirmation ou correction) constitue un nouveau label de ground truth. En production :
+1. Les décisions sont stockées en base de données interne
+2. Un batch hebdomadaire réentraîne XGBoost avec les nouveaux labels
+3. Le modèle s'adapte aux spécificités organisationnelles (assets, détecteurs, utilisateurs)
+
+La simulation dans `03_ml_models.ipynb` montre l'amélioration attendue du F2-score sur 3 cycles de feedback.
+
+---
+
+## Points clés pour la présentation
+
+1. **Le non-supervisé démarre sans labels** : Isolation Forest opérationnel dès J1 en banque
+2. **Le supervisé apprend des décisions passées** : amélioration continue via feedback loop
+3. **L'analyste N1 ne cherche plus** : tout le contexte (TI, CMDB, sandbox, timeline) est pré-agrégé
+4. **XAI = confiance** : l'analyste comprend POURQUOI le score est élevé avant de décider
+5. **Air-gap compatible** : toutes les données simulées sont générées et consultées localement

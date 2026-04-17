@@ -44,3 +44,4 @@ data/predictions_full.csv
 # data/incidents_aggregated.csv  ✓ agrégé, pas de logs bruts
 # data/predictions_sample.csv    ✓ 500 incidents pour démo
 # data/explanations_sample.csv   ✓ textes XAI.claude/worktrees/
+.claude/

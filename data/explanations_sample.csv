@@ -1,0 +1,5001 @@
+IncidentId,explanation_text
+276,"**Score de priorisation : 100/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.93 → +1.857
+  • nb_alerts = 7197 → +0.469
+  • alert_rate_per_hour = 1000.00 → +0.385
+
+**Éléments qui réduisent le score (↓) :**
+  • ti_score_combined = 0.00 → -0.432
+  • hash_nb_sources = 0.00 → -0.031"
+540,"**Score de priorisation : 85/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.93 → +1.646
+  • nb_detectors = 6.00 → +0.316
+  • ti_score_combined = 71.00 → +0.216
+
+**Éléments qui réduisent le score (↓) :**
+  • sandbox_network_conns = 24.00 → -0.909
+  • category_bp_rate = 0.76 → -0.176"
+466,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.00 → +0.092
+  • nb_detectors = 4.00 → +0.060
+  • ti_score_combined = 69.00 → +0.048
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.783
+  • detector_tp_rate = 0.00 → -1.234"
+635,"**Score de priorisation : 1/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.00 → +0.131
+  • alert_rate_per_hour = 1000.00 → +0.093
+  • day_cos = 1.00 → +0.060
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.07 → -0.992
+  • alert_title_tp_rate = 0.16 → -0.513"
+855,"**Score de priorisation : 1/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_bp_rate = 0.00 → +0.134
+  • ti_score_combined = 69.00 → +0.092
+  • detector_bp_rate = 0.70 → +0.070
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.06 → -1.138
+  • alert_title_tp_rate = 0.16 → -0.413"
+891,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.33 → +0.256
+  • alert_title_bp_rate = 0.42 → +0.225
+  • org_nb_incidents = 665.00 → +0.220
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -4.631
+  • ti_score_combined = 0.00 → -0.349"
+1148,"**Score de priorisation : 93/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • ti_score_max = 50.00 → +1.142
+  • ti_score_combined = 92.00 → +0.774
+  • alert_title_tp_rate = 0.55 → +0.589
+
+**Éléments qui réduisent le score (↓) :**
+  • sandbox_network_conns = 20.00 → -0.331
+  • sandbox_process_injection = 1.00 → -0.180"
+1548,"**Score de priorisation : 99/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.88 → +1.643
+  • alert_rate_per_hour = 559.00 → +0.328
+  • nb_alerts = 559 → +0.189
+
+**Éléments qui réduisent le score (↓) :**
+  • ti_score_combined = 0.00 → -0.459
+  • alert_title_fp_rate = 0.72 → -0.039"
+1595,"**Score de priorisation : 80/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.80 → +1.324
+  • alert_title_tp_rate = 0.36 → +0.169
+  • org_fp_rate = 0.18 → +0.137
+
+**Éléments qui réduisent le score (↓) :**
+  • nb_entity_types = 6.00 → -0.101
+  • hour_sin = 0.87 → -0.100"
+3095,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_rate_per_hour = 407.00 → +0.127
+  • org_fp_rate = 0.00 → +0.079
+  • detector_fp_rate = 0.01 → +0.072
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -4.225
+  • detector_tp_rate = 0.01 → -0.792"
+3341,"**Score de priorisation : 10/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.27 → +0.228
+  • ip_ti_score = 26.00 → +0.118
+  • nb_alerts = 335 → +0.079
+
+**Éléments qui réduisent le score (↓) :**
+  • ti_score_combined = 53.00 → -0.787
+  • org_tp_rate = 0.13 → -0.265"
+3539,"**Score de priorisation : 99/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.96 → +1.983
+  • alert_title_tp_rate = 0.46 → +0.346
+  • nb_entity_types = 7.00 → +0.211
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_bp_rate = 0.49 → -0.094
+  • category_tp_rate = 0.40 → -0.042"
+3864,"**Score de priorisation : 86/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.31 → +0.533
+  • alert_rate_per_hour = 325.00 → +0.333
+  • org_fp_rate = 0.12 → +0.141
+
+**Éléments qui réduisent le score (↓) :**
+  • ti_score_combined = 0.00 → -0.530
+  • org_bp_rate = 0.56 → -0.075"
+3464,"**Score de priorisation : 4/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.27 → +0.195
+  • nb_alerts = 317 → +0.056
+  • day_sin = -0.43 → +0.038
+
+**Éléments qui réduisent le score (↓) :**
+  • ti_score_combined = 53.00 → -0.591
+  • org_tp_rate = 0.13 → -0.330"
+4123,"**Score de priorisation : 98/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.99 → +1.854
+  • alert_title_tp_rate = 0.46 → +0.397
+  • org_fp_rate = 0.00 → +0.146
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_bp_rate = 0.49 → -0.162
+  • day_cos = -0.90 → -0.148"
+3178,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_bp_rate = 0.00 → +0.081
+  • alert_title_bp_rate = 0.41 → +0.058
+  • ti_score_combined = 69.00 → +0.051
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.715
+  • detector_tp_rate = 0.00 → -1.216"
+3603,"**Score de priorisation : 100/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 1.00 → +2.027
+  • alert_title_tp_rate = 0.36 → +0.215
+  • org_fp_rate = 0.00 → +0.203
+
+**Éléments qui réduisent le score (↓) :**
+  • ti_score_combined = 0.00 → -0.435
+  • alert_title_bp_rate = 0.47 → -0.051"
+4310,"**Score de priorisation : 94/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.80 → +1.400
+  • alert_title_tp_rate = 0.36 → +0.188
+  • org_fp_rate = 0.18 → +0.162
+
+**Éléments qui réduisent le score (↓) :**
+  • is_weekend = 1 → -0.107
+  • nb_entity_types = 5.00 → -0.066"
+1334,"**Score de priorisation : 1/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_bp_rate = 0.38 → +0.083
+  • org_bp_rate = 0.00 → +0.078
+  • detector_tp_rate = 0.16 → +0.074
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.02 → -1.681
+  • alert_title_tp_rate = 0.17 → -0.520"
+3450,"**Score de priorisation : 27/100** — Décision suggérée : INVESTIGATION_N1
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.40 → +0.665
+  • alert_title_tp_rate = 0.36 → +0.231
+  • nb_detectors = 4.00 → +0.123
+
+**Éléments qui réduisent le score (↓) :**
+  • org_fp_rate = 0.60 → -0.446
+  • alert_title_bp_rate = 0.47 → -0.100"
+4148,"**Score de priorisation : 59/100** — Décision suggérée : ESCALADE_N2
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.36 → +0.383
+  • nb_detectors = 5.00 → +0.223
+  • ti_score_combined = 69.00 → +0.148
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_bp_rate = 0.47 → -0.068
+  • ti_score_max = 42.00 → -0.055"
+5119,"**Score de priorisation : 6/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.29 → +0.331
+  • org_fp_rate = 0.13 → +0.108
+  • ti_score_combined = 69.00 → +0.104
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.07 → -1.024
+  • org_bp_rate = 0.80 → -0.189"
+5873,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_rate_per_hour = 210.00 → +0.187
+  • org_fp_rate = 0.00 → +0.078
+  • detector_fp_rate = 0.01 → +0.072
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -4.228
+  • detector_tp_rate = 0.01 → -0.797"
+6334,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_fp_rate = 0.09 → +0.124
+  • org_fp_rate = 0.04 → +0.088
+  • ti_score_combined = 69.00 → +0.084
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_tp_rate = 0.07 → -0.905
+  • org_tp_rate = 0.04 → -0.853"
+6373,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_rate_per_hour = 200.00 → +0.188
+  • org_fp_rate = 0.00 → +0.080
+  • detector_fp_rate = 0.01 → +0.072
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -4.232
+  • detector_tp_rate = 0.01 → -0.797"
+3389,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_nb_incidents = 473.00 → +0.150
+  • org_fp_rate = 0.00 → +0.121
+  • ti_score_combined = 69.00 → +0.070
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.614
+  • alert_title_tp_rate = 0.15 → -0.668"
+1966,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_rate_per_hour = 183.00 → +0.180
+  • org_bp_rate = 0.00 → +0.103
+  • nb_alerts = 183 → +0.052
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -4.540
+  • alert_title_tp_rate = 0.05 → -0.480"
+3387,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_rate_per_hour = 173.00 → +0.186
+  • org_bp_rate = 0.00 → +0.102
+  • nb_alerts = 173 → +0.057
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -4.540
+  • alert_title_tp_rate = 0.05 → -0.474"
+6962,"**Score de priorisation : 98/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.99 → +1.912
+  • alert_title_tp_rate = 0.46 → +0.394
+  • org_bp_rate = 0.01 → +0.168
+
+**Éléments qui réduisent le score (↓) :**
+  • day_cos = -0.90 → -0.166
+  • alert_title_bp_rate = 0.49 → -0.161"
+6696,"**Score de priorisation : 17/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_rate_per_hour = 171.00 → +0.290
+  • nb_alerts = 171 → +0.081
+  • hour_sin = 0.00 → +0.069
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_tp_rate = 0.07 → -0.577
+  • ti_score_combined = 0.00 → -0.472"
+3337,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_nb_incidents = 665.00 → +0.178
+  • org_fp_rate = 0.00 → +0.121
+  • alert_rate_per_hour = 24.92 → +0.102
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -4.152
+  • sandbox_network_conns = 18.00 → -0.416"
+6984,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_rate_per_hour = 20.09 → +0.106
+  • org_bp_rate = 0.00 → +0.076
+  • alert_title_bp_rate = 0.41 → +0.058
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.01 → -2.237
+  • detector_tp_rate = 0.00 → -1.550"
+7533,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • ti_score_combined = 72.00 → +0.345
+  • detector_bp_rate = 1.00 → +0.140
+  • org_fp_rate = 0.23 → +0.105
+
+**Éléments qui réduisent le score (↓) :**
+  • detector_tp_rate = 0.00 → -1.803
+  • alert_title_tp_rate = 0.21 → -1.192"
+7073,"**Score de priorisation : 6/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • detector_tp_rate = 0.16 → +0.179
+  • org_fp_rate = 0.06 → +0.146
+  • ti_score_combined = 69.00 → +0.125
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_tp_rate = 0.17 → -0.519
+  • org_tp_rate = 0.12 → -0.406"
+4088,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_nb_incidents = 665.00 → +0.117
+  • org_fp_rate = 0.00 → +0.101
+  • nb_detectors = 4.00 → +0.064
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.792
+  • detector_tp_rate = 0.00 → -1.244"
+5913,"**Score de priorisation : 16/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.27 → +0.245
+  • ti_score_combined = 69.00 → +0.117
+  • nb_detectors = 5.00 → +0.106
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.13 → -0.294
+  • org_fp_rate = 0.34 → -0.244"
+4554,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_rate_per_hour = 143.00 → +0.188
+  • org_bp_rate = 0.00 → +0.102
+  • ti_score_max = 0.00 → +0.045
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -4.554
+  • alert_title_tp_rate = 0.05 → -0.474"
+8415,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_bp_rate = 0.45 → +0.119
+  • org_bp_rate = 0.00 → +0.056
+  • alert_rate_per_hour = 16.19 → +0.054
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.01 → -2.002
+  • detector_tp_rate = 0.00 → -1.483"
+9237,"**Score de priorisation : 98/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.99 → +1.888
+  • alert_title_tp_rate = 0.46 → +0.382
+  • org_bp_rate = 0.01 → +0.148
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_bp_rate = 0.49 → -0.165
+  • day_cos = -0.90 → -0.162"
+9173,"**Score de priorisation : 99/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.99 → +1.946
+  • alert_title_tp_rate = 0.46 → +0.361
+  • org_bp_rate = 0.01 → +0.164
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_bp_rate = 0.49 → -0.112
+  • nb_entity_types = 5.00 → -0.089"
+1475,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • ip_ti_score = 31.00 → +0.091
+  • org_fp_rate = 0.00 → +0.088
+  • nb_alerts = 137 → +0.070
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.670
+  • detector_tp_rate = 0.01 → -0.873"
+6062,"**Score de priorisation : 99/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.99 → +1.942
+  • alert_title_tp_rate = 0.46 → +0.373
+  • org_bp_rate = 0.01 → +0.211
+
+**Éléments qui réduisent le score (↓) :**
+  • asset_patch_risk = 1 → -0.137
+  • alert_title_bp_rate = 0.49 → -0.114"
+7789,"**Score de priorisation : 14/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.36 → +0.300
+  • org_bp_rate = 0.08 → +0.148
+  • ti_score_combined = 69.00 → +0.121
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.11 → -0.450
+  • org_fp_rate = 0.81 → -0.395"
+9234,"**Score de priorisation : 99/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.99 → +1.935
+  • alert_title_tp_rate = 0.46 → +0.352
+  • org_bp_rate = 0.01 → +0.156
+
+**Éléments qui réduisent le score (↓) :**
+  • asset_patch_risk = 1 → -0.124
+  • alert_title_bp_rate = 0.49 → -0.120"
+4047,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_nb_incidents = 1196.00 → +0.091
+  • org_fp_rate = 0.00 → +0.091
+  • nb_detectors = 4.00 → +0.070
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.986
+  • detector_tp_rate = 0.00 → -1.242"
+9672,"**Score de priorisation : 99/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.99 → +1.858
+  • alert_title_tp_rate = 0.46 → +0.366
+  • org_fp_rate = 0.00 → +0.152
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_bp_rate = 0.49 → -0.124
+  • detector_bp_rate = 0.51 → -0.039"
+3602,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_nb_incidents = 1196.00 → +0.087
+  • org_fp_rate = 0.00 → +0.071
+  • nb_alerts = 125 → +0.065
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.971
+  • detector_tp_rate = 0.00 → -1.255"
+9589,"**Score de priorisation : 98/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.99 → +1.802
+  • alert_title_tp_rate = 0.46 → +0.362
+  • org_fp_rate = 0.00 → +0.163
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_bp_rate = 0.49 → -0.131
+  • hour_sin = 0.97 → -0.109"
+7795,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_rate_per_hour = 11.96 → +0.074
+  • org_bp_rate = 0.00 → +0.073
+  • ti_score_combined = 69.00 → +0.052
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.734
+  • detector_tp_rate = 0.00 → -1.213"
+9846,"**Score de priorisation : 99/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.81 → +1.325
+  • alert_title_tp_rate = 0.77 → +0.573
+  • detector_fp_rate = 0.00 → +0.172
+
+**Éléments qui réduisent le score (↓) :**
+  • org_nb_incidents = 31.00 → -0.090
+  • day_cos = 1.00 → -0.073"
+9207,"**Score de priorisation : 96/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.60 → +0.959
+  • ti_score_combined = 75.00 → +0.684
+  • alert_title_tp_rate = 0.27 → +0.241
+
+**Éléments qui réduisent le score (↓) :**
+  • day_cos = -0.90 → -0.108
+  • ti_score_max = 42.00 → -0.053"
+5301,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_nb_incidents = 1196.00 → +0.092
+  • org_fp_rate = 0.00 → +0.073
+  • nb_alerts = 120 → +0.067
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.934
+  • detector_tp_rate = 0.00 → -1.248"
+4592,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_nb_incidents = 1196.00 → +0.119
+  • org_fp_rate = 0.00 → +0.079
+  • alert_rate_per_hour = 16.77 → +0.063
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.975
+  • detector_tp_rate = 0.00 → -1.283"
+7207,"**Score de priorisation : 95/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.77 → +1.385
+  • org_fp_rate = 0.03 → +0.292
+  • alert_title_tp_rate = 0.36 → +0.215
+
+**Éléments qui réduisent le score (↓) :**
+  • nb_entity_types = 5.00 → -0.064
+  • hour_cos = -0.50 → -0.060"
+10504,"**Score de priorisation : 99/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.99 → +1.532
+  • ti_score_max = 47.00 → +0.713
+  • ti_score_combined = 74.00 → +0.461
+
+**Éléments qui réduisent le score (↓) :**
+  • hour_cos = 0.97 → -0.152
+  • alert_title_bp_rate = 0.49 → -0.104"
+10956,"**Score de priorisation : 98/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.99 → +1.860
+  • alert_title_tp_rate = 0.46 → +0.391
+  • org_bp_rate = 0.01 → +0.152
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_bp_rate = 0.49 → -0.160
+  • day_cos = -0.90 → -0.150"
+4994,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_nb_incidents = 1196.00 → +0.077
+  • detector_bp_rate = 1.00 → +0.067
+  • org_fp_rate = 0.00 → +0.066
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.868
+  • detector_tp_rate = 0.00 → -1.249"
+5643,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • detector_bp_rate = 1.00 → +0.084
+  • org_nb_incidents = 1196.00 → +0.081
+  • org_fp_rate = 0.00 → +0.063
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.899
+  • detector_tp_rate = 0.00 → -1.232"
+8044,"**Score de priorisation : 11/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.36 → +0.344
+  • org_fp_rate = 0.09 → +0.134
+  • ti_score_combined = 69.00 → +0.112
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.09 → -0.607
+  • hour_of_day = 22.00 → -0.154"
+10676,"**Score de priorisation : 98/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.99 → +1.526
+  • ti_score_max = 47.00 → +0.638
+  • ti_score_combined = 89.00 → +0.552
+
+**Éléments qui réduisent le score (↓) :**
+  • sandbox_network_conns = 26.00 → -0.444
+  • sandbox_process_injection = 1.00 → -0.237"
+6434,"**Score de priorisation : 67/100** — Décision suggérée : ESCALADE_N2
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.30 → +0.579
+  • alert_title_tp_rate = 0.36 → +0.267
+  • nb_detectors = 5.00 → +0.212
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_bp_rate = 0.47 → -0.078
+  • ti_score_max = 42.00 → -0.054"
+11665,"**Score de priorisation : 100/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 1.00 → +1.879
+  • alert_rate_per_hour = 115.00 → +0.354
+  • org_fp_rate = 0.00 → +0.203
+
+**Éléments qui réduisent le score (↓) :**
+  • ti_score_combined = 0.00 → -0.447
+  • alert_title_fp_rate = 0.72 → -0.049"
+5218,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.00 → +0.068
+  • detector_fp_rate = 0.00 → +0.067
+  • org_nb_incidents = 1196.00 → +0.056
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.949
+  • detector_tp_rate = 0.00 → -1.250"
+6813,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_nb_incidents = 1196.00 → +0.080
+  • org_fp_rate = 0.00 → +0.066
+  • nb_alerts = 113 → +0.062
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -4.004
+  • detector_tp_rate = 0.00 → -1.229"
+7516,"**Score de priorisation : 32/100** — Décision suggérée : INVESTIGATION_N1
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.26 → +0.503
+  • alert_title_tp_rate = 0.36 → +0.290
+  • org_fp_rate = 0.01 → +0.237
+
+**Éléments qui réduisent le score (↓) :**
+  • org_bp_rate = 0.72 → -0.140
+  • org_nb_incidents = 146.00 → -0.137"
+4860,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_nb_incidents = 1196.00 → +0.134
+  • alert_rate_per_hour = 44.85 → +0.119
+  • org_fp_rate = 0.00 → +0.090
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.955
+  • detector_tp_rate = 0.00 → -1.268"
+6083,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_nb_incidents = 1196.00 → +0.125
+  • alert_rate_per_hour = 23.42 → +0.083
+  • org_fp_rate = 0.00 → +0.073
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.922
+  • detector_tp_rate = 0.00 → -1.260"
+6362,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_nb_incidents = 1196.00 → +0.102
+  • detector_fp_rate = 0.00 → +0.081
+  • org_fp_rate = 0.00 → +0.072
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.983
+  • detector_tp_rate = 0.00 → -1.274"
+6687,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.00 → +0.071
+  • detector_fp_rate = 0.00 → +0.064
+  • org_nb_incidents = 1196.00 → +0.058
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.898
+  • detector_tp_rate = 0.00 → -1.232"
+11229,"**Score de priorisation : 98/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.99 → +1.868
+  • alert_title_tp_rate = 0.46 → +0.404
+  • org_fp_rate = 0.00 → +0.142
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_bp_rate = 0.49 → -0.162
+  • day_cos = -0.90 → -0.125"
+11514,"**Score de priorisation : 99/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.99 → +1.488
+  • ti_score_combined = 85.00 → +0.660
+  • ti_score_max = 43.00 → +0.647
+
+**Éléments qui réduisent le score (↓) :**
+  • sandbox_network_conns = 18.00 → -0.434
+  • alert_title_bp_rate = 0.49 → -0.115"
+9895,"**Score de priorisation : 100/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.99 → +1.566
+  • ti_score_max = 49.00 → +0.864
+  • ti_score_combined = 76.00 → +0.448
+
+**Éléments qui réduisent le score (↓) :**
+  • day_cos = -0.90 → -0.179
+  • alert_title_bp_rate = 0.49 → -0.133"
+8524,"**Score de priorisation : 58/100** — Décision suggérée : ESCALADE_N2
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.43 → +0.712
+  • alert_title_tp_rate = 0.36 → +0.270
+  • nb_detectors = 4.00 → +0.121
+
+**Éléments qui réduisent le score (↓) :**
+  • org_fp_rate = 0.43 → -0.312
+  • hour_sin = 1.00 → -0.290"
+11443,"**Score de priorisation : 95/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.80 → +1.384
+  • alert_title_tp_rate = 0.36 → +0.216
+  • org_bp_rate = 0.02 → +0.176
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_bp_rate = 0.47 → -0.054
+  • detector_nb_incidents = 2470.00 → -0.046"
+11837,"**Score de priorisation : 98/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.99 → +1.935
+  • alert_title_tp_rate = 0.46 → +0.376
+  • org_bp_rate = 0.01 → +0.167
+
+**Éléments qui réduisent le score (↓) :**
+  • day_cos = -0.90 → -0.181
+  • alert_title_bp_rate = 0.49 → -0.154"
+6718,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_nb_incidents = 1196.00 → +0.092
+  • nb_alerts = 107 → +0.068
+  • org_fp_rate = 0.00 → +0.060
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.967
+  • detector_tp_rate = 0.00 → -1.263"
+6425,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.00 → +0.086
+  • org_nb_incidents = 1196.00 → +0.076
+  • detector_fp_rate = 0.00 → +0.065
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.932
+  • detector_tp_rate = 0.00 → -1.256"
+6977,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.00 → +0.074
+  • org_nb_incidents = 1196.00 → +0.074
+  • detector_fp_rate = 0.01 → +0.063
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.940
+  • detector_tp_rate = 0.00 → -1.249"
+10991,"**Score de priorisation : 1/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.04 → +0.148
+  • ti_score_combined = 69.00 → +0.086
+  • nb_alerts = 105 → +0.054
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_tp_rate = 0.21 → -1.239
+  • org_tp_rate = 0.04 → -0.739"
+11936,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_bp_rate = 0.45 → +0.100
+  • org_bp_rate = 0.00 → +0.052
+  • hour_of_day = 16.00 → +0.041
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.01 → -1.915
+  • detector_tp_rate = 0.00 → -1.455"
+6426,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.00 → +0.074
+  • detector_fp_rate = 0.00 → +0.067
+  • org_nb_incidents = 1196.00 → +0.066
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.950
+  • detector_tp_rate = 0.00 → -1.247"
+1615,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • ip_ti_score = 35.00 → +0.168
+  • ti_score_max = 35.00 → +0.134
+  • org_nb_incidents = 473.00 → +0.098
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.493
+  • detector_tp_rate = 0.01 → -0.904"
+6671,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • nb_alerts = 102 → +0.077
+  • ti_score_combined = 69.00 → +0.063
+  • detector_fp_rate = 0.03 → +0.062
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.158
+  • alert_title_tp_rate = 0.04 → -0.523"
+7770,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_nb_incidents = 1196.00 → +0.078
+  • detector_bp_rate = 1.00 → +0.070
+  • org_fp_rate = 0.00 → +0.070
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.889
+  • detector_tp_rate = 0.00 → -1.233"
+12940,"**Score de priorisation : 100/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.99 → +1.439
+  • ti_score_max = 49.00 → +0.925
+  • ti_score_combined = 76.00 → +0.459
+
+**Éléments qui réduisent le score (↓) :**
+  • day_cos = -0.90 → -0.165
+  • alert_title_bp_rate = 0.49 → -0.129"
+11359,"**Score de priorisation : 45/100** — Décision suggérée : INVESTIGATION_N1
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.36 → +0.384
+  • ti_score_combined = 69.00 → +0.144
+  • nb_detectors = 4.00 → +0.093
+
+**Éléments qui réduisent le score (↓) :**
+  • hour_cos = 1.00 → -0.232
+  • alert_title_bp_rate = 0.47 → -0.073"
+12501,"**Score de priorisation : 98/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.99 → +1.816
+  • alert_title_tp_rate = 0.46 → +0.348
+  • org_fp_rate = 0.00 → +0.152
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_bp_rate = 0.49 → -0.130
+  • hour_sin = 0.97 → -0.103"
+9583,"**Score de priorisation : 100/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.98 → +1.732
+  • alert_title_tp_rate = 0.30 → +0.424
+  • alert_title_bp_rate = 0.45 → +0.257
+
+**Éléments qui réduisent le score (↓) :**
+  • day_cos = -0.90 → -0.118
+  • category_tp_rate = 0.05 → -0.083"
+12706,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.06 → +0.107
+  • ti_score_combined = 69.00 → +0.060
+  • hour_of_day = 15.00 → +0.053
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -4.253
+  • alert_title_tp_rate = 0.19 → -0.671"
+13745,"**Score de priorisation : 99/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.99 → +1.832
+  • alert_title_tp_rate = 0.46 → +0.388
+  • org_fp_rate = 0.00 → +0.145
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_bp_rate = 0.49 → -0.119
+  • hour_of_day = 2.00 → -0.049"
+1578,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.00 → +0.134
+  • org_nb_incidents = 301.00 → +0.090
+  • ti_score_combined = 69.00 → +0.063
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.899
+  • detector_tp_rate = 0.00 → -0.867"
+13925,"**Score de priorisation : 98/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.99 → +1.524
+  • ti_score_max = 47.00 → +0.642
+  • ti_score_combined = 89.00 → +0.568
+
+**Éléments qui réduisent le score (↓) :**
+  • sandbox_network_conns = 26.00 → -0.434
+  • sandbox_process_injection = 1.00 → -0.180"
+7135,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.00 → +0.080
+  • org_nb_incidents = 1196.00 → +0.068
+  • detector_fp_rate = 0.00 → +0.060
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.960
+  • detector_tp_rate = 0.00 → -1.261"
+8013,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_nb_incidents = 1196.00 → +0.106
+  • alert_rate_per_hour = 18.48 → +0.066
+  • detector_fp_rate = 0.00 → +0.065
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -4.007
+  • detector_tp_rate = 0.00 → -1.289"
+14111,"**Score de priorisation : 5/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • ti_score_combined = 69.00 → +0.113
+  • hour_sin = -0.50 → +0.096
+  • hour_of_day = 14.00 → +0.090
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_tp_rate = 0.21 → -1.264
+  • alert_title_fp_rate = 0.34 → -0.172"
+5236,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_nb_incidents = 1196.00 → +0.083
+  • org_fp_rate = 0.00 → +0.061
+  • nb_alerts = 92 → +0.059
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.924
+  • detector_tp_rate = 0.00 → -1.268"
+5825,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.00 → +0.075
+  • detector_bp_rate = 1.00 → +0.072
+  • org_nb_incidents = 1196.00 → +0.071
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.850
+  • detector_tp_rate = 0.00 → -1.260"
+8862,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.00 → +0.061
+  • org_nb_incidents = 1196.00 → +0.060
+  • detector_fp_rate = 0.00 → +0.058
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.983
+  • detector_tp_rate = 0.00 → -1.223"
+14091,"**Score de priorisation : 99/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.99 → +1.787
+  • alert_title_tp_rate = 0.46 → +0.379
+  • org_bp_rate = 0.01 → +0.141
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_bp_rate = 0.49 → -0.120
+  • detector_bp_rate = 0.51 → -0.045"
+14607,"**Score de priorisation : 99/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.99 → +1.445
+  • ti_score_max = 46.00 → +0.688
+  • alert_title_tp_rate = 0.46 → +0.402
+
+**Éléments qui réduisent le score (↓) :**
+  • hour_cos = 0.97 → -0.150
+  • alert_title_bp_rate = 0.49 → -0.102"
+13748,"**Score de priorisation : 99/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.99 → +1.906
+  • alert_title_tp_rate = 0.46 → +0.375
+  • org_bp_rate = 0.01 → +0.192
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_bp_rate = 0.49 → -0.108
+  • nb_entity_types = 5.00 → -0.083"
+10305,"**Score de priorisation : 52/100** — Décision suggérée : ESCALADE_N2
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.36 → +0.416
+  • ti_score_combined = 69.00 → +0.157
+  • org_tp_rate = 0.23 → +0.138
+
+**Éléments qui réduisent le score (↓) :**
+  • hour_sin = -0.97 → -0.093
+  • alert_title_bp_rate = 0.47 → -0.077"
+12469,"**Score de priorisation : 63/100** — Décision suggérée : ESCALADE_N2
+
+**Raisons principales (↑ augmente le score) :**
+  • ip_ti_score = 40.00 → +0.381
+  • alert_title_tp_rate = 0.27 → +0.331
+  • ti_score_max = 40.00 → +0.219
+
+**Éléments qui réduisent le score (↓) :**
+  • hour_sin = 1.00 → -0.291
+  • alert_title_fp_rate = 0.28 → -0.061"
+8159,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.00 → +0.068
+  • ti_score_combined = 69.00 → +0.061
+  • detector_fp_rate = 0.03 → +0.052
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.009
+  • alert_title_tp_rate = 0.04 → -0.558"
+8977,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.00 → +0.085
+  • ti_score_combined = 69.00 → +0.052
+  • detector_fp_rate = 0.02 → +0.043
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.691
+  • detector_tp_rate = 0.00 → -1.445"
+9936,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • detector_fp_rate = 0.00 → +0.067
+  • org_fp_rate = 0.00 → +0.064
+  • org_nb_incidents = 1196.00 → +0.055
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.954
+  • detector_tp_rate = 0.00 → -1.246"
+13939,"**Score de priorisation : 97/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.99 → +1.766
+  • org_fp_rate = 0.00 → +0.228
+  • org_bp_rate = 0.01 → +0.165
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_tp_rate = 0.16 → -0.560
+  • is_weekend = 1 → -0.097"
+15643,"**Score de priorisation : 6/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_rate_per_hour = 86.00 → +0.291
+  • hour_sin = 0.00 → +0.087
+  • ti_score_max = 0.00 → +0.048
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_tp_rate = 0.07 → -0.731
+  • ti_score_combined = 0.00 → -0.442"
+16235,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • nb_alerts = 86 → +0.077
+  • ti_score_combined = 69.00 → +0.073
+  • org_fp_rate = 0.00 → +0.065
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.861
+  • alert_title_tp_rate = 0.09 → -0.759"
+4730,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_rate_per_hour = 17.03 → +0.076
+  • nb_alerts = 85 → +0.071
+  • detector_fp_rate = 0.03 → +0.066
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.186
+  • alert_title_tp_rate = 0.04 → -0.579"
+15516,"**Score de priorisation : 98/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.99 → +1.873
+  • alert_title_tp_rate = 0.46 → +0.400
+  • org_bp_rate = 0.01 → +0.168
+
+**Éléments qui réduisent le score (↓) :**
+  • day_cos = -0.90 → -0.186
+  • alert_title_bp_rate = 0.49 → -0.150"
+6470,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • ti_score_combined = 80.00 → +0.369
+  • org_nb_incidents = 665.00 → +0.134
+  • org_fp_rate = 0.00 → +0.113
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -4.386
+  • alert_title_tp_rate = 0.19 → -0.401"
+7825,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_rate_per_hour = 84.00 → +0.161
+  • org_bp_rate = 0.00 → +0.100
+  • org_nb_incidents = 223.00 → +0.052
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -4.538
+  • alert_title_tp_rate = 0.05 → -0.464"
+9811,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_bp_rate = 0.45 → +0.084
+  • org_bp_rate = 0.00 → +0.067
+  • org_nb_incidents = 223.00 → +0.047
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.795
+  • alert_title_tp_rate = 0.21 → -0.653"
+10911,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.36 → +0.184
+  • org_bp_rate = 0.00 → +0.099
+  • ip_ti_score = 27.00 → +0.079
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -4.225
+  • ti_score_combined = 54.00 → -0.442"
+15798,"**Score de priorisation : 91/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.80 → +1.095
+  • alert_title_tp_rate = 0.33 → +0.390
+  • org_fp_rate = 0.18 → +0.109
+
+**Éléments qui réduisent le score (↓) :**
+  • hour_cos = 0.97 → -0.199
+  • hour_of_day = 23.00 → -0.116"
+8747,"**Score de priorisation : 37/100** — Décision suggérée : INVESTIGATION_N1
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_rate_per_hour = 81.00 → +0.255
+  • hour_sin = 0.00 → +0.080
+  • nb_alerts = 81 → +0.079
+
+**Éléments qui réduisent le score (↓) :**
+  • ti_score_combined = 0.00 → -0.574
+  • alert_title_tp_rate = 0.22 → -0.191"
+8978,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.00 → +0.066
+  • ti_score_combined = 69.00 → +0.064
+  • detector_fp_rate = 0.03 → +0.055
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.022
+  • alert_title_tp_rate = 0.04 → -0.619"
+15486,"**Score de priorisation : 6/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • nb_detectors = 5.00 → +0.157
+  • ti_score_combined = 69.00 → +0.102
+  • nb_alerts = 81 → +0.081
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_tp_rate = 0.21 → -1.206
+  • alert_title_bp_rate = 0.54 → -0.181"
+7739,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_nb_incidents = 665.00 → +0.135
+  • org_fp_rate = 0.00 → +0.107
+  • alert_rate_per_hour = 11.98 → +0.094
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -4.122
+  • alert_title_tp_rate = 0.21 → -0.680"
+12450,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_nb_incidents = 1196.00 → +0.084
+  • org_fp_rate = 0.00 → +0.064
+  • detector_bp_rate = 1.00 → +0.062
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.934
+  • detector_tp_rate = 0.00 → -1.253"
+1838,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_nb_incidents = 473.00 → +0.087
+  • org_fp_rate = 0.00 → +0.067
+  • detector_fp_rate = 0.01 → +0.048
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.254
+  • detector_tp_rate = 0.01 → -0.794"
+8612,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_rate_per_hour = 79.00 → +0.163
+  • org_bp_rate = 0.00 → +0.103
+  • org_nb_incidents = 223.00 → +0.051
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -4.528
+  • alert_title_tp_rate = 0.05 → -0.466"
+10086,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_nb_incidents = 1196.00 → +0.089
+  • org_fp_rate = 0.00 → +0.065
+  • nb_alerts = 79 → +0.053
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.926
+  • detector_tp_rate = 0.00 → -1.263"
+16891,"**Score de priorisation : 99/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.99 → +1.755
+  • alert_title_tp_rate = 0.46 → +0.394
+  • org_fp_rate = 0.00 → +0.142
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_bp_rate = 0.49 → -0.115
+  • detector_bp_rate = 0.51 → -0.042"
+16263,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.23 → +0.099
+  • detector_fp_rate = 0.00 → +0.089
+  • detector_bp_rate = 1.00 → +0.086
+
+**Éléments qui réduisent le score (↓) :**
+  • detector_tp_rate = 0.00 → -1.850
+  • alert_title_tp_rate = 0.21 → -1.245"
+9347,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.00 → +0.086
+  • org_nb_incidents = 1196.00 → +0.084
+  • detector_fp_rate = 0.00 → +0.054
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.818
+  • detector_tp_rate = 0.00 → -1.203"
+6853,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.00 → +0.135
+  • org_nb_incidents = 1196.00 → +0.118
+  • alert_rate_per_hour = 35.74 → +0.062
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.917
+  • detector_tp_rate = 0.00 → -1.242"
+8937,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_nb_incidents = 1196.00 → +0.117
+  • org_fp_rate = 0.00 → +0.072
+  • detector_fp_rate = 0.00 → +0.063
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -4.011
+  • detector_tp_rate = 0.00 → -1.268"
+9017,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_nb_incidents = 1196.00 → +0.133
+  • alert_rate_per_hour = 1000.00 → +0.113
+  • org_fp_rate = 0.00 → +0.096
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.921
+  • detector_tp_rate = 0.00 → -1.272"
+15098,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_bp_rate = 0.00 → +0.066
+  • hour_of_day = 14.00 → +0.063
+  • alert_title_bp_rate = 0.41 → +0.062
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.01 → -2.072
+  • detector_tp_rate = 0.00 → -1.499"
+8868,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_nb_incidents = 1196.00 → +0.107
+  • detector_bp_rate = 1.00 → +0.072
+  • org_fp_rate = 0.00 → +0.064
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.883
+  • detector_tp_rate = 0.00 → -1.258"
+17593,"**Score de priorisation : 10/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.46 → +0.320
+  • org_fp_rate = 0.02 → +0.244
+  • has_threat_family = 1 → +0.147
+
+**Éléments qui réduisent le score (↓) :**
+  • sandbox_network_conns = 27.00 → -0.765
+  • org_tp_rate = 0.15 → -0.186"
+10902,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.00 → +0.079
+  • org_nb_incidents = 1196.00 → +0.074
+  • detector_bp_rate = 1.00 → +0.070
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.866
+  • detector_tp_rate = 0.00 → -1.266"
+16031,"**Score de priorisation : 36/100** — Décision suggérée : INVESTIGATION_N1
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.26 → +0.278
+  • ti_score_combined = 69.00 → +0.121
+  • org_nb_incidents = 0.00 → +0.074
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_bp_rate = 0.49 → -0.081
+  • hour_cos = -0.97 → -0.058"
+8546,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_nb_incidents = 665.00 → +0.143
+  • alert_rate_per_hour = 15.29 → +0.067
+  • org_fp_rate = 0.00 → +0.064
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.871
+  • detector_tp_rate = 0.00 → -1.285"
+13207,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_nb_incidents = 1196.00 → +0.097
+  • org_fp_rate = 0.00 → +0.059
+  • detector_fp_rate = 0.00 → +0.058
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.981
+  • detector_tp_rate = 0.00 → -1.274"
+14961,"**Score de priorisation : 26/100** — Décision suggérée : INVESTIGATION_N1
+
+**Raisons principales (↑ augmente le score) :**
+  • ti_score_combined = 69.00 → +0.129
+  • detector_nb_incidents = 169.00 → +0.108
+  • org_nb_incidents = 0.00 → +0.071
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_tp_rate = 0.19 → -0.446
+  • alert_title_bp_rate = 0.52 → -0.109"
+16609,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_rate_per_hour = 24.06 → +0.105
+  • alert_title_bp_rate = 0.45 → +0.086
+  • org_bp_rate = 0.00 → +0.069
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.01 → -1.995
+  • detector_tp_rate = 0.00 → -1.462"
+14796,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • detector_fp_rate = 0.03 → +0.068
+  • org_fp_rate = 0.00 → +0.062
+  • ti_score_combined = 69.00 → +0.056
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.143
+  • alert_title_tp_rate = 0.04 → -0.637"
+11095,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_rate_per_hour = 166.92 → +0.197
+  • org_fp_rate = 0.00 → +0.099
+  • org_nb_incidents = 1196.00 → +0.088
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -4.027
+  • detector_tp_rate = 0.00 → -1.282"
+11834,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_nb_incidents = 665.00 → +0.089
+  • org_fp_rate = 0.00 → +0.082
+  • detector_fp_rate = 0.00 → +0.055
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.855
+  • detector_tp_rate = 0.00 → -1.222"
+12936,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.00 → +0.121
+  • org_nb_incidents = 665.00 → +0.071
+  • detector_fp_rate = 0.00 → +0.048
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.821
+  • detector_tp_rate = 0.00 → -1.224"
+17591,"**Score de priorisation : 99/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • ti_score_max = 54.00 → +1.192
+  • alert_title_tp_rate = 0.41 → +0.804
+  • ti_score_combined = 81.00 → +0.639
+
+**Éléments qui réduisent le score (↓) :**
+  • hour_of_day = 2.00 → -0.062
+  • org_bp_rate = 0.83 → -0.036"
+17691,"**Score de priorisation : 9/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.36 → +0.313
+  • alert_title_fp_rate = 0.16 → +0.047
+  • org_nb_incidents = 0.00 → +0.046
+
+**Éléments qui réduisent le score (↓) :**
+  • ti_score_combined = 58.00 → -0.625
+  • day_cos = -0.90 → -0.217"
+11793,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_rate_per_hour = 247.88 → +0.134
+  • org_nb_incidents = 1196.00 → +0.118
+  • org_fp_rate = 0.00 → +0.103
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.911
+  • detector_tp_rate = 0.00 → -1.292"
+14118,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.00 → +0.153
+  • ti_score_combined = 69.00 → +0.083
+  • detector_tp_rate = 0.16 → +0.075
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.994
+  • alert_title_tp_rate = 0.16 → -0.486"
+17090,"**Score de priorisation : 32/100** — Décision suggérée : INVESTIGATION_N1
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.36 → +0.355
+  • ti_score_combined = 69.00 → +0.135
+  • alert_title_fp_rate = 0.16 → +0.063
+
+**Éléments qui réduisent le score (↓) :**
+  • hour_cos = 0.97 → -0.241
+  • is_weekend = 1 → -0.165"
+9273,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_rate_per_hour = 64.00 → +0.142
+  • org_bp_rate = 0.00 → +0.104
+  • org_nb_incidents = 223.00 → +0.050
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -4.484
+  • alert_title_tp_rate = 0.05 → -0.466"
+12902,"**Score de priorisation : 100/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.98 → +1.658
+  • alert_title_tp_rate = 0.30 → +0.438
+  • alert_title_bp_rate = 0.45 → +0.216
+
+**Éléments qui réduisent le score (↓) :**
+  • hour_sin = 0.87 → -0.111
+  • hour_of_day = 8.00 → -0.083"
+16017,"**Score de priorisation : 55/100** — Décision suggérée : ESCALADE_N2
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.64 → +0.955
+  • alert_title_tp_rate = 0.36 → +0.407
+  • ti_score_combined = 69.00 → +0.119
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_fp_rate = 0.35 → -0.219
+  • day_cos = -0.90 → -0.152"
+16865,"**Score de priorisation : 100/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.98 → +1.558
+  • alert_title_tp_rate = 0.30 → +0.441
+  • alert_title_bp_rate = 0.45 → +0.273
+
+**Éléments qui réduisent le score (↓) :**
+  • day_cos = -0.90 → -0.118
+  • category_tp_rate = 0.05 → -0.089"
+16938,"**Score de priorisation : 13/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.27 → +0.278
+  • ti_score_combined = 69.00 → +0.118
+  • category_fp_rate = 0.18 → +0.050
+
+**Éléments qui réduisent le score (↓) :**
+  • org_fp_rate = 0.34 → -0.224
+  • org_tp_rate = 0.13 → -0.178"
+8474,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_rate_per_hour = 63.00 → +0.142
+  • org_bp_rate = 0.00 → +0.103
+  • org_nb_incidents = 223.00 → +0.049
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -4.488
+  • alert_title_tp_rate = 0.05 → -0.468"
+12746,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_nb_incidents = 1196.00 → +0.122
+  • alert_rate_per_hour = 34.57 → +0.112
+  • org_fp_rate = 0.00 → +0.090
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.869
+  • detector_tp_rate = 0.00 → -1.283"
+11528,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.00 → +0.083
+  • detector_fp_rate = 0.02 → +0.064
+  • ti_score_combined = 69.00 → +0.048
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.792
+  • detector_tp_rate = 0.00 → -1.442"
+11800,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.00 → +0.077
+  • detector_fp_rate = 0.00 → +0.063
+  • org_nb_incidents = 1196.00 → +0.061
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.931
+  • detector_tp_rate = 0.00 → -1.248"
+13064,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.02 → +0.095
+  • detector_fp_rate = 0.00 → +0.067
+  • ti_score_combined = 69.00 → +0.050
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.926
+  • detector_tp_rate = 0.00 → -1.243"
+13511,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_nb_incidents = 1196.00 → +0.126
+  • org_fp_rate = 0.00 → +0.069
+  • ti_score_combined = 69.00 → +0.052
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.929
+  • detector_tp_rate = 0.00 → -1.293"
+13524,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_nb_incidents = 1196.00 → +0.083
+  • org_fp_rate = 0.00 → +0.072
+  • detector_fp_rate = 0.00 → +0.060
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.998
+  • detector_tp_rate = 0.00 → -1.257"
+16131,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.02 → +0.101
+  • detector_fp_rate = 0.00 → +0.067
+  • detector_bp_rate = 1.00 → +0.056
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.808
+  • detector_tp_rate = 0.00 → -1.185"
+19824,"**Score de priorisation : 27/100** — Décision suggérée : INVESTIGATION_N1
+
+**Raisons principales (↑ augmente le score) :**
+  • ti_score_combined = 69.00 → +0.138
+  • detector_nb_incidents = 169.00 → +0.092
+  • nb_detectors = 4.00 → +0.069
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_tp_rate = 0.19 → -0.448
+  • alert_title_bp_rate = 0.52 → -0.105"
+6886,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_rate_per_hour = 60.00 → +0.132
+  • org_bp_rate = 0.00 → +0.099
+  • org_nb_incidents = 223.00 → +0.049
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -4.462
+  • alert_title_tp_rate = 0.05 → -0.470"
+14871,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_rate_per_hour = 60.00 → +0.159
+  • org_bp_rate = 0.00 → +0.111
+  • org_nb_incidents = 223.00 → +0.106
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -4.204
+  • alert_title_tp_rate = 0.20 → -0.352"
+14931,"**Score de priorisation : 98/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.99 → +1.556
+  • alert_title_tp_rate = 0.36 → +0.239
+  • org_nb_incidents = 601.00 → +0.183
+
+**Éléments qui réduisent le score (↓) :**
+  • hour_sin = 0.87 → -0.126
+  • hour_of_day = 8.00 → -0.081"
+14403,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.02 → +0.122
+  • detector_fp_rate = 0.00 → +0.084
+  • detector_bp_rate = 1.00 → +0.051
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.888
+  • detector_tp_rate = 0.00 → -1.256"
+5332,"**Score de priorisation : 8/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.30 → +0.327
+  • alert_rate_per_hour = 58.00 → +0.163
+  • org_fp_rate = 0.20 → +0.132
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_tp_rate = 0.11 → -1.179
+  • ti_score_combined = 0.00 → -0.461"
+10864,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.00 → +0.072
+  • ti_score_combined = 69.00 → +0.047
+  • detector_nb_incidents = 87.00 → +0.045
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.750
+  • detector_tp_rate = 0.00 → -1.460"
+14043,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_rate_per_hour = 58.00 → +0.117
+  • org_bp_rate = 0.00 → +0.092
+  • org_nb_incidents = 223.00 → +0.070
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -4.472
+  • ti_score_combined = 0.00 → -0.377"
+16353,"**Score de priorisation : 40/100** — Décision suggérée : INVESTIGATION_N1
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.33 → +0.808
+  • detector_nb_incidents = 0.00 → +0.535
+  • org_fp_rate = 0.02 → +0.244
+
+**Éléments qui réduisent le score (↓) :**
+  • ti_score_combined = 45.00 → -1.082
+  • day_cos = -0.90 → -0.277"
+12358,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.00 → +0.100
+  • org_nb_incidents = 665.00 → +0.099
+  • detector_fp_rate = 0.00 → +0.063
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.953
+  • alert_title_tp_rate = 0.21 → -0.678"
+12623,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_bp_rate = 0.45 → +0.103
+  • alert_rate_per_hour = 61.77 → +0.058
+  • ti_score_combined = 69.00 → +0.048
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.641
+  • detector_tp_rate = 0.00 → -1.169"
+20189,"**Score de priorisation : 3/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.02 → +0.263
+  • alert_title_tp_rate = 0.36 → +0.247
+  • ti_score_combined = 69.00 → +0.074
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.806
+  • org_bp_rate = 0.97 → -0.268"
+22210,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_bp_rate = 0.00 → +0.098
+  • alert_rate_per_hour = 57.00 → +0.094
+  • detector_tp_rate = 0.44 → +0.051
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -4.454
+  • alert_title_tp_rate = 0.08 → -0.478"
+12586,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_bp_rate = 0.00 → +0.087
+  • detector_nb_incidents = 98.00 → +0.048
+  • alert_title_bp_rate = 0.36 → +0.039
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.847
+  • ti_score_combined = 27.00 → -0.597"
+15174,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.00 → +0.066
+  • detector_fp_rate = 0.02 → +0.050
+  • ti_score_combined = 69.00 → +0.047
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.722
+  • detector_tp_rate = 0.00 → -1.465"
+6776,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_rate_per_hour = 55.00 → +0.137
+  • org_bp_rate = 0.00 → +0.099
+  • org_nb_incidents = 223.00 → +0.047
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -4.448
+  • alert_title_tp_rate = 0.05 → -0.470"
+16208,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_bp_rate = 0.45 → +0.086
+  • ti_score_combined = 69.00 → +0.042
+  • org_bp_rate = 0.00 → +0.042
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.561
+  • detector_tp_rate = 0.00 → -1.192"
+6915,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.00 → +0.072
+  • detector_fp_rate = 0.00 → +0.065
+  • org_nb_incidents = 1196.00 → +0.063
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.958
+  • detector_tp_rate = 0.00 → -1.252"
+9142,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_rate_per_hour = 53.00 → +0.135
+  • org_bp_rate = 0.00 → +0.099
+  • detector_nb_incidents = 106.00 → +0.045
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -4.432
+  • alert_title_tp_rate = 0.05 → -0.473"
+12486,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.02 → +0.079
+  • detector_bp_rate = 1.00 → +0.079
+  • detector_fp_rate = 0.00 → +0.073
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.854
+  • detector_tp_rate = 0.00 → -1.240"
+2298,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_nb_incidents = 473.00 → +0.095
+  • org_fp_rate = 0.00 → +0.088
+  • alert_title_fp_rate = 0.21 → +0.062
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.575
+  • detector_tp_rate = 0.01 → -0.878"
+14590,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.00 → +0.146
+  • org_nb_incidents = 665.00 → +0.071
+  • detector_fp_rate = 0.00 → +0.044
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -4.046
+  • alert_title_tp_rate = 0.16 → -0.447"
+14632,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • ti_score_combined = 69.00 → +0.056
+  • org_fp_rate = 0.00 → +0.051
+  • detector_fp_rate = 0.03 → +0.045
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.119
+  • alert_title_tp_rate = 0.04 → -0.614"
+13259,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • ti_score_combined = 73.00 → +0.212
+  • org_fp_rate = 0.00 → +0.107
+  • detector_bp_rate = 0.97 → +0.066
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -4.335
+  • alert_title_tp_rate = 0.19 → -0.432"
+15685,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_rate_per_hour = 51.00 → +0.193
+  • org_bp_rate = 0.00 → +0.104
+  • org_nb_incidents = 223.00 → +0.067
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -4.237
+  • alert_title_tp_rate = 0.18 → -0.477"
+16490,"**Score de priorisation : 4/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_rate_per_hour = 51.00 → +0.225
+  • org_fp_rate = 0.00 → +0.166
+  • alert_title_fp_rate = 0.20 → +0.068
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_tp_rate = 0.15 → -0.975
+  • org_tp_rate = 0.07 → -0.539"
+20997,"**Score de priorisation : 99/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.99 → +1.669
+  • org_bp_rate = 0.00 → +0.206
+  • org_fp_rate = 0.01 → +0.121
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_tp_rate = 0.16 → -0.482
+  • day_cos = -0.90 → -0.097"
+28437,"**Score de priorisation : 46/100** — Décision suggérée : ESCALADE_N2
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.32 → +0.503
+  • alert_rate_per_hour = 51.00 → +0.143
+  • detector_fp_rate = 0.00 → +0.090
+
+**Éléments qui réduisent le score (↓) :**
+  • ti_score_combined = 0.00 → -0.597
+  • alert_title_bp_rate = 0.56 → -0.134"
+7202,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.02 → +0.110
+  • ti_score_combined = 69.00 → +0.051
+  • hour_of_day = 15.00 → +0.028
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.313
+  • detector_tp_rate = 0.00 → -1.448"
+8442,"**Score de priorisation : 26/100** — Décision suggérée : INVESTIGATION_N1
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_rate_per_hour = 50.00 → +0.113
+  • alert_title_fp_rate = 0.20 → +0.100
+  • hour_sin = 0.00 → +0.081
+
+**Éléments qui réduisent le score (↓) :**
+  • ti_score_combined = 0.00 → -0.476
+  • org_fp_rate = 0.30 → -0.123"
+10163,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_rate_per_hour = 50.00 → +0.136
+  • org_bp_rate = 0.00 → +0.100
+  • ti_score_max = 0.00 → +0.045
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -4.434
+  • alert_title_tp_rate = 0.05 → -0.478"
+11180,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_rate_per_hour = 50.00 → +0.136
+  • org_bp_rate = 0.00 → +0.100
+  • ti_score_max = 0.00 → +0.045
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -4.434
+  • alert_title_tp_rate = 0.05 → -0.478"
+12074,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.02 → +0.134
+  • ti_score_combined = 69.00 → +0.066
+  • detector_tp_rate = 0.16 → +0.046
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -4.594
+  • org_bp_rate = 0.98 → -0.371"
+14877,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_nb_incidents = 1196.00 → +0.085
+  • detector_fp_rate = 0.00 → +0.062
+  • org_fp_rate = 0.00 → +0.056
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.924
+  • detector_tp_rate = 0.00 → -1.269"
+15770,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.00 → +0.076
+  • detector_fp_rate = 0.02 → +0.044
+  • detector_nb_incidents = 87.00 → +0.044
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.666
+  • detector_tp_rate = 0.00 → -1.434"
+9419,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_nb_incidents = 1196.00 → +0.088
+  • org_fp_rate = 0.00 → +0.087
+  • ti_score_combined = 69.00 → +0.053
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.886
+  • detector_tp_rate = 0.00 → -1.274"
+14093,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.00 → +0.104
+  • org_nb_incidents = 665.00 → +0.065
+  • detector_fp_rate = 0.00 → +0.058
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.890
+  • alert_title_tp_rate = 0.21 → -0.657"
+1708,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_rate_per_hour = 48.00 → +0.196
+  • org_nb_incidents = 473.00 → +0.171
+  • org_fp_rate = 0.00 → +0.086
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.412
+  • detector_tp_rate = 0.01 → -0.902"
+2480,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_nb_incidents = 473.00 → +0.182
+  • ip_ti_score = 35.00 → +0.130
+  • org_fp_rate = 0.00 → +0.109
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.701
+  • detector_tp_rate = 0.01 → -0.963"
+2490,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_nb_incidents = 473.00 → +0.160
+  • alert_rate_per_hour = 48.00 → +0.157
+  • org_fp_rate = 0.00 → +0.111
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.554
+  • detector_tp_rate = 0.01 → -0.892"
+2496,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_rate_per_hour = 48.00 → +0.189
+  • org_nb_incidents = 473.00 → +0.127
+  • org_fp_rate = 0.00 → +0.086
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.560
+  • detector_tp_rate = 0.01 → -0.891"
+2644,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_nb_incidents = 473.00 → +0.167
+  • alert_rate_per_hour = 48.00 → +0.147
+  • org_fp_rate = 0.00 → +0.108
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.471
+  • detector_tp_rate = 0.01 → -0.919"
+2983,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • ip_ti_score = 36.00 → +0.149
+  • alert_rate_per_hour = 48.00 → +0.148
+  • org_nb_incidents = 473.00 → +0.127
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.713
+  • detector_tp_rate = 0.01 → -0.929"
+7990,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.02 → +0.170
+  • alert_rate_per_hour = 48.00 → +0.169
+  • alert_title_fp_rate = 0.11 → +0.073
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.491
+  • alert_title_tp_rate = 0.07 → -0.828"
+14190,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_nb_incidents = 1196.00 → +0.069
+  • detector_fp_rate = 0.00 → +0.049
+  • org_fp_rate = 0.00 → +0.049
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.906
+  • detector_tp_rate = 0.00 → -1.245"
+17131,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_nb_incidents = 665.00 → +0.147
+  • org_fp_rate = 0.00 → +0.114
+  • alert_rate_per_hour = 11.97 → +0.066
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.482
+  • detector_tp_rate = 0.00 → -1.223"
+28441,"**Score de priorisation : 68/100** — Décision suggérée : ESCALADE_N2
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.86 → +1.128
+  • alert_rate_per_hour = 48.00 → +0.194
+  • org_fp_rate = 0.14 → +0.160
+
+**Éléments qui réduisent le score (↓) :**
+  • ti_score_combined = 0.00 → -0.518
+  • alert_title_fp_rate = 0.72 → -0.109"
+9418,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_rate_per_hour = 47.00 → +0.125
+  • org_fp_rate = 0.00 → +0.105
+  • org_nb_incidents = 1196.00 → +0.101
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.966
+  • detector_tp_rate = 0.00 → -1.282"
+10172,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_rate_per_hour = 47.00 → +0.129
+  • org_nb_incidents = 1196.00 → +0.098
+  • org_fp_rate = 0.00 → +0.097
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.919
+  • detector_tp_rate = 0.00 → -1.278"
+11690,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_nb_incidents = 1196.00 → +0.086
+  • org_fp_rate = 0.00 → +0.062
+  • detector_fp_rate = 0.00 → +0.058
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.879
+  • detector_tp_rate = 0.00 → -1.262"
+12588,"**Score de priorisation : 82/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.83 → +1.340
+  • alert_title_tp_rate = 0.46 → +0.333
+  • org_fp_rate = 0.00 → +0.140
+
+**Éléments qui réduisent le score (↓) :**
+  • hour_of_day = 21.00 → -0.136
+  • asset_patch_risk = 1 → -0.122"
+255,"**Score de priorisation : 32/100** — Décision suggérée : INVESTIGATION_N1
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.36 → +0.399
+  • ti_score_combined = 69.00 → +0.127
+  • nb_evidences = 50 → +0.082
+
+**Éléments qui réduisent le score (↓) :**
+  • hour_cos = 0.97 → -0.183
+  • org_fp_rate = 0.33 → -0.132"
+7719,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_rate_per_hour = 46.00 → +0.096
+  • org_fp_rate = 0.00 → +0.093
+  • org_nb_incidents = 1196.00 → +0.088
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.970
+  • detector_tp_rate = 0.00 → -1.278"
+10823,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.00 → +0.067
+  • detector_bp_rate = 1.00 → +0.064
+  • org_nb_incidents = 1196.00 → +0.062
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.851
+  • detector_tp_rate = 0.00 → -1.258"
+10904,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • detector_fp_rate = 0.00 → +0.071
+  • org_fp_rate = 0.00 → +0.064
+  • org_nb_incidents = 1196.00 → +0.055
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.930
+  • detector_tp_rate = 0.00 → -1.244"
+12342,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.00 → +0.144
+  • alert_rate_per_hour = 46.00 → +0.132
+  • org_nb_incidents = 665.00 → +0.122
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -4.228
+  • alert_title_tp_rate = 0.19 → -0.420"
+14876,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.00 → +0.108
+  • org_nb_incidents = 1196.00 → +0.069
+  • ti_score_combined = 69.00 → +0.042
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.846
+  • detector_tp_rate = 0.00 → -1.243"
+14889,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_nb_incidents = 1196.00 → +0.075
+  • org_fp_rate = 0.00 → +0.066
+  • detector_fp_rate = 0.00 → +0.057
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.896
+  • detector_tp_rate = 0.00 → -1.245"
+16758,"**Score de priorisation : 99/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.99 → +1.648
+  • org_bp_rate = 0.00 → +0.155
+  • alert_title_fp_rate = 0.14 → +0.119
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_tp_rate = 0.16 → -0.482
+  • nb_alerts = 46 → -0.063"
+30866,"**Score de priorisation : 13/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • detector_tp_rate = 0.16 → +0.141
+  • ti_score_combined = 69.00 → +0.129
+  • detector_nb_incidents = 182.00 → +0.117
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_tp_rate = 0.17 → -0.555
+  • alert_title_fp_rate = 0.45 → -0.124"
+11039,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_bp_rate = 0.00 → +0.095
+  • alert_title_bp_rate = 0.38 → +0.090
+  • alert_rate_per_hour = 45.00 → +0.082
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.02 → -1.626
+  • alert_title_tp_rate = 0.17 → -0.528"
+13689,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.00 → +0.082
+  • detector_bp_rate = 1.00 → +0.075
+  • org_nb_incidents = 1196.00 → +0.070
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.825
+  • detector_tp_rate = 0.00 → -1.268"
+15010,"**Score de priorisation : 92/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.77 → +1.217
+  • org_fp_rate = 0.03 → +0.315
+  • alert_title_tp_rate = 0.36 → +0.209
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_rate_per_hour = 0.29 → -0.151
+  • nb_alerts = 45 → -0.077"
+15667,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • detector_bp_rate = 1.00 → +0.067
+  • detector_fp_rate = 0.00 → +0.063
+  • ti_score_combined = 69.00 → +0.053
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.862
+  • detector_tp_rate = 0.00 → -1.267"
+20173,"**Score de priorisation : 11/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • ti_score_combined = 69.00 → +0.120
+  • detector_nb_incidents = 182.00 → +0.101
+  • detector_tp_rate = 0.16 → +0.071
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_tp_rate = 0.17 → -0.537
+  • alert_title_fp_rate = 0.45 → -0.116"
+30810,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • nb_evidences = 53 → +0.070
+  • ti_score_combined = 69.00 → +0.059
+  • alert_rate_per_hour = 8.29 → +0.034
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.863
+  • alert_title_tp_rate = 0.21 → -0.863"
+35055,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_bp_rate = 0.45 → +0.079
+  • nb_evidences = 48 → +0.062
+  • org_bp_rate = 0.00 → +0.060
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.01 → -1.951
+  • detector_tp_rate = 0.00 → -1.506"
+12340,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_rate_per_hour = 44.00 → +0.141
+  • org_nb_incidents = 665.00 → +0.134
+  • org_fp_rate = 0.00 → +0.118
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -4.111
+  • alert_title_tp_rate = 0.21 → -0.640"
+12634,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_rate_per_hour = 44.00 → +0.148
+  • org_fp_rate = 0.00 → +0.140
+  • org_nb_incidents = 665.00 → +0.139
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -4.054
+  • sandbox_network_conns = 25.00 → -0.432"
+33173,"**Score de priorisation : 1/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • ti_score_combined = 69.00 → +0.121
+  • has_threat_family = 1 → +0.076
+  • nb_evidences = 47 → +0.072
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_tp_rate = 0.21 → -1.516
+  • detector_nb_incidents = 0.00 → -0.252"
+9584,"**Score de priorisation : 1/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • detector_tp_rate = 0.16 → +0.088
+  • ti_score_combined = 69.00 → +0.085
+  • alert_title_bp_rate = 0.38 → +0.083
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.02 → -1.620
+  • alert_title_tp_rate = 0.17 → -0.508"
+10628,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_nb_incidents = 1196.00 → +0.131
+  • org_fp_rate = 0.00 → +0.128
+  • alert_rate_per_hour = 43.00 → +0.088
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.938
+  • detector_tp_rate = 0.00 → -1.300"
+11573,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_nb_incidents = 1196.00 → +0.088
+  • org_fp_rate = 0.00 → +0.074
+  • detector_fp_rate = 0.00 → +0.053
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.900
+  • detector_tp_rate = 0.00 → -1.239"
+13199,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • detector_fp_rate = 0.00 → +0.069
+  • org_nb_incidents = 1196.00 → +0.052
+  • org_fp_rate = 0.00 → +0.052
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.940
+  • detector_tp_rate = 0.00 → -1.251"
+13834,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_nb_incidents = 1196.00 → +0.101
+  • org_fp_rate = 0.00 → +0.070
+  • detector_fp_rate = 0.00 → +0.058
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.873
+  • detector_tp_rate = 0.00 → -1.267"
+13908,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_rate_per_hour = 43.00 → +0.180
+  • org_fp_rate = 0.00 → +0.150
+  • org_nb_incidents = 665.00 → +0.132
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -4.224
+  • alert_title_tp_rate = 0.13 → -0.722"
+16086,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_nb_incidents = 1196.00 → +0.068
+  • org_fp_rate = 0.00 → +0.052
+  • detector_fp_rate = 0.00 → +0.052
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.902
+  • detector_tp_rate = 0.00 → -1.261"
+17124,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_rate_per_hour = 43.00 → +0.178
+  • org_nb_incidents = 665.00 → +0.137
+  • org_fp_rate = 0.00 → +0.116
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -4.320
+  • alert_title_tp_rate = 0.17 → -0.450"
+13907,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • ti_score_combined = 80.00 → +0.297
+  • alert_rate_per_hour = 42.00 → +0.147
+  • org_nb_incidents = 665.00 → +0.122
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -4.326
+  • alert_title_tp_rate = 0.21 → -0.688"
+16326,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_nb_incidents = 1196.00 → +0.112
+  • alert_rate_per_hour = 42.00 → +0.110
+  • org_fp_rate = 0.00 → +0.080
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.864
+  • detector_tp_rate = 0.00 → -1.291"
+17126,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_rate_per_hour = 42.00 → +0.142
+  • org_nb_incidents = 665.00 → +0.134
+  • org_fp_rate = 0.00 → +0.115
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -4.459
+  • alert_title_tp_rate = 0.16 → -0.447"
+12306,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_nb_incidents = 1196.00 → +0.133
+  • org_fp_rate = 0.00 → +0.125
+  • alert_rate_per_hour = 41.00 → +0.077
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.904
+  • detector_tp_rate = 0.00 → -1.282"
+13098,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.00 → +0.157
+  • org_nb_incidents = 665.00 → +0.156
+  • alert_rate_per_hour = 41.00 → +0.111
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.485
+  • detector_tp_rate = 0.00 → -1.237"
+13100,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_rate_per_hour = 41.00 → +0.159
+  • org_nb_incidents = 665.00 → +0.157
+  • org_fp_rate = 0.00 → +0.109
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -4.265
+  • alert_title_tp_rate = 0.14 → -0.451"
+14206,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_rate_per_hour = 41.00 → +0.098
+  • org_fp_rate = 0.00 → +0.087
+  • org_nb_incidents = 1196.00 → +0.087
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.913
+  • detector_tp_rate = 0.00 → -1.286"
+17142,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_rate_per_hour = 41.00 → +0.143
+  • org_nb_incidents = 665.00 → +0.141
+  • org_fp_rate = 0.00 → +0.128
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.938
+  • alert_title_tp_rate = 0.21 → -0.652"
+17389,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • ti_score_combined = 74.00 → +0.282
+  • org_nb_incidents = 665.00 → +0.127
+  • alert_rate_per_hour = 41.00 → +0.096
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.792
+  • detector_tp_rate = 0.00 → -1.248"
+41591,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_bp_rate = 0.45 → +0.101
+  • org_bp_rate = 0.00 → +0.078
+  • ti_score_combined = 69.00 → +0.045
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.01 → -1.920
+  • detector_tp_rate = 0.00 → -1.511"
+12589,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_nb_incidents = 1196.00 → +0.128
+  • org_fp_rate = 0.00 → +0.121
+  • alert_rate_per_hour = 40.00 → +0.103
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.813
+  • detector_tp_rate = 0.00 → -1.280"
+14723,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.00 → +0.072
+  • org_nb_incidents = 1196.00 → +0.067
+  • ti_score_combined = 69.00 → +0.051
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.866
+  • detector_tp_rate = 0.00 → -1.275"
+15679,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_rate_per_hour = 40.00 → +0.114
+  • org_nb_incidents = 1196.00 → +0.104
+  • org_fp_rate = 0.00 → +0.085
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.923
+  • detector_tp_rate = 0.00 → -1.274"
+16399,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.00 → +0.192
+  • org_nb_incidents = 665.00 → +0.141
+  • alert_rate_per_hour = 40.00 → +0.112
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -4.031
+  • ti_score_combined = 44.00 → -0.453"
+16565,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_nb_incidents = 1196.00 → +0.116
+  • alert_rate_per_hour = 40.00 → +0.109
+  • org_fp_rate = 0.00 → +0.100
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.939
+  • detector_tp_rate = 0.00 → -1.276"
+14911,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_bp_rate = 0.45 → +0.084
+  • alert_rate_per_hour = 39.00 → +0.064
+  • hour_of_day = 15.00 → +0.048
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.643
+  • detector_tp_rate = 0.00 → -1.243"
+15108,"**Score de priorisation : 100/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.98 → +1.529
+  • alert_title_tp_rate = 0.30 → +0.402
+  • alert_title_bp_rate = 0.45 → +0.245
+
+**Éléments qui réduisent le score (↓) :**
+  • category_tp_rate = 0.05 → -0.165
+  • day_cos = -0.90 → -0.133"
+17123,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • ti_score_combined = 73.00 → +0.187
+  • alert_rate_per_hour = 39.00 → +0.137
+  • org_nb_incidents = 665.00 → +0.128
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -4.467
+  • alert_title_tp_rate = 0.19 → -0.412"
+24077,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_nb_incidents = 1196.00 → +0.089
+  • detector_fp_rate = 0.01 → +0.057
+  • ti_score_combined = 69.00 → +0.041
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.902
+  • detector_tp_rate = 0.00 → -1.262"
+6846,"**Score de priorisation : 94/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.93 → +1.570
+  • alert_title_tp_rate = 0.32 → +0.310
+  • detector_fp_rate = 0.00 → +0.166
+
+**Éléments qui réduisent le score (↓) :**
+  • ti_score_combined = 0.00 → -0.408
+  • alert_title_bp_rate = 0.56 → -0.127"
+15674,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_nb_incidents = 1196.00 → +0.094
+  • org_fp_rate = 0.00 → +0.059
+  • detector_fp_rate = 0.00 → +0.055
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.895
+  • detector_tp_rate = 0.00 → -1.271"
+17328,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_rate_per_hour = 37.00 → +0.116
+  • org_nb_incidents = 1196.00 → +0.111
+  • org_fp_rate = 0.00 → +0.071
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.882
+  • detector_tp_rate = 0.00 → -1.273"
+9398,"**Score de priorisation : 91/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 1.00 → +1.300
+  • alert_title_fp_rate = 0.11 → +0.161
+  • org_bp_rate = 0.00 → +0.158
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_tp_rate = 0.13 → -1.225
+  • detector_nb_incidents = 0.00 → -0.452"
+11864,"**Score de priorisation : 17/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.32 → +0.426
+  • ti_score_combined = 69.00 → +0.109
+  • has_threat_family = 1 → +0.090
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.11 → -0.341
+  • org_fp_rate = 0.81 → -0.275"
+15675,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_rate_per_hour = 35.00 → +0.104
+  • org_nb_incidents = 1196.00 → +0.097
+  • detector_bp_rate = 1.00 → +0.075
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.938
+  • detector_tp_rate = 0.00 → -1.278"
+26646,"**Score de priorisation : 45/100** — Décision suggérée : ESCALADE_N2
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.36 → +0.384
+  • ti_score_combined = 69.00 → +0.148
+  • org_tp_rate = 0.23 → +0.122
+
+**Éléments qui réduisent le score (↓) :**
+  • day_cos = -0.90 → -0.181
+  • alert_title_bp_rate = 0.47 → -0.104"
+1630,"**Score de priorisation : 19/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • hour_sin = 0.00 → +0.082
+  • alert_rate_per_hour = 34.00 → +0.082
+  • alert_title_fp_rate = 0.20 → +0.082
+
+**Éléments qui réduisent le score (↓) :**
+  • ti_score_combined = 0.00 → -0.451
+  • org_tp_rate = 0.11 → -0.404"
+9601,"**Score de priorisation : 16/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.27 → +0.253
+  • ti_score_combined = 69.00 → +0.104
+  • alert_title_bp_rate = 0.45 → +0.052
+
+**Éléments qui réduisent le score (↓) :**
+  • org_fp_rate = 0.34 → -0.215
+  • day_of_week = 6.00 → -0.176"
+30851,"**Score de priorisation : 2/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • ti_score_combined = 69.00 → +0.091
+  • alert_title_fp_rate = 0.17 → +0.084
+  • org_fp_rate = 0.08 → +0.074
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_tp_rate = 0.14 → -0.992
+  • org_tp_rate = 0.08 → -0.512"
+41543,"**Score de priorisation : 39/100** — Décision suggérée : INVESTIGATION_N1
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.27 → +0.397
+  • ti_score_combined = 69.00 → +0.138
+  • alert_title_bp_rate = 0.41 → +0.103
+
+**Éléments qui réduisent le score (↓) :**
+  • is_weekend = 1 → -0.144
+  • alert_title_fp_rate = 0.32 → -0.127"
+59398,"**Score de priorisation : 99/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.99 → +1.684
+  • alert_title_tp_rate = 0.46 → +0.421
+  • org_bp_rate = 0.01 → +0.173
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_rate_per_hour = 0.19 → -0.166
+  • alert_title_bp_rate = 0.49 → -0.105"
+50232,"**Score de priorisation : 4/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.07 → +0.104
+  • alert_rate_per_hour = 30.00 → +0.075
+  • hour_sin = 0.00 → +0.061
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.01 → -2.185
+  • ti_score_combined = 0.00 → -0.475"
+12581,"**Score de priorisation : 1/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_fp_rate = 0.20 → +0.102
+  • ti_score_combined = 69.00 → +0.101
+  • org_nb_incidents = 0.00 → +0.054
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_tp_rate = 0.16 → -1.078
+  • sandbox_network_conns = 27.00 → -0.657"
+54668,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_rate_per_hour = 25.61 → +0.108
+  • ti_score_combined = 69.00 → +0.057
+  • hour_of_day = 17.00 → +0.042
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -4.031
+  • alert_title_tp_rate = 0.21 → -0.827"
+7680,"**Score de priorisation : 74/100** — Décision suggérée : ESCALADE_N2
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.57 → +0.935
+  • alert_title_tp_rate = 0.26 → +0.206
+  • org_fp_rate = 0.14 → +0.156
+
+**Éléments qui réduisent le score (↓) :**
+  • hour_cos = 0.97 → -0.153
+  • hour_of_day = 23.00 → -0.081"
+60996,"**Score de priorisation : 48/100** — Décision suggérée : ESCALADE_N2
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.27 → +0.321
+  • ti_score_combined = 69.00 → +0.139
+  • org_tp_rate = 0.23 → +0.090
+
+**Éléments qui réduisent le score (↓) :**
+  • hour_sin = -0.87 → -0.056
+  • ti_score_max = 42.00 → -0.054"
+67837,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_rate_per_hour = 28.00 → +0.087
+  • detector_fp_rate = 0.01 → +0.072
+  • org_fp_rate = 0.00 → +0.052
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -4.156
+  • detector_tp_rate = 0.01 → -0.804"
+5074,"**Score de priorisation : 53/100** — Décision suggérée : ESCALADE_N2
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.36 → +0.394
+  • ti_score_combined = 69.00 → +0.140
+  • org_tp_rate = 0.23 → +0.116
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_bp_rate = 0.47 → -0.067
+  • alert_rate_per_hour = 0.16 → -0.065"
+37688,"**Score de priorisation : 47/100** — Décision suggérée : ESCALADE_N2
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.26 → +0.298
+  • ti_score_combined = 69.00 → +0.128
+  • org_tp_rate = 0.23 → +0.078
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_bp_rate = 0.49 → -0.068
+  • ti_score_max = 42.00 → -0.053"
+67296,"**Score de priorisation : 96/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.99 → +1.393
+  • alert_title_tp_rate = 0.36 → +0.234
+  • org_nb_incidents = 601.00 → +0.123
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_rate_per_hour = 0.16 → -0.301
+  • hour_sin = 0.97 → -0.098"
+48947,"**Score de priorisation : 100/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.98 → +1.519
+  • alert_title_tp_rate = 0.30 → +0.420
+  • alert_title_bp_rate = 0.45 → +0.233
+
+**Éléments qui réduisent le score (↓) :**
+  • day_cos = -0.90 → -0.138
+  • org_nb_incidents = 121.00 → -0.057"
+71873,"**Score de priorisation : 99/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.99 → +1.618
+  • org_bp_rate = 0.00 → +0.153
+  • alert_title_fp_rate = 0.14 → +0.121
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_tp_rate = 0.16 → -0.482
+  • is_business_hours = 1 → -0.065"
+5903,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • ti_score_combined = 70.00 → +0.134
+  • alert_title_fp_rate = 0.11 → +0.053
+  • detector_fp_rate = 0.04 → +0.043
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.768
+  • detector_tp_rate = 0.00 → -1.216"
+6605,"**Score de priorisation : 1/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.36 → +0.265
+  • org_fp_rate = 0.07 → +0.109
+  • ti_score_combined = 69.00 → +0.079
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.01 → -2.327
+  • org_bp_rate = 0.92 → -0.269"
+54673,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_rate_per_hour = 25.00 → +0.073
+  • ti_score_combined = 69.00 → +0.051
+  • hour_of_day = 19.00 → +0.027
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.676
+  • detector_tp_rate = 0.00 → -1.166"
+70262,"**Score de priorisation : 97/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.99 → +1.547
+  • alert_title_tp_rate = 0.36 → +0.276
+  • org_bp_rate = 0.01 → +0.133
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_rate_per_hour = 0.15 → -0.261
+  • hour_cos = 0.97 → -0.150"
+60154,"**Score de priorisation : 94/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.80 → +1.266
+  • alert_title_tp_rate = 0.41 → +0.394
+  • org_bp_rate = 0.02 → +0.111
+
+**Éléments qui réduisent le score (↓) :**
+  • hour_of_day = 21.00 → -0.098
+  • ti_score_max = 42.00 → -0.041"
+64416,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.00 → +0.100
+  • ti_score_combined = 69.00 → +0.076
+  • org_nb_incidents = 473.00 → +0.069
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.934
+  • alert_title_tp_rate = 0.16 → -0.404"
+66855,"**Score de priorisation : 100/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.98 → +1.605
+  • alert_title_tp_rate = 0.30 → +0.421
+  • alert_title_bp_rate = 0.45 → +0.204
+
+**Éléments qui réduisent le score (↓) :**
+  • hour_cos = 0.97 → -0.081
+  • category_tp_rate = 0.05 → -0.069"
+54736,"**Score de priorisation : 100/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.98 → +1.534
+  • alert_title_tp_rate = 0.30 → +0.425
+  • alert_title_bp_rate = 0.45 → +0.259
+
+**Éléments qui réduisent le score (↓) :**
+  • day_cos = -0.90 → -0.099
+  • hour_of_day = 1.00 → -0.093"
+56226,"**Score de priorisation : 1/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.36 → +0.249
+  • org_fp_rate = 0.07 → +0.107
+  • ti_score_combined = 69.00 → +0.073
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.01 → -2.351
+  • org_bp_rate = 0.92 → -0.281"
+81710,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • ti_score_combined = 69.00 → +0.062
+  • org_fp_rate = 0.00 → +0.051
+  • detector_bp_rate = 0.80 → +0.037
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.054
+  • alert_title_tp_rate = 0.13 → -0.545"
+11029,"**Score de priorisation : 67/100** — Décision suggérée : ESCALADE_N2
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.70 → +0.537
+  • detector_tp_rate = 0.75 → +0.100
+  • alert_title_bp_rate = 0.10 → +0.093
+
+**Éléments qui réduisent le score (↓) :**
+  • ti_score_combined = 0.00 → -0.627
+  • org_fp_rate = 0.28 → -0.050"
+77448,"**Score de priorisation : 6/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_fp_rate = 0.24 → +0.081
+  • alert_rate_per_hour = 22.00 → +0.076
+  • hour_sin = 0.00 → +0.072
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_tp_rate = 0.14 → -1.080
+  • ti_score_combined = 0.00 → -0.473"
+49269,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.02 → +0.139
+  • detector_fp_rate = 0.00 → +0.108
+  • detector_bp_rate = 1.00 → +0.085
+
+**Éléments qui réduisent le score (↓) :**
+  • detector_tp_rate = 0.00 → -1.863
+  • alert_title_tp_rate = 0.21 → -1.348"
+66447,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_nb_incidents = 1196.00 → +0.280
+  • alert_title_tp_rate = 0.36 → +0.200
+  • org_fp_rate = 0.00 → +0.097
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -4.666
+  • org_bp_rate = 1.00 → -0.310"
+73122,"**Score de priorisation : 57/100** — Décision suggérée : ESCALADE_N2
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.41 → +0.487
+  • ti_score_combined = 69.00 → +0.133
+  • alert_title_fp_rate = 0.25 → +0.073
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_rate_per_hour = 0.12 → -0.111
+  • hour_sin = -0.87 → -0.084"
+2613,"**Score de priorisation : 1/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.36 → +0.305
+  • org_bp_rate = 0.08 → +0.084
+  • nb_alerts = 20 → +0.038
+
+**Éléments qui réduisent le score (↓) :**
+  • ti_score_combined = 44.00 → -1.063
+  • org_tp_rate = 0.08 → -0.598"
+15767,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_rate_per_hour = 20.00 → +0.103
+  • detector_fp_rate = 0.01 → +0.069
+  • org_fp_rate = 0.00 → +0.048
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -4.136
+  • detector_tp_rate = 0.01 → -0.804"
+62450,"**Score de priorisation : 1/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • ti_score_combined = 69.00 → +0.106
+  • hour_of_day = 14.00 → +0.073
+  • hour_sin = -0.50 → +0.068
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_tp_rate = 0.21 → -1.470
+  • detector_nb_incidents = 0.00 → -0.250"
+95703,"**Score de priorisation : 14/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_rate_per_hour = 20.00 → +0.083
+  • hour_sin = 0.00 → +0.077
+  • hour_cos = -1.00 → +0.062
+
+**Éléments qui réduisent le score (↓) :**
+  • ti_score_combined = 0.00 → -0.606
+  • alert_title_tp_rate = 0.22 → -0.220"
+99179,"**Score de priorisation : 87/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.36 → +0.748
+  • detector_nb_incidents = 0.00 → +0.379
+  • alert_title_bp_rate = 0.41 → +0.168
+
+**Éléments qui réduisent le score (↓) :**
+  • ti_score_combined = 0.00 → -0.576
+  • org_fp_rate = 0.28 → -0.066"
+61751,"**Score de priorisation : 12/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.36 → +0.354
+  • org_fp_rate = 0.09 → +0.117
+  • ti_score_combined = 69.00 → +0.110
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.09 → -0.533
+  • is_weekend = 1 → -0.153"
+110882,"**Score de priorisation : 15/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • ti_score_combined = 77.00 → +0.529
+  • alert_title_fp_rate = 0.22 → +0.155
+  • has_threat_family = 1 → +0.112
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_tp_rate = 0.19 → -0.850
+  • detector_nb_incidents = 0.00 → -0.435"
+6658,"**Score de priorisation : 4/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • detector_bp_rate = 0.80 → +0.173
+  • ti_score_combined = 69.00 → +0.125
+  • detector_tp_rate = 0.13 → +0.104
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_tp_rate = 0.21 → -1.198
+  • alert_title_bp_rate = 0.54 → -0.188"
+3859,"**Score de priorisation : 100/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 1.00 → +1.651
+  • alert_title_tp_rate = 0.27 → +0.209
+  • org_bp_rate = 0.00 → +0.146
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_rate_per_hour = 0.10 → -0.252
+  • hour_of_day = 20.00 → -0.101"
+8342,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • ti_score_max = 0.00 → +0.050
+  • alert_title_bp_rate = 0.06 → +0.040
+  • hour_sin = 0.00 → +0.039
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -4.451
+  • ti_score_combined = 0.00 → -0.377"
+73845,"**Score de priorisation : 31/100** — Décision suggérée : INVESTIGATION_N1
+
+**Raisons principales (↑ augmente le score) :**
+  • ti_score_combined = 69.00 → +0.134
+  • hour_sin = -0.50 → +0.111
+  • detector_nb_incidents = 396.00 → +0.111
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_tp_rate = 0.15 → -0.465
+  • day_cos = -0.90 → -0.143"
+93991,"**Score de priorisation : 36/100** — Décision suggérée : INVESTIGATION_N1
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.36 → +0.389
+  • ti_score_combined = 69.00 → +0.126
+  • org_tp_rate = 0.23 → +0.125
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_rate_per_hour = 0.10 → -0.115
+  • alert_title_bp_rate = 0.47 → -0.070"
+102455,"**Score de priorisation : 96/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.99 → +1.571
+  • org_fp_rate = 0.00 → +0.160
+  • alert_title_fp_rate = 0.14 → +0.122
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_tp_rate = 0.16 → -0.554
+  • hour_sin = 0.87 → -0.070"
+108274,"**Score de priorisation : 2/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.36 → +0.278
+  • org_bp_rate = 0.09 → +0.157
+  • incident_duration_min = 0.00 → +0.092
+
+**Éléments qui réduisent le score (↓) :**
+  • ti_score_combined = 46.00 → -0.766
+  • org_tp_rate = 0.09 → -0.478"
+17435,"**Score de priorisation : 11/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • hour_sin = 0.00 → +0.075
+  • ti_score_max = 0.00 → +0.057
+  • hour_cos = -1.00 → +0.053
+
+**Éléments qui réduisent le score (↓) :**
+  • ti_score_combined = 0.00 → -0.624
+  • alert_title_tp_rate = 0.22 → -0.221"
+66834,"**Score de priorisation : 11/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • hour_sin = 0.00 → +0.075
+  • ti_score_max = 0.00 → +0.057
+  • hour_cos = -1.00 → +0.055
+
+**Éléments qui réduisent le score (↓) :**
+  • ti_score_combined = 0.00 → -0.625
+  • alert_title_tp_rate = 0.22 → -0.221"
+119320,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_bp_rate = 0.45 → +0.107
+  • alert_rate_per_hour = 15.00 → +0.059
+  • hour_of_day = 15.00 → +0.057
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.630
+  • detector_tp_rate = 0.00 → -1.213"
+136296,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_bp_rate = 0.45 → +0.120
+  • ti_score_combined = 69.00 → +0.050
+  • alert_rate_per_hour = 15.00 → +0.046
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.573
+  • detector_tp_rate = 0.00 → -1.159"
+140718,"**Score de priorisation : 75/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.80 → +1.157
+  • alert_title_tp_rate = 0.32 → +0.248
+  • org_fp_rate = 0.18 → +0.129
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_fp_rate = 0.33 → -0.187
+  • detector_fp_rate = 0.33 → -0.046"
+15354,"**Score de priorisation : 24/100** — Décision suggérée : INVESTIGATION_N1
+
+**Raisons principales (↑ augmente le score) :**
+  • ti_score_combined = 69.00 → +0.116
+  • detector_nb_incidents = 169.00 → +0.086
+  • detector_tp_rate = 0.19 → +0.069
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_tp_rate = 0.19 → -0.448
+  • org_tp_rate = 0.23 → -0.115"
+64912,"**Score de priorisation : 10/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_nb_incidents = 301.00 → +0.189
+  • org_fp_rate = 0.00 → +0.099
+  • alert_rate_per_hour = 14.00 → +0.059
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.982
+  • ti_score_combined = 0.00 → -0.460"
+127817,"**Score de priorisation : 1/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.02 → +0.196
+  • ti_score_combined = 69.00 → +0.089
+  • hour_of_day = 15.00 → +0.070
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_tp_rate = 0.21 → -1.507
+  • org_tp_rate = 0.14 → -0.216"
+8119,"**Score de priorisation : 87/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.30 → +0.597
+  • alert_title_bp_rate = 0.45 → +0.246
+  • org_tp_rate = 0.20 → +0.147
+
+**Éléments qui réduisent le score (↓) :**
+  • hour_cos = 1.00 → -0.165
+  • org_bp_rate = 0.80 → -0.130"
+13267,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_nb_incidents = 473.00 → +0.124
+  • org_fp_rate = 0.00 → +0.101
+  • ti_score_combined = 69.00 → +0.075
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.936
+  • alert_title_tp_rate = 0.16 → -0.390"
+17514,"**Score de priorisation : 60/100** — Décision suggérée : ESCALADE_N2
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.44 → +0.908
+  • detector_nb_incidents = 0.00 → +0.661
+  • org_fp_rate = 0.00 → +0.160
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.06 → -0.295
+  • alert_rate_per_hour = 0.08 → -0.165"
+90662,"**Score de priorisation : 3/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.00 → +0.093
+  • alert_rate_per_hour = 13.00 → +0.072
+  • hour_sin = 0.00 → +0.067
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_tp_rate = 0.15 → -1.056
+  • org_tp_rate = 0.06 → -0.466"
+155115,"**Score de priorisation : 10/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • hour_sin = 0.00 → +0.075
+  • ti_score_max = 0.00 → +0.057
+  • hour_cos = -1.00 → +0.052
+
+**Éléments qui réduisent le score (↓) :**
+  • ti_score_combined = 0.00 → -0.623
+  • alert_title_tp_rate = 0.22 → -0.226"
+114895,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.36 → +0.210
+  • org_fp_rate = 0.00 → +0.076
+  • ti_score_combined = 69.00 → +0.061
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -4.406
+  • org_bp_rate = 1.00 → -0.247"
+130327,"**Score de priorisation : 100/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.98 → +1.683
+  • alert_title_tp_rate = 0.83 → +0.793
+  • org_bp_rate = 0.00 → +0.218
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_rate_per_hour = 0.07 → -0.228
+  • org_nb_incidents = 54.00 → -0.101"
+141372,"**Score de priorisation : 98/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.81 → +1.289
+  • alert_title_tp_rate = 0.77 → +0.696
+  • detector_fp_rate = 0.00 → +0.172
+
+**Éléments qui réduisent le score (↓) :**
+  • org_nb_incidents = 31.00 → -0.120
+  • day_cos = -0.90 → -0.099"
+153192,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_bp_rate = 0.00 → +0.118
+  • alert_rate_per_hour = 12.00 → +0.111
+  • nb_evidences = 13 → +0.060
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.01 → -2.191
+  • detector_tp_rate = 0.00 → -1.559"
+156457,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • detector_fp_rate = 0.01 → +0.071
+  • detector_nb_incidents = 130.00 → +0.042
+  • alert_rate_per_hour = 12.00 → +0.039
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -4.103
+  • detector_tp_rate = 0.01 → -0.801"
+169494,"**Score de priorisation : 1/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.46 → +0.271
+  • org_fp_rate = 0.02 → +0.171
+  • ti_score_combined = 69.00 → +0.069
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.062
+  • org_bp_rate = 0.97 → -0.340"
+3321,"**Score de priorisation : 93/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.83 → +1.592
+  • org_bp_rate = 0.00 → +0.238
+  • org_fp_rate = 0.17 → +0.152
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_tp_rate = 0.12 → -0.749
+  • alert_rate_per_hour = 0.07 → -0.165"
+10679,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_nb_incidents = 473.00 → +0.118
+  • alert_rate_per_hour = 11.00 → +0.056
+  • detector_fp_rate = 0.00 → +0.055
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.246
+  • detector_tp_rate = 0.00 → -1.444"
+12361,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.46 → +0.276
+  • org_nb_incidents = 473.00 → +0.158
+  • alert_rate_per_hour = 5.92 → +0.109
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.001
+  • org_bp_rate = 0.99 → -0.323"
+165651,"**Score de priorisation : 99/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.98 → +1.571
+  • alert_title_tp_rate = 0.30 → +0.447
+  • alert_title_bp_rate = 0.45 → +0.250
+
+**Éléments qui réduisent le score (↓) :**
+  • day_cos = -0.90 → -0.143
+  • category_bp_rate = 0.76 → -0.090"
+168821,"**Score de priorisation : 25/100** — Décision suggérée : INVESTIGATION_N1
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.26 → +0.486
+  • alert_title_tp_rate = 0.36 → +0.305
+  • org_fp_rate = 0.01 → +0.189
+
+**Éléments qui réduisent le score (↓) :**
+  • org_bp_rate = 0.72 → -0.181
+  • org_nb_incidents = 146.00 → -0.103"
+170586,"**Score de priorisation : 10/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • hour_sin = 0.00 → +0.075
+  • ti_score_max = 0.00 → +0.058
+  • hour_cos = -1.00 → +0.051
+
+**Éléments qui réduisent le score (↓) :**
+  • ti_score_combined = 0.00 → -0.617
+  • alert_title_tp_rate = 0.22 → -0.236"
+183442,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.02 → +0.164
+  • detector_nb_incidents = 2048.00 → +0.028
+  • alert_title_fp_rate = 0.14 → +0.023
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.932
+  • alert_title_tp_rate = 0.16 → -0.427"
+12648,"**Score de priorisation : 96/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.99 → +1.551
+  • alert_title_tp_rate = 0.36 → +0.241
+  • org_fp_rate = 0.00 → +0.153
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_rate_per_hour = 0.06 → -0.308
+  • hour_sin = 1.00 → -0.272"
+33447,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.00 → +0.085
+  • ti_score_combined = 69.00 → +0.073
+  • org_nb_incidents = 473.00 → +0.068
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.926
+  • alert_title_tp_rate = 0.16 → -0.419"
+110888,"**Score de priorisation : 1/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • ti_score_combined = 69.00 → +0.108
+  • nb_evidences = 12 → +0.070
+  • alert_title_bp_rate = 0.45 → +0.047
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_tp_rate = 0.21 → -1.411
+  • detector_nb_incidents = 0.00 → -0.268"
+151319,"**Score de priorisation : 39/100** — Décision suggérée : INVESTIGATION_N1
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.27 → +0.341
+  • ti_score_combined = 69.00 → +0.106
+  • org_tp_rate = 0.23 → +0.096
+
+**Éléments qui réduisent le score (↓) :**
+  • nb_alerts = 10 → -0.055
+  • ti_score_max = 42.00 → -0.055"
+179739,"**Score de priorisation : 1/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • ti_score_combined = 69.00 → +0.093
+  • org_fp_rate = 0.01 → +0.046
+  • nb_entity_types = 2.00 → +0.046
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.05 → -1.104
+  • alert_title_tp_rate = 0.16 → -0.546"
+188617,"**Score de priorisation : 99/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.99 → +1.746
+  • org_bp_rate = 0.00 → +0.237
+  • alert_title_fp_rate = 0.14 → +0.121
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_tp_rate = 0.16 → -0.467
+  • day_cos = -0.90 → -0.126"
+194570,"**Score de priorisation : 6/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • ti_score_combined = 69.00 → +0.126
+  • detector_nb_incidents = 406.00 → +0.111
+  • detector_tp_rate = 0.16 → +0.083
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_tp_rate = 0.16 → -0.583
+  • alert_rate_per_hour = 0.06 → -0.220"
+196334,"**Score de priorisation : 1/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_rate_per_hour = 6.03 → +0.077
+  • org_fp_rate = 0.01 → +0.064
+  • detector_tp_rate = 0.16 → +0.017
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.05 → -1.074
+  • alert_title_tp_rate = 0.16 → -0.565"
+196481,"**Score de priorisation : 2/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • ti_score_combined = 69.00 → +0.093
+  • org_fp_rate = 0.01 → +0.076
+  • hour_cos = 0.87 → +0.072
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.05 → -1.058
+  • alert_title_tp_rate = 0.16 → -0.566"
+196535,"**Score de priorisation : 1/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • ti_score_combined = 69.00 → +0.091
+  • org_fp_rate = 0.01 → +0.054
+  • detector_nb_incidents = 2048.00 → +0.038
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.05 → -1.088
+  • alert_title_tp_rate = 0.16 → -0.562"
+197826,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_rate_per_hour = 60.61 → +0.175
+  • org_nb_incidents = 473.00 → +0.139
+  • org_fp_rate = 0.00 → +0.068
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.956
+  • alert_title_tp_rate = 0.16 → -0.421"
+198795,"**Score de priorisation : 27/100** — Décision suggérée : INVESTIGATION_N1
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.26 → +0.317
+  • ti_score_combined = 69.00 → +0.099
+  • org_fp_rate = 0.01 → +0.097
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_tp_rate = 0.16 → -0.581
+  • org_bp_rate = 0.72 → -0.149"
+4290,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.68 → +0.257
+  • alert_title_bp_rate = 0.13 → +0.060
+  • detector_tp_rate = 0.71 → +0.053
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -4.276
+  • ti_score_combined = 48.00 → -0.512"
+11510,"**Score de priorisation : 99/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.99 → +1.855
+  • alert_title_tp_rate = 0.46 → +0.417
+  • org_bp_rate = 0.01 → +0.221
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_bp_rate = 0.49 → -0.133
+  • asset_patch_risk = 1 → -0.129"
+12352,"**Score de priorisation : 95/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.99 → +1.698
+  • org_bp_rate = 0.01 → +0.185
+  • alert_title_fp_rate = 0.14 → +0.147
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_tp_rate = 0.16 → -0.580
+  • day_cos = -0.90 → -0.154"
+107974,"**Score de priorisation : 7/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • hour_sin = 0.00 → +0.074
+  • ti_score_max = 0.00 → +0.057
+  • hour_cos = -1.00 → +0.050
+
+**Éléments qui réduisent le score (↓) :**
+  • ti_score_combined = 0.00 → -0.630
+  • alert_title_tp_rate = 0.22 → -0.242"
+155215,"**Score de priorisation : 85/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.32 → +0.840
+  • detector_nb_incidents = 0.00 → +0.261
+  • org_tp_rate = 0.23 → +0.199
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_rate_per_hour = 0.07 → -0.107
+  • day_cos = -0.90 → -0.088"
+212757,"**Score de priorisation : 20/100** — Décision suggérée : INVESTIGATION_N1
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.46 → +0.353
+  • org_fp_rate = 0.02 → +0.213
+  • ti_score_combined = 69.00 → +0.124
+
+**Éléments qui réduisent le score (↓) :**
+  • day_cos = -0.90 → -0.198
+  • alert_title_bp_rate = 0.49 → -0.172"
+213276,"**Score de priorisation : 38/100** — Décision suggérée : INVESTIGATION_N1
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.33 → +0.397
+  • org_bp_rate = 0.00 → +0.184
+  • alert_title_tp_rate = 0.27 → +0.140
+
+**Éléments qui réduisent le score (↓) :**
+  • org_fp_rate = 0.67 → -0.344
+  • ti_score_max = 42.00 → -0.056"
+6793,"**Score de priorisation : 74/100** — Décision suggérée : ESCALADE_N2
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.57 → +0.703
+  • alert_title_fp_rate = 0.11 → +0.124
+  • detector_fp_rate = 0.00 → +0.123
+
+**Éléments qui réduisent le score (↓) :**
+  • asset_patch_risk = 1 → -0.149
+  • day_cos = -0.90 → -0.121"
+8785,"**Score de priorisation : 90/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.93 → +1.601
+  • alert_title_tp_rate = 0.32 → +0.349
+  • detector_fp_rate = 0.00 → +0.163
+
+**Éléments qui réduisent le score (↓) :**
+  • ti_score_combined = 0.00 → -0.423
+  • alert_title_bp_rate = 0.56 → -0.128"
+12545,"**Score de priorisation : 74/100** — Décision suggérée : ESCALADE_N2
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.64 → +1.056
+  • alert_title_tp_rate = 0.27 → +0.205
+  • org_bp_rate = 0.07 → +0.127
+
+**Éléments qui réduisent le score (↓) :**
+  • org_fp_rate = 0.29 → -0.090
+  • ti_score_max = 42.00 → -0.050"
+70918,"**Score de priorisation : 1/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.39 → +0.350
+  • org_nb_incidents = 0.00 → +0.045
+  • alert_title_bp_rate = 0.06 → +0.039
+
+**Éléments qui réduisent le score (↓) :**
+  • ti_score_combined = 29.00 → -1.149
+  • alert_rate_per_hour = 0.05 → -0.372"
+129335,"**Score de priorisation : 7/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • hour_sin = 0.00 → +0.074
+  • ti_score_max = 0.00 → +0.057
+  • hour_cos = -1.00 → +0.050
+
+**Éléments qui réduisent le score (↓) :**
+  • ti_score_combined = 0.00 → -0.630
+  • alert_title_tp_rate = 0.22 → -0.242"
+171138,"**Score de priorisation : 3/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.06 → +0.104
+  • alert_title_fp_rate = 0.22 → +0.090
+  • ti_score_combined = 69.00 → +0.089
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_tp_rate = 0.19 → -0.784
+  • org_tp_rate = 0.06 → -0.678"
+189491,"**Score de priorisation : 35/100** — Décision suggérée : INVESTIGATION_N1
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.46 → +0.396
+  • ti_score_combined = 69.00 → +0.147
+  • org_tp_rate = 0.23 → +0.082
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_rate_per_hour = 0.06 → -0.163
+  • is_weekend = 1 → -0.147"
+200211,"**Score de priorisation : 71/100** — Décision suggérée : ESCALADE_N2
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.67 → +1.234
+  • alert_title_tp_rate = 0.26 → +0.186
+  • org_bp_rate = 0.17 → +0.131
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_rate_per_hour = 0.05 → -0.221
+  • day_cos = 1.00 → -0.095"
+203126,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • ti_score_combined = 69.00 → +0.084
+  • org_fp_rate = 0.12 → +0.063
+  • nb_alerts = 8 → +0.016
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_tp_rate = 0.21 → -1.326
+  • org_tp_rate = 0.04 → -0.670"
+230341,"**Score de priorisation : 23/100** — Décision suggérée : INVESTIGATION_N1
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.26 → +0.447
+  • alert_title_tp_rate = 0.27 → +0.184
+  • org_fp_rate = 0.01 → +0.158
+
+**Éléments qui réduisent le score (↓) :**
+  • org_bp_rate = 0.72 → -0.217
+  • org_nb_incidents = 146.00 → -0.090"
+246,"**Score de priorisation : 2/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_fp_rate = 0.16 → +0.122
+  • ti_score_combined = 69.00 → +0.114
+  • org_nb_incidents = 0.00 → +0.050
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_tp_rate = 0.13 → -1.213
+  • detector_nb_incidents = 0.00 → -0.450"
+4541,"**Score de priorisation : 99/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.99 → +1.463
+  • alert_title_tp_rate = 0.30 → +0.425
+  • alert_title_bp_rate = 0.45 → +0.165
+
+**Éléments qui réduisent le score (↓) :**
+  • ti_score_combined = 0.00 → -0.446
+  • nb_alerts = 7 → -0.072"
+4894,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.26 → +0.119
+  • org_nb_incidents = 1196.00 → +0.111
+  • org_fp_rate = 0.00 → +0.107
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -4.630
+  • org_bp_rate = 1.00 → -0.289"
+11282,"**Score de priorisation : 82/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.90 → +1.658
+  • org_fp_rate = 0.10 → +0.249
+  • org_bp_rate = 0.00 → +0.157
+
+**Éléments qui réduisent le score (↓) :**
+  • ti_score_combined = 0.00 → -0.501
+  • nb_alerts = 7 → -0.089"
+14938,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.00 → +0.085
+  • ti_score_combined = 69.00 → +0.072
+  • org_nb_incidents = 473.00 → +0.067
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.942
+  • alert_title_tp_rate = 0.16 → -0.407"
+16052,"**Score de priorisation : 3/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.07 → +0.105
+  • ti_score_max = 0.00 → +0.060
+  • hour_sin = 0.00 → +0.058
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.01 → -2.190
+  • ti_score_combined = 0.00 → -0.493"
+87918,"**Score de priorisation : 1/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • ti_score_combined = 69.00 → +0.117
+  • alert_title_fp_rate = 0.23 → +0.078
+  • org_nb_incidents = 0.00 → +0.055
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_tp_rate = 0.19 → -1.144
+  • detector_nb_incidents = 0.00 → -0.351"
+127059,"**Score de priorisation : 9/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • hour_sin = 0.00 → +0.074
+  • ti_score_max = 0.00 → +0.058
+  • hour_cos = -1.00 → +0.054
+
+**Éléments qui réduisent le score (↓) :**
+  • ti_score_combined = 0.00 → -0.626
+  • alert_title_tp_rate = 0.22 → -0.239"
+229881,"**Score de priorisation : 14/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.27 → +0.257
+  • org_fp_rate = 0.02 → +0.163
+  • ti_score_combined = 69.00 → +0.093
+
+**Éléments qui réduisent le score (↓) :**
+  • org_bp_rate = 0.84 → -0.205
+  • org_tp_rate = 0.14 → -0.174"
+237834,"**Score de priorisation : 1/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • ti_score_combined = 69.00 → +0.096
+  • org_fp_rate = 0.12 → +0.076
+  • day_sin = -0.43 → +0.034
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_tp_rate = 0.21 → -1.434
+  • org_tp_rate = 0.12 → -0.310"
+245332,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_bp_rate = 0.45 → +0.102
+  • ti_score_combined = 69.00 → +0.051
+  • alert_rate_per_hour = 7.00 → +0.044
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.584
+  • detector_tp_rate = 0.00 → -1.185"
+245486,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_bp_rate = 0.45 → +0.086
+  • ti_score_combined = 69.00 → +0.052
+  • alert_rate_per_hour = 7.00 → +0.036
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.594
+  • detector_tp_rate = 0.00 → -1.198"
+247606,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.00 → +0.096
+  • ti_score_combined = 69.00 → +0.081
+  • hour_cos = 0.26 → +0.058
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.886
+  • alert_title_tp_rate = 0.16 → -0.414"
+249071,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_bp_rate = 0.45 → +0.097
+  • ti_score_combined = 69.00 → +0.075
+  • org_bp_rate = 0.08 → +0.031
+
+**Éléments qui réduisent le score (↓) :**
+  • detector_tp_rate = 0.00 → -1.775
+  • alert_title_tp_rate = 0.21 → -1.227"
+252679,"**Score de priorisation : 93/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.80 → +0.929
+  • alert_title_tp_rate = 0.35 → +0.417
+  • detector_nb_incidents = 0.00 → +0.186
+
+**Éléments qui réduisent le score (↓) :**
+  • ti_score_combined = 0.00 → -0.504
+  • nb_alerts = 7 → -0.073"
+2232,"**Score de priorisation : 3/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • ti_score_combined = 69.00 → +0.109
+  • alert_title_fp_rate = 0.23 → +0.075
+  • org_nb_incidents = 0.00 → +0.060
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_tp_rate = 0.19 → -1.111
+  • detector_nb_incidents = 0.00 → -0.398"
+14651,"**Score de priorisation : 2/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_bp_rate = 0.11 → +0.103
+  • ti_score_combined = 69.00 → +0.100
+  • category_fp_rate = 0.27 → +0.032
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_tp_rate = 0.15 → -1.048
+  • hour_sin = 1.00 → -0.359"
+16664,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.46 → +0.273
+  • org_nb_incidents = 473.00 → +0.148
+  • alert_rate_per_hour = 6.00 → +0.092
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.952
+  • org_bp_rate = 0.99 → -0.278"
+21392,"**Score de priorisation : 25/100** — Décision suggérée : INVESTIGATION_N1
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.29 → +0.447
+  • ti_score_combined = 69.00 → +0.142
+  • org_tp_rate = 0.23 → +0.091
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_rate_per_hour = 0.04 → -0.351
+  • alert_title_fp_rate = 0.40 → -0.203"
+223475,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_nb_incidents = 1196.00 → +0.272
+  • alert_title_tp_rate = 0.27 → +0.177
+  • org_fp_rate = 0.00 → +0.117
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -4.438
+  • org_bp_rate = 1.00 → -0.284"
+250146,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.02 → +0.169
+  • ti_score_combined = 69.00 → +0.081
+  • detector_nb_incidents = 2048.00 → +0.044
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.806
+  • alert_title_tp_rate = 0.16 → -0.387"
+256124,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • ip_ti_score = 28.00 → +0.082
+  • ti_score_max = 28.00 → +0.055
+  • org_fp_rate = 0.00 → +0.047
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.831
+  • alert_title_tp_rate = 0.02 → -0.774"
+275773,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.46 → +0.273
+  • org_nb_incidents = 473.00 → +0.145
+  • alert_rate_per_hour = 6.00 → +0.086
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.972
+  • org_bp_rate = 0.99 → -0.279"
+275939,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.00 → +0.093
+  • ti_score_combined = 69.00 → +0.079
+  • org_nb_incidents = 473.00 → +0.075
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.977
+  • alert_title_tp_rate = 0.16 → -0.435"
+278059,"**Score de priorisation : 19/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.26 → +0.306
+  • ti_score_combined = 69.00 → +0.092
+  • alert_title_fp_rate = 0.14 → +0.080
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_tp_rate = 0.16 → -0.587
+  • org_bp_rate = 0.72 → -0.192"
+279497,"**Score de priorisation : 1/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.46 → +0.287
+  • org_fp_rate = 0.02 → +0.169
+  • alert_rate_per_hour = 6.00 → +0.077
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.011
+  • org_bp_rate = 0.97 → -0.298"
+279872,"**Score de priorisation : 1/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.46 → +0.286
+  • org_fp_rate = 0.02 → +0.175
+  • ti_score_combined = 69.00 → +0.075
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.018
+  • org_bp_rate = 0.97 → -0.303"
+281935,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.46 → +0.279
+  • org_fp_rate = 0.02 → +0.152
+  • alert_rate_per_hour = 6.00 → +0.050
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.731
+  • ti_score_combined = 52.00 → -0.549"
+281947,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.46 → +0.286
+  • org_fp_rate = 0.02 → +0.160
+  • alert_rate_per_hour = 6.00 → +0.061
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.773
+  • ti_score_combined = 51.00 → -0.431"
+283009,"**Score de priorisation : 6/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.27 → +0.278
+  • org_fp_rate = 0.05 → +0.165
+  • ti_score_combined = 69.00 → +0.113
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.05 → -0.887
+  • alert_rate_per_hour = 0.04 → -0.226"
+1324,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_bp_rate = 0.00 → +0.060
+  • alert_title_bp_rate = 0.41 → +0.048
+  • ti_score_max = 27.00 → +0.020
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.442
+  • detector_tp_rate = 0.00 → -1.167"
+6727,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • ti_score_combined = 89.00 → +0.373
+  • ti_score_max = 47.00 → +0.363
+  • alert_rate_per_hour = 5.00 → +0.069
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.918
+  • alert_title_tp_rate = 0.16 → -0.443"
+7917,"**Score de priorisation : 97/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • ti_score_max = 57.00 → +1.296
+  • ti_score_combined = 84.00 → +0.822
+  • alert_title_tp_rate = 0.46 → +0.458
+
+**Éléments qui réduisent le score (↓) :**
+  • day_cos = -0.90 → -0.174
+  • org_fp_rate = 0.76 → -0.167"
+108768,"**Score de priorisation : 2/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • ti_score_combined = 69.00 → +0.099
+  • detector_tp_rate = 0.18 → +0.088
+  • detector_nb_incidents = 796.00 → +0.059
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_tp_rate = 0.21 → -1.128
+  • alert_title_bp_rate = 0.54 → -0.207"
+188990,"**Score de priorisation : 1/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • ti_score_combined = 69.00 → +0.097
+  • hour_of_day = 15.00 → +0.057
+  • hour_sin = -0.71 → +0.051
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_tp_rate = 0.21 → -1.411
+  • detector_nb_incidents = 0.00 → -0.239"
+211886,"**Score de priorisation : 97/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.99 → +1.422
+  • ti_score_max = 47.00 → +0.574
+  • ti_score_combined = 89.00 → +0.455
+
+**Éléments qui réduisent le score (↓) :**
+  • sandbox_network_conns = 26.00 → -0.443
+  • sandbox_process_injection = 1.00 → -0.256"
+229710,"**Score de priorisation : 8/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • hour_sin = 0.00 → +0.074
+  • ti_score_max = 0.00 → +0.059
+  • hour_cos = -1.00 → +0.054
+
+**Éléments qui réduisent le score (↓) :**
+  • ti_score_combined = 0.00 → -0.623
+  • alert_title_tp_rate = 0.22 → -0.242"
+241511,"**Score de priorisation : 4/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.26 → +0.189
+  • ti_score_combined = 69.00 → +0.114
+  • org_bp_rate = 0.08 → +0.104
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.08 → -0.703
+  • org_fp_rate = 0.83 → -0.335"
+274406,"**Score de priorisation : 2/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.46 → +0.331
+  • alert_rate_per_hour = 5.00 → +0.098
+  • ti_score_combined = 69.00 → +0.088
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.05 → -0.810
+  • org_bp_rate = 0.94 → -0.274"
+280581,"**Score de priorisation : 1/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.46 → +0.287
+  • org_fp_rate = 0.02 → +0.164
+  • ip_ti_score = 29.00 → +0.095
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.882
+  • ti_score_combined = 56.00 → -0.330"
+281976,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.46 → +0.298
+  • org_fp_rate = 0.02 → +0.156
+  • alert_rate_per_hour = 5.00 → +0.046
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.931
+  • org_bp_rate = 0.97 → -0.323"
+282609,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.46 → +0.291
+  • org_fp_rate = 0.02 → +0.172
+  • alert_rate_per_hour = 5.00 → +0.112
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.837
+  • org_bp_rate = 0.97 → -0.313"
+290638,"**Score de priorisation : 1/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_fp_rate = 0.09 → +0.176
+  • ip_ti_score = 31.00 → +0.147
+  • org_fp_rate = 0.04 → +0.110
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_tp_rate = 0.07 → -0.878
+  • org_tp_rate = 0.04 → -0.810"
+291336,"**Score de priorisation : 99/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.99 → +1.679
+  • org_bp_rate = 0.00 → +0.192
+  • alert_title_fp_rate = 0.14 → +0.130
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_tp_rate = 0.16 → -0.483
+  • hour_cos = -0.97 → -0.078"
+291683,"**Score de priorisation : 99/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.99 → +1.736
+  • org_bp_rate = 0.00 → +0.199
+  • alert_title_fp_rate = 0.14 → +0.131
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_tp_rate = 0.16 → -0.469
+  • hour_sin = 0.97 → -0.067"
+309673,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_bp_rate = 0.00 → +0.115
+  • ti_score_combined = 69.00 → +0.056
+  • alert_rate_per_hour = 5.00 → +0.045
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.01 → -2.182
+  • detector_tp_rate = 0.00 → -1.559"
+309921,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_bp_rate = 0.00 → +0.090
+  • ti_score_combined = 69.00 → +0.064
+  • alert_title_bp_rate = 0.41 → +0.056
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.01 → -2.157
+  • detector_tp_rate = 0.00 → -1.547"
+310065,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_bp_rate = 0.45 → +0.097
+  • org_bp_rate = 0.00 → +0.070
+  • hour_of_day = 14.00 → +0.057
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.01 → -1.985
+  • detector_tp_rate = 0.00 → -1.505"
+310077,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_bp_rate = 0.45 → +0.084
+  • org_bp_rate = 0.00 → +0.069
+  • alert_rate_per_hour = 5.00 → +0.052
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.01 → -1.995
+  • detector_tp_rate = 0.00 → -1.501"
+321869,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_nb_incidents = 665.00 → +0.107
+  • ip_ti_score = 31.00 → +0.083
+  • org_fp_rate = 0.00 → +0.070
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.662
+  • detector_tp_rate = 0.00 → -1.223"
+322782,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.00 → +0.123
+  • org_nb_incidents = 473.00 → +0.088
+  • ti_score_combined = 69.00 → +0.076
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.898
+  • alert_title_tp_rate = 0.16 → -0.410"
+322934,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.00 → +0.162
+  • ti_score_combined = 69.00 → +0.074
+  • org_nb_incidents = 473.00 → +0.069
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.895
+  • alert_title_tp_rate = 0.16 → -0.407"
+323303,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_nb_incidents = 473.00 → +0.096
+  • org_fp_rate = 0.00 → +0.089
+  • alert_rate_per_hour = 5.00 → +0.081
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.955
+  • alert_title_tp_rate = 0.16 → -0.422"
+324811,"**Score de priorisation : 70/100** — Décision suggérée : ESCALADE_N2
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.75 → +0.934
+  • alert_title_tp_rate = 0.33 → +0.339
+  • org_fp_rate = 0.12 → +0.120
+
+**Éléments qui réduisent le score (↓) :**
+  • ti_score_combined = 0.00 → -0.537
+  • alert_title_fp_rate = 0.30 → -0.107"
+326692,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.02 → +0.190
+  • detector_fp_rate = 0.00 → +0.101
+  • detector_bp_rate = 1.00 → +0.092
+
+**Éléments qui réduisent le score (↓) :**
+  • detector_tp_rate = 0.00 → -1.844
+  • alert_title_tp_rate = 0.21 → -1.172"
+327451,"**Score de priorisation : 18/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.26 → +0.272
+  • ti_score_combined = 69.00 → +0.093
+  • detector_tp_rate = 0.16 → +0.085
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_tp_rate = 0.16 → -0.552
+  • day_cos = -0.90 → -0.188"
+329538,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.02 → +0.153
+  • alert_title_fp_rate = 0.14 → +0.041
+  • alert_rate_per_hour = 5.00 → +0.039
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.949
+  • alert_title_tp_rate = 0.16 → -0.424"
+329607,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.02 → +0.155
+  • hour_of_day = 17.00 → +0.053
+  • alert_rate_per_hour = 5.00 → +0.035
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.973
+  • alert_title_tp_rate = 0.16 → -0.433"
+330350,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.02 → +0.150
+  • ti_score_combined = 69.00 → +0.081
+  • detector_tp_rate = 0.16 → +0.046
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.907
+  • alert_title_tp_rate = 0.16 → -0.418"
+331599,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.02 → +0.144
+  • ti_score_combined = 69.00 → +0.073
+  • alert_rate_per_hour = 5.00 → +0.047
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.980
+  • alert_title_tp_rate = 0.16 → -0.420"
+332743,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.02 → +0.165
+  • ti_score_combined = 69.00 → +0.077
+  • alert_title_fp_rate = 0.14 → +0.035
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.008
+  • alert_title_tp_rate = 0.16 → -0.445"
+333112,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.02 → +0.149
+  • ti_score_combined = 69.00 → +0.083
+  • detector_tp_rate = 0.16 → +0.058
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.933
+  • alert_title_tp_rate = 0.16 → -0.413"
+334119,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.02 → +0.166
+  • ti_score_combined = 69.00 → +0.074
+  • hour_of_day = 17.00 → +0.056
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.947
+  • alert_title_tp_rate = 0.16 → -0.416"
+6896,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.00 → +0.099
+  • ti_score_combined = 69.00 → +0.073
+  • hour_cos = 0.50 → +0.058
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.888
+  • alert_title_tp_rate = 0.16 → -0.407"
+7510,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • ti_score_combined = 77.00 → +0.265
+  • detector_fp_rate = 0.00 → +0.074
+  • org_fp_rate = 0.00 → +0.062
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.847
+  • detector_tp_rate = 0.00 → -1.198"
+8004,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.46 → +0.232
+  • org_fp_rate = 0.11 → +0.081
+  • ti_score_combined = 69.00 → +0.068
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -4.710
+  • org_bp_rate = 0.89 → -0.280"
+13086,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_nb_incidents = 665.00 → +0.078
+  • detector_fp_rate = 0.00 → +0.064
+  • alert_title_fp_rate = 0.09 → +0.053
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.763
+  • detector_tp_rate = 0.00 → -1.261"
+15599,"**Score de priorisation : 5/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • hour_sin = 0.00 → +0.072
+  • ti_score_max = 0.00 → +0.059
+  • hour_cos = -1.00 → +0.053
+
+**Éléments qui réduisent le score (↓) :**
+  • ti_score_combined = 0.00 → -0.631
+  • alert_title_tp_rate = 0.22 → -0.253"
+50970,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.00 → +0.079
+  • ti_score_combined = 69.00 → +0.069
+  • org_nb_incidents = 473.00 → +0.057
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.939
+  • alert_title_tp_rate = 0.16 → -0.424"
+120394,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • ti_score_combined = 69.00 → +0.075
+  • org_fp_rate = 0.00 → +0.075
+  • alert_title_fp_rate = 0.14 → +0.031
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.954
+  • alert_title_tp_rate = 0.16 → -0.431"
+137633,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.00 → +0.089
+  • detector_fp_rate = 0.00 → +0.070
+  • org_nb_incidents = 665.00 → +0.057
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.597
+  • detector_tp_rate = 0.00 → -1.234"
+202742,"**Score de priorisation : 5/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • hour_sin = 0.00 → +0.072
+  • ti_score_max = 0.00 → +0.059
+  • hour_cos = -1.00 → +0.053
+
+**Éléments qui réduisent le score (↓) :**
+  • ti_score_combined = 0.00 → -0.631
+  • alert_title_tp_rate = 0.22 → -0.253"
+211744,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.00 → +0.084
+  • ti_score_combined = 69.00 → +0.064
+  • org_nb_incidents = 665.00 → +0.060
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -4.555
+  • alert_title_tp_rate = 0.16 → -0.377"
+250717,"**Score de priorisation : 5/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • hour_sin = 0.00 → +0.072
+  • ti_score_max = 0.00 → +0.059
+  • hour_cos = -1.00 → +0.053
+
+**Éléments qui réduisent le score (↓) :**
+  • ti_score_combined = 0.00 → -0.631
+  • alert_title_tp_rate = 0.22 → -0.253"
+319353,"**Score de priorisation : 1/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • ti_score_combined = 69.00 → +0.093
+  • org_fp_rate = 0.01 → +0.054
+  • detector_tp_rate = 0.16 → +0.040
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.05 → -1.121
+  • alert_title_tp_rate = 0.16 → -0.557"
+330717,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.02 → +0.182
+  • ti_score_combined = 69.00 → +0.074
+  • alert_title_fp_rate = 0.14 → +0.034
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.903
+  • alert_title_tp_rate = 0.16 → -0.416"
+333011,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.02 → +0.169
+  • ti_score_combined = 69.00 → +0.073
+  • detector_nb_incidents = 2048.00 → +0.033
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.927
+  • alert_title_tp_rate = 0.16 → -0.434"
+333409,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.02 → +0.196
+  • ti_score_combined = 69.00 → +0.082
+  • hour_cos = 0.26 → +0.057
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.926
+  • alert_title_tp_rate = 0.16 → -0.425"
+333421,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.02 → +0.173
+  • alert_rate_per_hour = 4.00 → +0.083
+  • ti_score_combined = 69.00 → +0.079
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.909
+  • alert_title_tp_rate = 0.16 → -0.408"
+334492,"**Score de priorisation : 3/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.05 → +0.156
+  • hour_of_day = 17.00 → +0.060
+  • nb_entity_types = 2.00 → +0.042
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.05 → -1.181
+  • alert_title_tp_rate = 0.16 → -0.582"
+362070,"**Score de priorisation : 5/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • hour_sin = 0.00 → +0.072
+  • ti_score_max = 0.00 → +0.059
+  • hour_cos = -1.00 → +0.053
+
+**Éléments qui réduisent le score (↓) :**
+  • ti_score_combined = 0.00 → -0.631
+  • alert_title_tp_rate = 0.22 → -0.253"
+378590,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.00 → +0.081
+  • detector_fp_rate = 0.00 → +0.078
+  • org_nb_incidents = 665.00 → +0.068
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.609
+  • detector_tp_rate = 0.00 → -1.182"
+381904,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.02 → +0.166
+  • ti_score_combined = 69.00 → +0.105
+  • detector_fp_rate = 0.00 → +0.104
+
+**Éléments qui réduisent le score (↓) :**
+  • detector_tp_rate = 0.00 → -1.928
+  • alert_title_tp_rate = 0.16 → -0.678"
+381995,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.02 → +0.178
+  • detector_fp_rate = 0.00 → +0.135
+  • ti_score_combined = 69.00 → +0.076
+
+**Éléments qui réduisent le score (↓) :**
+  • detector_tp_rate = 0.00 → -1.876
+  • alert_title_tp_rate = 0.21 → -1.201"
+382763,"**Score de priorisation : 1/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.26 → +0.247
+  • org_fp_rate = 0.01 → +0.149
+  • alert_rate_per_hour = 4.00 → +0.088
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_tp_rate = 0.17 → -1.171
+  • ti_score_combined = 50.00 → -0.510"
+385313,"**Score de priorisation : 13/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.33 → +0.544
+  • org_bp_rate = 0.00 → +0.138
+  • detector_nb_incidents = 406.00 → +0.124
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_tp_rate = 0.16 → -0.429
+  • org_fp_rate = 0.67 → -0.207"
+388789,"**Score de priorisation : 38/100** — Décision suggérée : INVESTIGATION_N1
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.39 → +0.449
+  • ti_score_combined = 69.00 → +0.129
+  • org_tp_rate = 0.23 → +0.080
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_fp_rate = 0.55 → -0.099
+  • hour_sin = -1.00 → -0.099"
+416064,"**Score de priorisation : 5/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • hour_sin = 0.00 → +0.072
+  • ti_score_max = 0.00 → +0.059
+  • hour_cos = -1.00 → +0.053
+
+**Éléments qui réduisent le score (↓) :**
+  • ti_score_combined = 0.00 → -0.631
+  • alert_title_tp_rate = 0.22 → -0.253"
+13926,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.00 → +0.080
+  • detector_fp_rate = 0.00 → +0.074
+  • org_nb_incidents = 665.00 → +0.068
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.625
+  • detector_tp_rate = 0.00 → -1.217"
+15730,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_nb_incidents = 665.00 → +0.077
+  • org_fp_rate = 0.00 → +0.051
+  • ti_score_combined = 69.00 → +0.049
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -4.452
+  • alert_title_tp_rate = 0.12 → -0.604"
+216401,"**Score de priorisation : 34/100** — Décision suggérée : INVESTIGATION_N1
+
+**Raisons principales (↑ augmente le score) :**
+  • nb_evidences = 3 → +0.196
+  • hour_sin = 0.00 → +0.080
+  • alert_title_bp_rate = 0.06 → +0.067
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.05 → -0.730
+  • ti_score_combined = 0.00 → -0.508"
+245594,"**Score de priorisation : 79/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.30 → +0.584
+  • org_fp_rate = 0.20 → +0.163
+  • nb_evidences = 3 → +0.105
+
+**Éléments qui réduisent le score (↓) :**
+  • ti_score_combined = 0.00 → -0.524
+  • alert_title_tp_rate = 0.22 → -0.057"
+263104,"**Score de priorisation : 100/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 1.00 → +1.622
+  • alert_title_tp_rate = 0.27 → +0.224
+  • org_bp_rate = 0.00 → +0.168
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_fp_rate = 0.36 → -0.158
+  • detector_tp_rate = 0.44 → -0.037"
+320732,"**Score de priorisation : 1/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • ti_score_combined = 69.00 → +0.091
+  • detector_bp_rate = 0.70 → +0.080
+  • detector_tp_rate = 0.16 → +0.070
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.05 → -1.156
+  • alert_title_tp_rate = 0.16 → -0.550"
+382438,"**Score de priorisation : 35/100** — Décision suggérée : INVESTIGATION_N1
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.26 → +0.462
+  • alert_title_tp_rate = 0.34 → +0.278
+  • org_fp_rate = 0.01 → +0.176
+
+**Éléments qui réduisent le score (↓) :**
+  • org_bp_rate = 0.72 → -0.156
+  • alert_title_bp_rate = 0.59 → -0.121"
+436937,"**Score de priorisation : 92/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.73 → +1.308
+  • alert_title_tp_rate = 0.68 → +0.401
+  • org_bp_rate = 0.07 → +0.163
+
+**Éléments qui réduisent le score (↓) :**
+  • hour_cos = -0.97 → -0.055
+  • is_business_hours = 1 → -0.039"
+443044,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.00 → +0.045
+  • hour_of_day = 17.00 → +0.033
+  • ti_score_max = 27.00 → +0.033
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.805
+  • alert_title_tp_rate = 0.02 → -0.706"
+443354,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.00 → +0.077
+  • detector_tp_rate = 0.18 → +0.027
+  • hour_of_day = 14.00 → +0.024
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.978
+  • alert_title_tp_rate = 0.02 → -0.638"
+444134,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • ti_score_combined = 69.00 → +0.058
+  • org_fp_rate = 0.00 → +0.037
+  • day_of_week = 1.00 → +0.023
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.954
+  • alert_title_tp_rate = 0.02 → -0.732"
+444447,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • ti_score_combined = 69.00 → +0.061
+  • hour_sin = -0.50 → +0.049
+  • org_fp_rate = 0.00 → +0.042
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.994
+  • alert_title_tp_rate = 0.02 → -0.724"
+444535,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.00 → +0.055
+  • hour_of_day = 16.00 → +0.027
+  • day_of_week = 1.00 → +0.025
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.796
+  • alert_title_tp_rate = 0.02 → -0.707"
+446043,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • ti_score_combined = 69.00 → +0.070
+  • hour_cos = 0.50 → +0.050
+  • org_fp_rate = 0.00 → +0.046
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.844
+  • alert_title_tp_rate = 0.02 → -0.818"
+446373,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • detector_bp_rate = 0.80 → +0.113
+  • ti_score_combined = 69.00 → +0.071
+  • org_fp_rate = 0.00 → +0.053
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.963
+  • alert_title_tp_rate = 0.13 → -0.587"
+448049,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.00 → +0.136
+  • ti_score_combined = 69.00 → +0.067
+  • org_nb_incidents = 271.00 → +0.056
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.649
+  • alert_title_tp_rate = 0.14 → -0.746"
+448089,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.00 → +0.088
+  • ti_score_combined = 69.00 → +0.063
+  • hour_cos = -0.26 → +0.041
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.984
+  • alert_title_tp_rate = 0.02 → -0.707"
+448501,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • detector_bp_rate = 0.80 → +0.076
+  • ti_score_combined = 69.00 → +0.058
+  • org_fp_rate = 0.00 → +0.047
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.966
+  • alert_title_tp_rate = 0.10 → -0.720"
+448521,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • ti_score_combined = 69.00 → +0.062
+  • hour_cos = 0.87 → +0.061
+  • detector_nb_incidents = 76.00 → +0.047
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.034
+  • alert_title_tp_rate = 0.06 → -0.764"
+449797,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.00 → +0.095
+  • org_nb_incidents = 271.00 → +0.045
+  • detector_tp_rate = 0.18 → +0.030
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.933
+  • alert_title_tp_rate = 0.02 → -0.729"
+450068,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • ti_score_combined = 69.00 → +0.062
+  • detector_bp_rate = 0.80 → +0.044
+  • alert_title_fp_rate = 0.11 → +0.039
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.082
+  • alert_title_tp_rate = 0.06 → -0.744"
+450300,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.00 → +0.070
+  • detector_tp_rate = 0.18 → +0.035
+  • hour_of_day = 18.00 → +0.022
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.953
+  • alert_title_tp_rate = 0.02 → -0.617"
+450754,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • ti_score_combined = 69.00 → +0.062
+  • org_fp_rate = 0.00 → +0.043
+  • hour_sin = 0.71 → +0.020
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.919
+  • alert_title_tp_rate = 0.02 → -0.781"
+450954,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • ti_score_combined = 69.00 → +0.068
+  • alert_title_fp_rate = 0.12 → +0.035
+  • hour_cos = 0.26 → +0.034
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.912
+  • alert_title_tp_rate = 0.09 → -0.762"
+451295,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • ti_score_combined = 69.00 → +0.069
+  • hour_cos = 0.71 → +0.051
+  • hour_sin = 0.71 → +0.036
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.836
+  • alert_title_tp_rate = 0.02 → -0.818"
+452156,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • ti_score_max = 30.00 → +0.082
+  • org_fp_rate = 0.00 → +0.068
+  • ip_ti_score = 30.00 → +0.059
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.753
+  • alert_title_tp_rate = 0.02 → -0.781"
+453830,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.20 → +0.061
+  • ti_score_combined = 69.00 → +0.057
+  • alert_title_fp_rate = 0.17 → +0.042
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -4.226
+  • alert_title_tp_rate = 0.14 → -0.666"
+459083,"**Score de priorisation : 34/100** — Décision suggérée : INVESTIGATION_N1
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.46 → +0.429
+  • ti_score_combined = 69.00 → +0.126
+  • org_tp_rate = 0.23 → +0.097
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_bp_rate = 0.49 → -0.127
+  • ti_score_max = 42.00 → -0.053"
+491094,"**Score de priorisation : 100/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 1.00 → +1.673
+  • org_fp_rate = 0.00 → +0.207
+  • org_bp_rate = 0.00 → +0.156
+
+**Éléments qui réduisent le score (↓) :**
+  • ti_score_combined = 0.00 → -0.441
+  • alert_title_tp_rate = 0.22 → -0.069"
+493348,"**Score de priorisation : 100/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 1.00 → +1.747
+  • alert_title_tp_rate = 0.50 → +0.421
+  • org_fp_rate = 0.00 → +0.188
+
+**Éléments qui réduisent le score (↓) :**
+  • hour_sin = 0.87 → -0.108
+  • is_business_hours = 1 → -0.082"
+497234,"**Score de priorisation : 99/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.91 → +1.709
+  • alert_title_tp_rate = 0.82 → +0.768
+  • org_bp_rate = 0.02 → +0.196
+
+**Éléments qui réduisent le score (↓) :**
+  • hour_sin = 1.00 → -0.324
+  • org_nb_incidents = 43.00 → -0.076"
+497384,"**Score de priorisation : 99/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.91 → +1.687
+  • alert_title_tp_rate = 0.82 → +0.782
+  • org_bp_rate = 0.02 → +0.195
+
+**Éléments qui réduisent le score (↓) :**
+  • org_nb_incidents = 43.00 → -0.087
+  • is_business_hours = 1 → -0.065"
+518417,"**Score de priorisation : 65/100** — Décision suggérée : ESCALADE_N2
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.37 → +0.614
+  • alert_title_bp_rate = 0.36 → +0.209
+  • detector_tp_rate = 0.18 → +0.152
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.05 → -0.501
+  • org_bp_rate = 0.94 → -0.105"
+519433,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • day_sin = -0.43 → +0.044
+  • nb_evidences = 3 → +0.031
+  • alert_title_fp_rate = 0.15 → +0.026
+
+**Éléments qui réduisent le score (↓) :**
+  • ti_score_combined = 44.00 → -0.876
+  • alert_title_tp_rate = 0.12 → -0.865"
+527742,"**Score de priorisation : 9/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_tp_rate = 0.26 → +0.224
+  • org_fp_rate = 0.02 → +0.192
+  • ti_score_combined = 69.00 → +0.102
+
+**Éléments qui réduisent le score (↓) :**
+  • day_cos = -0.90 → -0.179
+  • org_tp_rate = 0.14 → -0.177"
+530160,"**Score de priorisation : 2/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.26 → +0.353
+  • alert_title_fp_rate = 0.11 → +0.127
+  • ti_score_combined = 69.00 → +0.061
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_tp_rate = 0.07 → -1.440
+  • detector_nb_incidents = 0.00 → -0.398"
+530225,"**Score de priorisation : 8/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.26 → +0.434
+  • detector_nb_incidents = 358.00 → +0.097
+  • org_fp_rate = 0.01 → +0.089
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_tp_rate = 0.12 → -0.803
+  • org_bp_rate = 0.72 → -0.173"
+3204,"**Score de priorisation : 93/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.99 → +1.693
+  • alert_title_tp_rate = 0.26 → +0.163
+  • org_bp_rate = 0.01 → +0.144
+
+**Éléments qui réduisent le score (↓) :**
+  • day_cos = -0.90 → -0.202
+  • alert_title_bp_rate = 0.49 → -0.152"
+10695,"**Score de priorisation : 3/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.05 → +0.115
+  • alert_title_fp_rate = 0.21 → +0.103
+  • ti_score_combined = 69.00 → +0.087
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.05 → -0.865
+  • alert_title_tp_rate = 0.19 → -0.501"
+14356,"**Score de priorisation : 25/100** — Décision suggérée : INVESTIGATION_N1
+
+**Raisons principales (↑ augmente le score) :**
+  • alert_title_bp_rate = 0.45 → +0.135
+  • ti_score_combined = 69.00 → +0.102
+  • hour_sin = -0.71 → +0.052
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_tp_rate = 0.21 → -1.499
+  • detector_nb_incidents = 0.00 → -0.212"
+16118,"**Score de priorisation : 1/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • day_cos = 1.00 → +0.053
+  • hour_of_day = 14.00 → +0.044
+  • org_nb_incidents = 0.00 → +0.042
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_tp_rate = 0.14 → -1.070
+  • ti_score_combined = 46.00 → -0.774"
+285309,"**Score de priorisation : 14/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.67 → +0.963
+  • org_fp_rate = 0.17 → +0.096
+  • org_bp_rate = 0.17 → +0.082
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_tp_rate = 0.05 → -1.355
+  • detector_nb_incidents = 0.00 → -0.397"
+500647,"**Score de priorisation : 94/100** — Décision suggérée : ACTION_URGENTE
+
+**Raisons principales (↑ augmente le score) :**
+  • org_tp_rate = 0.90 → +1.604
+  • alert_title_tp_rate = 0.70 → +0.492
+  • org_bp_rate = 0.00 → +0.205
+
+**Éléments qui réduisent le score (↓) :**
+  • ti_score_combined = 0.00 → -0.410
+  • hash_nb_sources = 0.00 → -0.034"
+549012,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • ti_score_combined = 69.00 → +0.069
+  • org_fp_rate = 0.00 → +0.031
+  • hour_cos = -0.00 → +0.023
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -2.865
+  • alert_title_tp_rate = 0.02 → -0.747"
+559530,"**Score de priorisation : 2/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • org_fp_rate = 0.05 → +0.108
+  • hour_sin = 0.00 → +0.075
+  • ti_score_max = 0.00 → +0.048
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_tp_rate = 0.21 → -1.485
+  • ti_score_combined = 0.00 → -0.438"
+565149,"**Score de priorisation : 0/100** — Décision suggérée : CLOTURE_FP
+
+**Raisons principales (↑ augmente le score) :**
+  • ti_score_combined = 69.00 → +0.048
+  • category_bp_rate = 0.64 → +0.024
+  • category_fp_rate = 0.27 → +0.016
+
+**Éléments qui réduisent le score (↓) :**
+  • org_tp_rate = 0.00 → -3.519
+  • detector_tp_rate = 0.00 → -1.208"
+597745,"**Score de priorisation : 36/100** — Décision suggérée : INVESTIGATION_N1
+
+**Raisons principales (↑ augmente le score) :**
+  • ti_score_max = 50.00 → +1.066
+  • ip_nb_sources = 3.00 → +0.608
+  • ti_score_combined = 77.00 → +0.449
+
+**Éléments qui réduisent le score (↓) :**
+  • alert_title_tp_rate = 0.17 → -1.161
+  • detector_nb_incidents = 0.00 → -0.481"

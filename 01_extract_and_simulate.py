@@ -13,12 +13,14 @@ Usage:
         --input GUIDE_train.csv \
         --output data/ \
         --n_incidents 15000 \
-        [--no-expand]
+        [--no-expand] \
+        [--load-existing]
 """
 
 import pandas as pd
 import numpy as np
 import argparse
+import hashlib
 from pathlib import Path
 
 RANDOM_SEED = 42
@@ -55,7 +57,7 @@ CHUNK_SIZE = 200_000
 
 def parse_args():
     p = argparse.ArgumentParser()
-    p.add_argument("--input", required=True,
+    p.add_argument("--input",
                    help="Chemin vers GUIDE_train.csv")
     p.add_argument("--output", default="data",
                    help="Dossier de sortie")
@@ -63,6 +65,8 @@ def parse_args():
                    help="Nb incidents cibles dans l'extrait")
     p.add_argument("--no-expand", action="store_true",
                    help="Désactiver l'expansion des incidents liés")
+    p.add_argument("--load-existing", action="store_true",
+                   help="Charger les incidents depuis data/incidents_dataset.csv au lieu de traiter GUIDE_train.csv")
     return p.parse_args()
 
 
@@ -141,6 +145,7 @@ def _aggregate_chunk(chunk: pd.DataFrame) -> pd.DataFrame:
         "last_seen":         ("Timestamp", "max"),
         "sample_ip":         ("IpAddress", first_notnull("IpAddress")),
         "sample_sha256":     ("Sha256",    first_notnull("Sha256")),
+        "sample_device_id":  ("DeviceId", first_notnull("DeviceId")),
         "sample_device":     ("DeviceName",first_notnull("DeviceName")),
         "sample_account":    ("AccountName", first_notnull("AccountName")),
         "has_ip":            ("IpAddress", lambda x: int(x.notna().any())),
@@ -189,6 +194,7 @@ def _reaggregate(combined: pd.DataFrame) -> pd.DataFrame:
         "last_seen":       ("last_seen", "max"),
         "sample_ip":       ("sample_ip", "first"),
         "sample_sha256":   ("sample_sha256", "first"),
+        "sample_device_id":("sample_device_id", "first"),
         "sample_device":   ("sample_device", "first"),
         "sample_account":  ("sample_account", "first"),
         "has_ip":          ("has_ip", "max"),
@@ -267,7 +273,7 @@ def stratified_sampling(incidents: pd.DataFrame, n_incidents: int) -> set:
     .apply(lambda g: g.sample(
         n=max(1, int(len(g)/len(incidents)*n_incidents)),
         random_state=RANDOM_SEED
-    ))
+    ), include_groups=False)
     )
 
     sampled = sampled.sample(n=min(n_incidents, len(sampled)), random_state=RANDOM_SEED)
@@ -304,7 +310,7 @@ def expand_with_related_incidents(
 
     pivot_ips     = set(selected_rows["sample_ip"].dropna())
     pivot_hashes  = set(selected_rows["sample_sha256"].dropna())
-    pivot_devices = set(selected_rows["sample_device"].dropna())
+    pivot_devices = set(selected_rows["sample_device_id"].dropna())
     pivot_categories = set(selected_rows["top_category"].dropna())
     pivot_families = set(selected_rows["threat_family"].dropna())
     pivot_techniques = set()
@@ -327,7 +333,7 @@ def expand_with_related_incidents(
     related = incidents[
     incidents["sample_ip"].isin(pivot_ips)
     | incidents["sample_sha256"].isin(pivot_hashes)
-    | incidents["sample_device"].isin(pivot_devices)
+    | incidents["sample_device_id"].isin(pivot_devices)
     | incidents["top_category"].isin(pivot_categories)
     | incidents["threat_family"].isin(pivot_families)
     | mask_tech
@@ -358,12 +364,19 @@ def compute_ti_stats_from_data(incidents: pd.DataFrame) -> dict:
     Calcule les paramètres (mean, std) du score TI
     directement depuis les colonnes du dataset GUIDE.
 
-    Sources utilisées :
-    - SuspicionLevel  : proxy de la suspicion détecteur
-    - LastVerdict     : verdict final de l'alerte
-    - threat_family   : présence d'une famille de malware connue
+    Note : LastVerdict (~10% renseigné) et ThreatFamily (~4%)
+    sont très peu renseignés dans GUIDE. Quand le signal calculé
+    est trop faible, on ancre sur des valeurs de référence réalistes
+    (mix 30% data / 70% référence) pour garantir des scores discriminants.
     """
-    # Encodage numérique de SuspicionLevel
+    GRADES = ["TruePositive", "BenignPositive", "FalsePositive"]
+
+    FALLBACK = {
+        "TruePositive":   (65.0, 15.0),
+        "BenignPositive": (35.0, 15.0),
+        "FalsePositive":  (12.0,  8.0),
+    }
+
     suspicion_map = {"High": 1.0, "Medium": 0.5, "Low": 0.1, "Unknown": 0.0}
     incidents["_susp_num"] = (
         incidents["max_suspicion"]
@@ -371,61 +384,65 @@ def compute_ti_stats_from_data(incidents: pd.DataFrame) -> dict:
         .fillna(0.0)
     )
 
-    # Encodage numérique de LastVerdict
     verdict_map = {
-        "Malicious":  1.0,
-        "Suspicious": 0.6,
-        "Clean":      0.0,
-        "Unknown":    0.2,
+        "Malicious":      1.0,
+        "Suspicious":     0.6,
+        "NoThreatsFound": 0.0,  # valeur majoritaire dans GUIDE
+        "Clean":          0.0,
+        "Unknown":        0.1,
     }
     incidents["_verdict_num"] = (
         incidents["last_verdict"]
         .map(verdict_map)
-        .fillna(0.2)
+        .fillna(0.1)
     )
 
-    # Présence d'une ThreatFamily connue
     incidents["_has_threat_family"] = (
         incidents["threat_family"].notna()
     ).astype(float)
 
-    # Score composite 0-1 (moyenne pondérée des trois signaux) - Réduire le poids du verdict, suspicion = signal primaire
     _raw_ti = (
-    0.25 * incidents["_verdict_num"] +
-    0.45 * incidents["_susp_num"] +
-    0.30 * incidents["_has_threat_family"]
+        0.25 * incidents["_verdict_num"] +
+        0.45 * incidents["_susp_num"] +
+        0.30 * incidents["_has_threat_family"]
     )
 
-    # Calcul mean et std par grade — normalisés en 0-100
     stats = {}
-    for grade in ["TruePositive", "BenignPositive", "FalsePositive"]:
-        subset = incidents.loc[
-            incidents["IncidentGrade"] == grade, "_raw_ti"
-        ]
+    for grade in GRADES:
+        subset = _raw_ti[incidents["IncidentGrade"] == grade]
+        fallback_mean, fallback_std = FALLBACK[grade]
+
         if len(subset) < 10:
-            # Fallback si grade trop rare dans l'extrait
-            stats[grade] = (30, 15)
+            stats[grade] = FALLBACK[grade]
+            print(f"    {grade}: trop peu de données → fallback "
+                  f"mean={fallback_mean}, std={fallback_std}")
             continue
+
         mean = float(subset.mean() * 100)
         std  = float(subset.std()  * 100)
-        # std minimum de 5 pour éviter une distribution trop piquée
+
+        # Signal trop faible (colonnes quasi-vides dans GUIDE) :
+        # mix 30% data + 70% référence pour rester discriminant
+        if mean < fallback_mean * 0.5:
+            mean = 0.30 * mean + 0.70 * fallback_mean
+            print(f"    {grade}: signal faible → ancrage sur référence")
+
         stats[grade] = (round(mean, 1), max(5.0, round(std, 1)))
 
-    # Nettoyage colonnes temporaires
+    # Nettoyage — _raw_ti est une variable locale, pas une colonne
     incidents.drop(
-        columns=["_susp_num", "_verdict_num",
-                 "_has_threat_family", "_raw_ti"],
+        columns=["_susp_num", "_verdict_num", "_has_threat_family"],
         inplace=True
     )
 
-    print("  Paramètres TI calculés depuis le dataset :")
+    print("  Paramètres TI finaux :")
     for grade, (mean, std) in stats.items():
         print(f"    {grade}: mean={mean:.1f}, std={std:.1f}")
 
     return stats
 
 
-def generate_simulated_data(incidents, output_dir):
+def generate_simulated_data(incidents, output_dir, crit_ratios=None):
 
     ti_stats = compute_ti_stats_from_data(incidents)
 
@@ -438,7 +455,7 @@ def generate_simulated_data(incidents, output_dir):
         incidents, output_dir, ti_stats, global_stats
     )
 
-    _generate_cmdb(incidents, output_dir)
+    _generate_cmdb(incidents, output_dir, crit_ratios)
 
     _generate_sandbox(
         incidents, output_dir,
@@ -551,7 +568,11 @@ def _generate_ti(incidents, output_dir, ti_stats, global_stats):
         })
 
     ti_df = pd.DataFrame(records)
-    ti_df.to_csv(output_dir / "TI_database.csv", index=False)
+    try:
+        ti_df.to_csv(output_dir / "TI_database.csv", index=False)
+    except Exception as e:
+        print(f"Erreur sauvegarde TI_database.csv: {e}")
+        raise
 
     print(f"  TI_database.csv : {len(ti_df):,} IOCs "
           f"({(ti_df.ioc_type == 'ip').sum()} IPs, "
@@ -561,61 +582,161 @@ def _generate_ti(incidents, output_dir, ti_stats, global_stats):
 
 
 # =========================================================
-# CRITICALITY HELPER
+# CRITICALITY RATIOS (basés sur dataset complet)
 # =========================================================
 
+def _compute_criticality_ratios(incidents: pd.DataFrame, output_dir: Path) -> dict:
+    """
+    Calcule les ratios CRIT_RATIOS sur le dataset complet (avant sélection).
+    Sauvegarde en CSV pour traçabilité et lisibilité.
+    Ratios: 10% CRITICAL, 20% HIGH, 40% MEDIUM, 30% LOW.
+    """
+    ratio_path = output_dir / "crit_ratios.csv"
+    
+    if ratio_path.exists():
+        df = pd.read_csv(ratio_path, index_col=0)
+        return df['ratio'].to_dict()
+    
+    # Ratios standards (basés sur distribution réelle dans SOC)
+    crit_ratios = {
+        "CRITICAL": 0.10,
+        "HIGH":     0.20,
+        "MEDIUM":   0.40,
+        "LOW":      0.30,
+    }
+    
+    # Sauvegarder en CSV
+    try:
+        pd.DataFrame({
+            'criticality': list(crit_ratios.keys()),
+            'ratio': list(crit_ratios.values())
+        }).set_index('criticality').to_csv(ratio_path)
+    except Exception as e:
+        print(f"Erreur sauvegarde {ratio_path}: {e}")
+        raise
+    
+    return crit_ratios
+
+
+# =========================================================
+# SYNTHETIC NAMES (pour réalisme SOC)
+# =========================================================
+
+def _make_synthetic_device_name(numeric_id: float, crit_level: str) -> str:
+    """
+    Génère un nom de device synthétique réaliste basé sur criticité.
+    Exemples : PROD-DC-001, TRADE-SRV-042, OFFICE-WS-1234
+    """
+    # Hash stable du ID numérique
+    seed = int(hashlib.md5(str(numeric_id).encode()).hexdigest(), 16) % 10000
+    
+    # Préfixe selon criticité
+    if crit_level == "CRITICAL":
+        prefixes = ["PROD", "CORE", "VAULT"]
+        type_codes = ["DC", "AD", "EXCH", "SQL"]
+    elif crit_level == "HIGH":
+        prefixes = ["TRADE", "BANK", "CORE"]
+        type_codes = ["SRV", "APP", "SQL", "WEB"]
+    elif crit_level == "MEDIUM":
+        prefixes = ["OFFICE", "ADMIN", "DEPT"]
+        type_codes = ["WS", "SRV", "PC"]
+    else:  # LOW
+        prefixes = ["TEST", "DEV", "LAB", "DEMO"]
+        type_codes = ["VM", "WS", "TEST", "GUEST"]
+    
+    prefix = prefixes[seed % len(prefixes)]
+    type_code = type_codes[(seed // len(prefixes)) % len(type_codes)]
+    number = str(seed % 9999).zfill(3)
+    
+    return f"{prefix}-{type_code}-{number}"
+
+
+def _make_synthetic_user_name(numeric_id: float, crit_level: str) -> str:
+    """
+    Génère un login synthétique réaliste basé sur criticité.
+    Exemples : ceo.exec.01, mgr.trading.42, analyst.risk.99
+    """
+    seed = int(hashlib.md5(str(numeric_id).encode()).hexdigest(), 16) % 10000
+    
+    if crit_level == "CRITICAL":
+        roles = ["ceo", "cto", "cfo", "head_security"]
+        depts = ["exec", "board"]
+    elif crit_level == "HIGH":
+        roles = ["vp", "director", "manager", "lead"]
+        depts = ["trading", "risk", "tech", "security"]
+    elif crit_level == "MEDIUM":
+        roles = ["analyst", "engineer", "specialist", "admin"]
+        depts = ["risk", "ops", "infra", "security"]
+    else:  # LOW
+        roles = ["user", "temp", "guest", "intern"]
+        depts = ["admin", "ops", "support"]
+    
+    role = roles[seed % len(roles)]
+    dept = depts[(seed // len(roles)) % len(depts)]
+    number = str(seed % 999).zfill(2)
+    
+    return f"{role}.{dept}.{number}"
+
+
 def _criticality_from_name(name: str) -> str:
-    """Criticité déduite du nom de machine — convention bancaire."""
+    """Criticité déduite du nom de machine/user synthétique."""
     n = str(name).upper()
     for crit, keys in {
-        "CRITICAL": ["DC", "AD", "EXCHANGE", "DOMAIN"],
-        "HIGH":     ["SRV", "SERVER", "SQL", "WEB", "APP", "PROXY"],
-        "MEDIUM":   ["WS", "DESKTOP", "LAPTOP", "PC"],
-        "LOW":      ["TEST", "DEV", "STAGING", "DEMO"],
+        "CRITICAL": ["PROD", "CORE", "VAULT", "DC", "AD", "EXCH", "CEO", "CTO", "CFO", "HEAD_SECURITY"],
+        "HIGH":     ["TRADE", "BANK", "SRV", "SQL", "APP", "WEB", "VP", "DIRECTOR", "MANAGER"],
+        "MEDIUM":   ["OFFICE", "ADMIN", "DEPT", "WS", "PC", "ANALYST", "ENGINEER", "SPECIALIST"],
+        "LOW":      ["TEST", "DEV", "LAB", "DEMO", "VM", "GUEST", "TEMP", "USER"],
     }.items():
         if any(k in n for k in keys):
             return crit
     return "MEDIUM"
 
 
-def _criticality_from_account(account: str) -> str:
-    """Criticité déduite du nom d'utilisateur."""
-    a = str(account).upper()
-    for crit, keys in {
-        "CRITICAL": ["EXEC", "CEO", "CTO", "CFO", "ADMIN", "ROOT"],
-        "HIGH":     ["MANAGER", "SUPERVISOR", "LEAD", "DIRECTOR"],
-        "MEDIUM":   ["ANALYST", "ENGINEER", "DEVELOPER"],
-        "LOW":      ["USER", "GUEST", "TEMP", "TEST"],
-    }.items():
-        if any(k in a for k in keys):
-            return crit
-    return "MEDIUM"
+def _generate_cmdb(incidents: pd.DataFrame, output_dir: Path, crit_ratios=None):
+    if crit_ratios is None:
+        # Charger depuis fichier si pas fourni (pour --load-existing)
+        crit_ratios = _compute_criticality_ratios(incidents, output_dir)
 
+    incidents = incidents.copy()
+    if "sample_device_id" not in incidents.columns and "sample_device" in incidents.columns:
+        # Compatibilité avec anciens exports où seul le nom/identifiant device était conservé.
+        incidents["sample_device_id"] = incidents["sample_device"]
+    if "sample_device" not in incidents.columns and "sample_device_id" in incidents.columns:
+        incidents["sample_device"] = incidents["sample_device_id"]
 
-# =========================================================
-# CMDB SIMULÉE
-# =========================================================
-
-def _generate_cmdb(incidents: pd.DataFrame, output_dir: Path):
     records = []
     seen = set()
 
+    # ── Devices ────────────────────────────────────────────
     for _, row in (
-        incidents[["sample_device"]]
-        .dropna(subset=["sample_device"])
-        .drop_duplicates("sample_device")
+        incidents[["sample_device_id", "sample_device"]]
+        .dropna(subset=["sample_device_id"])
+        .drop_duplicates("sample_device_id")
         .iterrows()
     ):
-        device = row["sample_device"]
-        if device in seen:
+        device_id = row["sample_device_id"]
+        if device_id in seen:
             continue
-        seen.add(device)
+        seen.add(device_id)
 
-        crit = _criticality_from_name(device)
+        # Assigner criticité selon ratios (randomisé mais stable par seed)
+        rand_val = int(hashlib.md5(str(device_id).encode()).hexdigest(), 16) % 1000 / 1000
+        if rand_val < crit_ratios["CRITICAL"]:
+            crit = "CRITICAL"
+        elif rand_val < crit_ratios["CRITICAL"] + crit_ratios["HIGH"]:
+            crit = "HIGH"
+        elif rand_val < crit_ratios["CRITICAL"] + crit_ratios["HIGH"] + crit_ratios["MEDIUM"]:
+            crit = "MEDIUM"
+        else:
+            crit = "LOW"
+
         base = {"CRITICAL": 90, "HIGH": 70, "MEDIUM": 40, "LOW": 15}[crit]
 
+        device_name = _make_synthetic_device_name(device_id, crit)
+
         records.append({
-            "device_name":       device,
+            "device_id":         device_id,
+            "device_name":       device_name,
             "asset_criticality": crit,
             "sensitivity_score": base + np.random.randint(-10, 10),
             "asset_type":        np.random.choice(
@@ -643,16 +764,28 @@ def _generate_cmdb(incidents: pd.DataFrame, output_dir: Path):
 
     # ── Utilisateurs ──────────────────────────────────────
     user_seen = set()
-    for account in incidents["sample_account"].dropna().drop_duplicates():
-        if account in user_seen:
+    for account_id in incidents["sample_account"].dropna().drop_duplicates():
+        if account_id in user_seen:
             continue
-        user_seen.add(account)
+        user_seen.add(account_id)
 
-        crit = _criticality_from_account(account)
+        # Assigner criticité selon ratios (randomisé mais stable par seed)
+        rand_val = int(hashlib.md5(str(account_id).encode()).hexdigest(), 16) % 1000 / 1000
+        if rand_val < crit_ratios["CRITICAL"]:
+            crit = "CRITICAL"
+        elif rand_val < crit_ratios["CRITICAL"] + crit_ratios["HIGH"]:
+            crit = "HIGH"
+        elif rand_val < crit_ratios["CRITICAL"] + crit_ratios["HIGH"] + crit_ratios["MEDIUM"]:
+            crit = "MEDIUM"
+        else:
+            crit = "LOW"
+
+        # Générer login synthétique réaliste
+        user_name = _make_synthetic_user_name(account_id, crit)
         base_sensitivity = {"CRITICAL": 95, "HIGH": 75, "MEDIUM": 45, "LOW": 20}[crit]
 
         records.append({
-            "user_name":         account,
+            "user_name":         user_name,
             "user_criticality":  crit,
             "sensitivity_score": base_sensitivity + np.random.randint(-5, 5),
             "user_role":         np.random.choice(
@@ -671,7 +804,11 @@ def _generate_cmdb(incidents: pd.DataFrame, output_dir: Path):
                                  ),
         })
 
-    pd.DataFrame(records).to_csv(output_dir / "CMDB.csv", index=False)
+    try:
+        pd.DataFrame(records).to_csv(output_dir / "CMDB.csv", index=False)
+    except Exception as e:
+        print(f"Erreur sauvegarde CMDB.csv: {e}")
+        raise
     print(f"  CMDB.csv : {len([r for r in records if 'device_name' in r]):,} assets, "
           f"{len([r for r in records if 'user_name' in r]):,} users")
 
@@ -701,9 +838,9 @@ def _generate_sandbox(incidents, output_dir,
             )
         )
 
-        if score > 70:
+        if score > 40:
             verdict = "Malicious"
-        elif score > 40:
+        elif score > 20:
             verdict = "Suspicious"
         else:
             verdict = "Clean"
@@ -736,7 +873,11 @@ def _generate_sandbox(incidents, output_dir,
             "analysis_duration_s":    np.random.randint(60, 300),
         })
 
-    pd.DataFrame(records).to_csv(output_dir / "Sandbox.csv", index=False)
+    try:
+        pd.DataFrame(records).to_csv(output_dir / "Sandbox.csv", index=False)
+    except Exception as e:
+        print(f"Erreur sauvegarde Sandbox.csv: {e}")
+        raise
     print(f"  Sandbox.csv : {len(records):,} fichiers analysés")
 
 
@@ -747,7 +888,11 @@ def _generate_sandbox(incidents, output_dir,
 def save(incidents: pd.DataFrame, output_dir: Path):
     print(f"\n[5/5] Sauvegarde...")
     path = output_dir / "incidents_dataset.csv"
-    incidents.to_csv(path, index=False)
+    try:
+        incidents.to_csv(path, index=False)
+    except Exception as e:
+        print(f"Erreur sauvegarde {path}: {e}")
+        raise
     print(f"  incidents_dataset.csv : "
           f"{len(incidents):,} incidents x {incidents.shape[1]} colonnes")
     print("  Distribution finale :")
@@ -768,31 +913,51 @@ def main():
     print(" POC SOC Triage — Extraction + Simulation")
     print("=" * 55)
 
-    if not Path(args.input).exists():
-        print(f"\n  Fichier introuvable : {args.input}")
-        print("  Lance d'abord :")
-        print("  kaggle datasets download -d Microsoft/microsoft-security-incident-prediction")
-        print("  unzip microsoft-security-incident-prediction.zip")
-        return
-
-    # 1 — Lecture et agrégation en chunks
-    incidents = load_and_aggregate(args.input)
-
-    # 2 — Échantillon stratifié IncidentGrade x OrgId
-    selected_ids = stratified_sampling(incidents, args.n_incidents)
-
-    # 3 — Expansion des incidents liés (désactivable avec --no-expand)
-    if not args.no_expand:
-        selected_ids = expand_with_related_incidents(selected_ids, incidents)
+    if args.load_existing:
+        incidents_path = output_dir / "incidents_dataset.csv"
+        if not incidents_path.exists():
+            print(f"\n  Fichier introuvable : {incidents_path}")
+            print("  Lance d'abord sans --load-existing pour créer le fichier.")
+            return
+        print(f"\n[1/5] Chargement des incidents depuis {incidents_path}")
+        incidents = pd.read_csv(incidents_path)
+        if "sample_device_id" not in incidents.columns and "sample_device" in incidents.columns:
+            incidents["sample_device_id"] = incidents["sample_device"]
+        if "sample_device" not in incidents.columns and "sample_device_id" in incidents.columns:
+            incidents["sample_device"] = incidents["sample_device_id"]
+        print(f"  {len(incidents):,} incidents chargés")
     else:
-        print(f"\n[3/5] Expansion désactivée (--no-expand)")
+        if not args.input:
+            print("\n  --input requis si --load-existing n'est pas utilisé")
+            return
+        if not Path(args.input).exists():
+            print(f"\n  Fichier introuvable : {args.input}")
+            print("  Lance d'abord :")
+            print("  kaggle datasets download -d Microsoft/microsoft-security-incident-prediction")
+            print("  unzip microsoft-security-incident-prediction.zip")
+            return
 
-    incidents = incidents[
-        incidents["IncidentId"].isin(selected_ids)
-    ].reset_index(drop=True)
+        # 1 — Lecture et agrégation en chunks
+        incidents_full = load_and_aggregate(args.input)
+
+        # Calculer ratios sur dataset complet (anti data leakage)
+        crit_ratios = _compute_criticality_ratios(incidents_full, output_dir)
+
+        # 2 — Échantillon stratifié IncidentGrade x OrgId
+        selected_ids = stratified_sampling(incidents_full, args.n_incidents)
+
+        # 3 — Expansion des incidents liés (désactivable avec --no-expand)
+        if not args.no_expand:
+            selected_ids = expand_with_related_incidents(selected_ids, incidents_full)
+        else:
+            print(f"\n[3/5] Expansion désactivée (--no-expand)")
+
+        incidents = incidents_full[
+            incidents_full["IncidentId"].isin(selected_ids)
+        ].reset_index(drop=True)
 
     # 4 — Données simulées
-    generate_simulated_data(incidents, output_dir)
+    generate_simulated_data(incidents, output_dir, crit_ratios if not args.load_existing else None)
 
     # 5 — Sauvegarde
     save(incidents, output_dir)

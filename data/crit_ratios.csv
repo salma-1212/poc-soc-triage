@@ -1,0 +1,5 @@
+criticality,ratio
+CRITICAL,0.1
+HIGH,0.2
+MEDIUM,0.4
+LOW,0.3

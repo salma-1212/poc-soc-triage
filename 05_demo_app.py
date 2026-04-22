@@ -778,6 +778,85 @@ with col_detail:
                 """, unsafe_allow_html=True)
                 st.markdown("")
 
+            # ── Comparaison XGBoost vs Isolation Forest ───────────────
+            st.markdown("---")
+            st.markdown("**⚖️ Comparaison XGBoost (supervisé) vs Isolation Forest (non-supervisé)**")
+            st.caption(
+                "XGBoost apprend à partir des grades historiques des analystes. "
+                "Isolation Forest détecte les comportements statistiquement anormaux "
+                "sans jamais avoir vu de labels. La convergence ou divergence des deux "
+                "scores donne un signal de confiance supplémentaire."
+            )
+
+            xgb_score = float(incident.get("priority_score", 0) or 0)
+            iso_score  = float(incident.get("iso_anomaly_score", 0) or 0)
+
+            col_xgb, col_iso, col_interp = st.columns([1, 1, 2])
+
+            with col_xgb:
+                xgb_color = (
+                    "#e24b4a" if xgb_score >= 75 else
+                    "#ba7517" if xgb_score >= 45 else
+                    "#3b8bd4" if xgb_score >= 20 else "#1d9e75"
+                )
+                st.markdown(
+                    f"<div style='text-align:center; background:#f8f9fa; "
+                    f"border:2px solid {xgb_color}; border-radius:8px; padding:12px;'>"
+                    f"<div style='font-size:0.8rem; color:#666;'>XGBoost (supervisé)</div>"
+                    f"<div style='font-size:2rem; font-weight:700; color:{xgb_color};'>"
+                    f"{xgb_score:.0f}<span style='font-size:1rem'>/100</span></div>"
+                    f"<div style='font-size:0.75rem; color:#666;'>Similarité aux TP historiques</div>"
+                    f"</div>",
+                    unsafe_allow_html=True
+                )
+
+            with col_iso:
+                iso_color = (
+                    "#e24b4a" if iso_score >= 70 else
+                    "#ba7517" if iso_score >= 40 else "#1d9e75"
+                )
+                st.markdown(
+                    f"<div style='text-align:center; background:#f8f9fa; "
+                    f"border:2px solid {iso_color}; border-radius:8px; padding:12px;'>"
+                    f"<div style='font-size:0.8rem; color:#666;'>Isolation Forest (non-supervisé)</div>"
+                    f"<div style='font-size:2rem; font-weight:700; color:{iso_color};'>"
+                    f"{iso_score:.0f}<span style='font-size:1rem'>/100</span></div>"
+                    f"<div style='font-size:0.75rem; color:#666;'>Score d'anomalie comportementale</div>"
+                    f"</div>",
+                    unsafe_allow_html=True
+                )
+
+            with col_interp:
+                # Interpréter les 4 cas de convergence/divergence
+                xgb_high = xgb_score >= 60
+                iso_high  = iso_score  >= 50
+                if xgb_high and iso_high:
+                    st.success(
+                        "**🟢 Convergence forte** — Les deux modèles s'accordent. "
+                        "L'incident ressemble aux attaques historiques ET présente un "
+                        "comportement statistiquement anormal. Signal le plus fiable pour une action urgente."
+                    )
+                elif xgb_high and not iso_high:
+                    st.warning(
+                        "**🟡 Pattern connu, comportement ordinaire** — XGBoost reconnaît "
+                        "un titre d'alerte historiquement TP, mais Isolation Forest ne voit "
+                        "pas de comportement vraiment anormal. Peut indiquer un incident "
+                        "classique bien référencé mais de faible impact réel."
+                    )
+                elif not xgb_high and iso_high:
+                    st.error(
+                        "**🔴 Comportement nouveau et anormal** — Isolation Forest détecte "
+                        "une anomalie forte mais XGBoost ne reconnaît pas de pattern connu. "
+                        "**Cas typique d'une nouvelle technique d'attaque** non vue à "
+                        "l'entraînement. À investiguer en priorité malgré le score XGBoost faible."
+                    )
+                else:
+                    st.info(
+                        "**⚪ Convergence sur FP probable** — Les deux modèles s'accordent "
+                        "sur l'absence de signal. Clôture du FP probable, mais vérifier "
+                        "les logs si doute subsiste."
+                    )
+
             # SHAP waterfall si disponible
             if shap_data is not None:
                 incident_ids_shap = shap_data.get("incident_ids", [])
@@ -1020,6 +1099,19 @@ with col_detail:
         # ── Tab 4 : Vue globale ML ────────────────────────────────────────────
         with tab4:
             st.markdown("**Importance globale des features — calculée sur les 29 964 incidents**")
+
+            # Distribution Isolation Forest par grade
+            iso_img = DATA_DIR / "isolation_forest_scores.png"
+            if iso_img.exists():
+                st.image(str(iso_img),
+                         caption="Isolation Forest — Distribution des scores d'anomalie par grade réel")
+                st.caption(
+                    "Si les TP ont un score significativement plus élevé que les FP, "
+                    "Isolation Forest est complémentaire à XGBoost pour détecter les "
+                    "incidents anormaux sans supervision."
+                )
+                st.markdown("---")
+            
             st.caption(
                 "Ces graphiques montrent ce que le modèle a appris sur l'ensemble du dataset, "
                 "pas seulement cet incident. Ils permettent de comprendre quelles features "

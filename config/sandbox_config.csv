@@ -1,0 +1,33 @@
+parametre,sous_cle,valeur,source,notes
+behavior_probabilities_by_grade,TruePositive_evasion,0.45,"Cuckoo Sandbox public dataset, AV-TEST malware behavior reports 2023","Probabilité évasion sandbox (T1497) pour incidents TP. ~40-50% des malwares modernes détectent l'environnement."
+behavior_probabilities_by_grade,TruePositive_persistence,0.60,"MITRE ATT&CK T1547 frequency, AV-TEST 2023","Probabilité persistance (T1547) pour incidents TP. ~60% des trojans/ransomware établissent de la persistance."
+behavior_probabilities_by_grade,TruePositive_lateral,0.35,"MITRE ATT&CK T1021 frequency","Probabilité mouvement latéral (T1021) pour incidents TP. ~30-40% des incidents TP impliquent du mouvement latéral."
+behavior_probabilities_by_grade,TruePositive_privesc,0.40,"MITRE ATT&CK T1068 frequency","Probabilité élévation de privilège (T1068) pour incidents TP. ~35-45% des malwares avancés tentent une élévation."
+behavior_probabilities_by_grade,BenignPositive_evasion,0.05,APPROXIMATION — bruit résiduel,Probabilité évasion pour incidents BP. Bruit résiduel faible.
+behavior_probabilities_by_grade,BenignPositive_persistence,0.08,APPROXIMATION — bruit résiduel CORRIGÉ,"Réduit de 0.10 → 0.08 pour éviter la saturation (>80% tous grades). Activité légitime ne devrait pas persister."
+behavior_probabilities_by_grade,BenignPositive_lateral,0.03,APPROXIMATION — bruit résiduel,Probabilité mouvement latéral pour incidents BP.
+behavior_probabilities_by_grade,BenignPositive_privesc,0.05,APPROXIMATION — bruit résiduel,Probabilité élévation de privilège pour incidents BP.
+behavior_probabilities_by_grade,FalsePositive_evasion,0.02,APPROXIMATION — bruit résiduel minimal,Probabilité évasion pour incidents FP. Quasi-nul.
+behavior_probabilities_by_grade,FalsePositive_persistence,0.02,APPROXIMATION — bruit résiduel minimal CORRIGÉ,"Réduit de 0.03 → 0.02 pour éviter la saturation. FP ne devraient pas avoir de comportement persistant."
+behavior_probabilities_by_grade,FalsePositive_lateral,0.01,APPROXIMATION — bruit résiduel minimal,Probabilité mouvement latéral pour incidents FP.
+behavior_probabilities_by_grade,FalsePositive_privesc,0.02,APPROXIMATION — bruit résiduel minimal,Probabilité élévation de privilège pour incidents FP.
+dns_requests_count_by_verdict,Malicious_min,50,"Unit42 Palo Alto 'DNS Security Threat Report 2023', FireEye/Mandiant DNS tunneling research","Minimum requêtes DNS pour fichier Malicious (C2-over-DNS T1071.004)."
+dns_requests_count_by_verdict,Malicious_max,500,"Unit42 Palo Alto 2023",Maximum requêtes DNS pour fichier Malicious.
+dns_requests_count_by_verdict,Suspicious_min,5,Estimation,Minimum requêtes DNS pour fichier Suspicious.
+dns_requests_count_by_verdict,Suspicious_max,80,Estimation,Maximum requêtes DNS pour fichier Suspicious.
+dns_requests_count_by_verdict,Clean_min,0,Estimation,Minimum requêtes DNS pour fichier Clean.
+dns_requests_count_by_verdict,Clean_max,20,Estimation,Maximum requêtes DNS pour fichier Clean.
+network_connections_by_verdict,Malicious_or_Suspicious_min,5,Approximation comportementale standard,Minimum connexions réseau pour Malicious/Suspicious.
+network_connections_by_verdict,Malicious_or_Suspicious_max,30,Approximation comportementale standard,Maximum connexions réseau pour Malicious/Suspicious.
+network_connections_by_verdict,Clean_min,0,Approximation comportementale standard,Minimum connexions réseau pour Clean.
+network_connections_by_verdict,Clean_max,3,Approximation comportementale standard,Maximum connexions réseau pour Clean.
+dropped_files_by_verdict,Malicious_min,1,"MITRE T1105 — Dropper/Downloader behavior","Minimum fichiers déposés pour Malicious."
+dropped_files_by_verdict,Malicious_max,6,"MITRE T1105",Maximum fichiers déposés pour Malicious.
+dropped_files_by_verdict,Other,0,Standard,Fichiers déposés pour Suspicious/Clean = 0.
+registry_modifications_by_verdict,Malicious_or_Suspicious_min,1,"MITRE T1112 — Modify Registry","Minimum modifications registre pour Malicious/Suspicious."
+registry_modifications_by_verdict,Malicious_or_Suspicious_max,15,"MITRE T1112",Maximum modifications registre pour Malicious/Suspicious.
+registry_modifications_by_verdict,Clean,0,Standard,Modifications registre pour Clean = 0.
+process_injection_prob,Malicious,0.50,"MITRE T1055 — Process Injection. ~50% des malwares Malicious utilisent l'injection pour évasion AV.",Probabilité injection de processus pour fichier Malicious.
+c2_beaconing_prob,Malicious,0.60,"MITRE T1071. Recorded Future 'Malware C2 Infrastructure Report 2023' — ~60% des trojans/RATs établissent un canal C2 en sandbox.",Probabilité beaconing C2 pour fichier Malicious.
+analysis_duration_seconds,min,60,"Cuckoo/ANY.RUN/Joe Sandbox — durée standard d'analyse automatisée",Durée minimum analyse sandbox en secondes.
+analysis_duration_seconds,max,300,"Cuckoo/ANY.RUN/Joe Sandbox",Durée maximum analyse sandbox en secondes.

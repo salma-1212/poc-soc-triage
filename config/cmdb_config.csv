@@ -1,0 +1,104 @@
+parametre,sous_cle,valeur,source,notes
+asset_criticality_ratios,CRITICAL,0.10,"ISO 27005, NIST SP 800-60, SANS SOC Survey 2022","Distribution globale criticité assets dans une org SOC. ~10% d'assets critiques (principe de Pareto)."
+asset_criticality_ratios,HIGH,0.20,"ISO 27005, NIST SP 800-60, SANS SOC Survey 2022",20% d'assets à criticité haute.
+asset_criticality_ratios,MEDIUM,0.40,"ISO 27005, NIST SP 800-60, SANS SOC Survey 2022",40% d'assets à criticité moyenne.
+asset_criticality_ratios,LOW,0.30,"ISO 27005, NIST SP 800-60, SANS SOC Survey 2022",30% d'assets à criticité faible.
+grade_criticality_correlation,TruePositive_CRITICAL,0.25,"Mandiant M-Trends 2023 (APT ciblent assets Tier-0 dans ~30% des cas)","Probabilité criticité CRITICAL pour un device d'incident TP. Mix 60% grade + 40% bruit."
+grade_criticality_correlation,TruePositive_HIGH,0.35,Mandiant M-Trends 2023,Probabilité criticité HIGH pour un device d'incident TP.
+grade_criticality_correlation,TruePositive_MEDIUM,0.30,Mandiant M-Trends 2023,Probabilité criticité MEDIUM pour un device d'incident TP.
+grade_criticality_correlation,TruePositive_LOW,0.10,Mandiant M-Trends 2023,Probabilité criticité LOW pour un device d'incident TP.
+grade_criticality_correlation,BenignPositive_CRITICAL,0.10,Distribution proche ratios SOC standards,Probabilité criticité CRITICAL pour un device d'incident BP.
+grade_criticality_correlation,BenignPositive_HIGH,0.20,Distribution proche ratios SOC standards,Probabilité criticité HIGH pour un device d'incident BP.
+grade_criticality_correlation,BenignPositive_MEDIUM,0.40,Distribution proche ratios SOC standards,Probabilité criticité MEDIUM pour un device d'incident BP.
+grade_criticality_correlation,BenignPositive_LOW,0.30,Distribution proche ratios SOC standards,Probabilité criticité LOW pour un device d'incident BP.
+grade_criticality_correlation,FalsePositive_CRITICAL,0.05,Assets peu critiques ciblés par FP,Probabilité criticité CRITICAL pour un device d'incident FP.
+grade_criticality_correlation,FalsePositive_HIGH,0.15,Assets peu critiques ciblés par FP,Probabilité criticité HIGH pour un device d'incident FP.
+grade_criticality_correlation,FalsePositive_MEDIUM,0.40,Assets peu critiques ciblés par FP,Probabilité criticité MEDIUM pour un device d'incident FP.
+grade_criticality_correlation,FalsePositive_LOW,0.40,Assets peu critiques ciblés par FP,Probabilité criticité LOW pour un device d'incident FP.
+grade_criticality_correlation,grade_weight,0.60,Logique métier SOC,60% du signal vient du grade de l'incident. 40% = bruit pour préserver l'overlap naturel.
+device_sensitivity_base,CRITICAL,90,Échelle ordinale arbitraire cohérente CRITICAL > HIGH > MEDIUM > LOW,Score de sensibilité de base par criticité. Bruit ±10 ajouté à la génération.
+device_sensitivity_base,HIGH,70,Échelle ordinale,Score de sensibilité base pour HIGH.
+device_sensitivity_base,MEDIUM,40,Échelle ordinale,Score de sensibilité base pour MEDIUM.
+device_sensitivity_base,LOW,15,Échelle ordinale,Score de sensibilité base pour LOW.
+device_patch_lag_days,CRITICAL_mean,15,"Ponemon Institute 'Cost of a Data Breach 2023' (délai moyen patching vuln critique : 60j toutes criticités)","Assets CRITICAL patchés en priorité (SLA stricts). Std = mean * std_ratio."
+device_patch_lag_days,CRITICAL_std_ratio,0.40,Calibration empirique,Coefficient de variation du patch lag pour CRITICAL.
+device_patch_lag_days,CRITICAL_max_days,730,Limite pratique,Maximum patch lag en jours pour CRITICAL.
+device_patch_lag_days,HIGH_mean,30,Ponemon Institute 2023,Délai moyen patching pour HIGH.
+device_patch_lag_days,HIGH_std_ratio,0.40,Calibration empirique,Coefficient de variation du patch lag pour HIGH.
+device_patch_lag_days,HIGH_max_days,730,Limite pratique,Maximum patch lag en jours pour HIGH.
+device_patch_lag_days,MEDIUM_mean,60,Ponemon Institute 2023,Délai moyen patching pour MEDIUM.
+device_patch_lag_days,MEDIUM_std_ratio,0.40,Calibration empirique,Coefficient de variation du patch lag pour MEDIUM.
+device_patch_lag_days,MEDIUM_max_days,730,Limite pratique,Maximum patch lag en jours pour MEDIUM.
+device_patch_lag_days,LOW_mean,120,Ponemon Institute 2023,Délai moyen patching pour LOW — assets négligés.
+device_patch_lag_days,LOW_std_ratio,0.40,Calibration empirique,Coefficient de variation du patch lag pour LOW.
+device_patch_lag_days,LOW_max_days,730,Limite pratique,Maximum patch lag en jours pour LOW.
+device_vuln_base_count,CRITICAL,2,"Tenable 'State of Cybersecurity 2023'","Assets critiques peu vulnérables (patchés en priorité). +patch_lag//30 CVE supplémentaires ajoutés dynamiquement."
+device_vuln_base_count,HIGH,5,Tenable 2023,Base CVE pour HIGH.
+device_vuln_base_count,MEDIUM,10,Tenable 2023,Base CVE pour MEDIUM.
+device_vuln_base_count,LOW,20,Tenable 2023,Base CVE pour LOW — assets négligés.
+device_dc_probability,CRITICAL,0.20,Estimation org mid-size (5-20% des serveurs CRITICAL sont des DC),Probabilité qu'un asset CRITICAL soit un Domain Controller.
+device_network_zone_probs,CRITICAL_ISOLATED,0.50,"NIST SP 800-207 Zero Trust, CIS Controls v8",Probabilité zone ISOLATED pour asset CRITICAL (DC/HSM isolés par design).
+device_network_zone_probs,CRITICAL_CORP,0.45,"NIST SP 800-207",Probabilité zone CORP pour asset CRITICAL.
+device_network_zone_probs,CRITICAL_DMZ,0.05,"NIST SP 800-207",Probabilité zone DMZ pour asset CRITICAL.
+device_network_zone_probs,HIGH_ISOLATED,0.20,"NIST SP 800-207",Probabilité zone ISOLATED pour asset HIGH.
+device_network_zone_probs,HIGH_CORP,0.65,"NIST SP 800-207",Probabilité zone CORP pour asset HIGH.
+device_network_zone_probs,HIGH_DMZ,0.15,"NIST SP 800-207",Probabilité zone DMZ pour asset HIGH.
+device_network_zone_probs,MEDIUM_ISOLATED,0.05,"NIST SP 800-207",Probabilité zone ISOLATED pour asset MEDIUM.
+device_network_zone_probs,MEDIUM_CORP,0.75,"NIST SP 800-207",Probabilité zone CORP pour asset MEDIUM.
+device_network_zone_probs,MEDIUM_DMZ,0.20,"NIST SP 800-207",Probabilité zone DMZ pour asset MEDIUM.
+device_network_zone_probs,LOW_ISOLATED,0.05,"NIST SP 800-207",Probabilité zone ISOLATED pour asset LOW.
+device_network_zone_probs,LOW_CORP,0.60,"NIST SP 800-207",Probabilité zone CORP pour asset LOW.
+device_network_zone_probs,LOW_DMZ,0.35,"NIST SP 800-207",Probabilité zone DMZ pour asset LOW.
+device_last_incident_days,TruePositive_min,1,Logique métier — re-ciblage rapide des assets compromis,Minimum jours depuis dernier incident pour device TP.
+device_last_incident_days,TruePositive_max,90,Logique métier,Maximum jours depuis dernier incident pour device TP.
+device_last_incident_days,BenignPositive_min,30,Logique métier,Minimum jours depuis dernier incident pour device BP.
+device_last_incident_days,BenignPositive_max,365,Logique métier,Maximum jours depuis dernier incident pour device BP.
+device_last_incident_days,FalsePositive_min,90,Logique métier,Minimum jours depuis dernier incident pour device FP.
+device_last_incident_days,FalsePositive_max,730,Logique métier,Maximum jours depuis dernier incident pour device FP.
+device_asset_type_probs,Workstation,0.40,Estimation parc informatique mid-size,Distribution types d'assets.
+device_asset_type_probs,Server,0.30,Estimation parc informatique mid-size,Distribution types d'assets.
+device_asset_type_probs,Domain Controller,0.05,Estimation parc informatique mid-size,Distribution types d'assets.
+device_asset_type_probs,Laptop,0.25,Estimation parc informatique mid-size,Distribution types d'assets.
+device_business_unit_probs,Finance,0.30,Contexte GUIDE dataset — secteur financier/enterprise,Distribution unités métier.
+device_business_unit_probs,IT,0.30,Contexte GUIDE dataset,Distribution unités métier.
+device_business_unit_probs,Trading,0.20,Contexte GUIDE dataset,Distribution unités métier.
+device_business_unit_probs,Risk,0.20,Contexte GUIDE dataset,Distribution unités métier.
+device_os_family_probs,Windows,0.70,Statcounter Enterprise 2023 (~72% enterprise),Distribution OS.
+device_os_family_probs,Linux,0.20,Statcounter Enterprise 2023 (~18% enterprise),Distribution OS.
+device_os_family_probs,MacOS,0.10,Statcounter Enterprise 2023 (~10% enterprise),Distribution OS.
+device_internet_exposed_prob_corp,probability,0.10,Estimation — shadow IT et mauvaises configs réseau courantes,"Probabilité supplémentaire qu'un asset CORP soit exposé Internet malgré sa zone."
+user_sensitivity_base,CRITICAL,95,Même logique que device_sensitivity_base,Score sensibilité de base utilisateur CRITICAL.
+user_sensitivity_base,HIGH,75,Même logique,Score sensibilité de base utilisateur HIGH.
+user_sensitivity_base,MEDIUM,45,Même logique,Score sensibilité de base utilisateur MEDIUM.
+user_sensitivity_base,LOW,20,Même logique,Score sensibilité de base utilisateur LOW.
+user_mfa_probability,CRITICAL,0.90,"Microsoft Security Report 2023 (MFA activé ~40% moyenne enterprise, plus élevé pour comptes privilégiés)",Taux d'adoption MFA pour comptes CRITICAL.
+user_mfa_probability,HIGH,0.75,Microsoft Security Report 2023,Taux d'adoption MFA pour comptes HIGH.
+user_mfa_probability,MEDIUM,0.55,Microsoft Security Report 2023,Taux d'adoption MFA pour comptes MEDIUM.
+user_mfa_probability,LOW,0.35,Microsoft Security Report 2023,Taux d'adoption MFA pour comptes LOW.
+user_failed_logins_by_grade,TruePositive_mean,12,"APPROXIMATION — Microsoft 'Digital Defense Report 2023' (millions de tentatives sur comptes ciblés)","Tentatives de login échouées sur 7j pour comptes d'incidents TP (credential stuffing actif)."
+user_failed_logins_by_grade,TruePositive_std,5,APPROXIMATION,Écart-type tentatives login TP.
+user_failed_logins_by_grade,TruePositive_min,0,Limite pratique,Minimum tentatives login TP.
+user_failed_logins_by_grade,TruePositive_max,50,Limite pratique,Maximum tentatives login TP.
+user_failed_logins_by_grade,BenignPositive_mean,2,APPROXIMATION,Tentatives de login échouées pour comptes BP.
+user_failed_logins_by_grade,BenignPositive_std,2,APPROXIMATION,Écart-type tentatives login BP.
+user_failed_logins_by_grade,BenignPositive_min,0,Limite pratique,Minimum tentatives login BP.
+user_failed_logins_by_grade,BenignPositive_max,10,Limite pratique,Maximum tentatives login BP.
+user_failed_logins_by_grade,FalsePositive_mean,1,APPROXIMATION,Tentatives de login échouées pour comptes FP.
+user_failed_logins_by_grade,FalsePositive_std,1,APPROXIMATION,Écart-type tentatives login FP.
+user_failed_logins_by_grade,FalsePositive_min,0,Limite pratique,Minimum tentatives login FP.
+user_failed_logins_by_grade,FalsePositive_max,5,Limite pratique,Maximum tentatives login FP.
+user_login_country_mismatch_prob,TruePositive,0.35,"APPROXIMATION — signal impossible travel / T1078 (MITRE ATT&CK)","Probabilité connexion depuis pays inhabituel pour TP (credential compromise). Valeur approximative — aucune étude ne publie ce taux par grade."
+user_login_country_mismatch_prob,BenignPositive,0.08,APPROXIMATION — voyages légitimes ou VPN,Probabilité mismatch géo pour BP.
+user_login_country_mismatch_prob,FalsePositive,0.03,APPROXIMATION,Probabilité mismatch géo pour FP.
+user_role_probs,Exec,0.05,Estimation org enterprise typique,Distribution rôles utilisateurs.
+user_role_probs,Manager,0.15,Estimation org enterprise typique,Distribution rôles utilisateurs.
+user_role_probs,Analyst,0.40,Estimation org enterprise typique,Distribution rôles utilisateurs.
+user_role_probs,User,0.40,Estimation org enterprise typique,Distribution rôles utilisateurs.
+user_department_probs,Finance,0.25,Contexte GUIDE dataset — secteur financier,Distribution départements.
+user_department_probs,IT,0.25,Contexte GUIDE dataset,Distribution départements.
+user_department_probs,HR,0.15,Contexte GUIDE dataset,Distribution départements.
+user_department_probs,Operations,0.20,Contexte GUIDE dataset,Distribution départements.
+user_department_probs,Legal,0.15,Contexte GUIDE dataset,Distribution départements.
+user_account_status_probs,Active,0.90,"Estimation — ~90% comptes actifs dans AD typique, ~5% inactifs (départs non désactivés — T1078.002)",Distribution statuts de compte.
+user_account_status_probs,Inactive,0.05,Estimation,Distribution statuts de compte.
+user_account_status_probs,Suspended,0.05,Estimation,Distribution statuts de compte.

@@ -3,7 +3,7 @@ POC SOC Triage — 05 Démo Streamlit
 ====================================
 Lancer avec : streamlit run 05_demo_app.py
 
-Nécessite : pip install streamlit pandas numpy matplotlib shap joblib
+Nécessite : pip install streamlit pandas numpy matplotlib shap lime joblib
 """
 
 import streamlit as st
@@ -53,11 +53,11 @@ def load_data():
     pred["first_seen"] = pd.to_datetime(pred["first_seen"], errors="coerce")
 
     # Enrichissement CMDB
+    cmdb_devices = None
     try:
         cmdb = pd.read_csv(DATA_DIR / "CMDB.csv")
         cmdb_cols = ["device_id", "device_name", "asset_criticality", "asset_type",
                      "business_unit", "os_family", "is_internet_exposed", "patch_level"]
-        # Dédupliquer sur device_id (le CMDB contient aussi des lignes utilisateurs)
         cmdb_devices = (cmdb[cmdb["device_id"].notna()][cmdb_cols]
                         .drop_duplicates(subset=["device_id"]))
         pred = pred.merge(cmdb_devices, left_on="sample_device_id",
@@ -65,15 +65,71 @@ def load_data():
     except Exception:
         pass  # CMDB optionnel
 
+    # Merge incidents synthétiques si disponibles
+    try:
+        syn_pred = pd.read_csv(DATA_DIR / "synthetic_predictions.csv")
+        syn_expl = pd.read_csv(DATA_DIR / "synthetic_explanations.csv")
+        syn = syn_pred.merge(syn_expl, on="IncidentId", how="left")
+        syn["first_seen"] = pd.to_datetime(syn["first_seen"], errors="coerce")
+        if cmdb_devices is not None:
+            syn = syn.merge(cmdb_devices, left_on="sample_device_id",
+                            right_on="device_id", how="left")
+        pred = pd.concat([pred, syn], ignore_index=True)
+    except Exception:
+        pass  # synthétiques optionnels
+
+    # Flag signaux faibles + colonnes pour la narrative dynamique
+    # On lit depuis features_ml.parquet qui contient toutes les features ML
+    FEAT_COLS_NEEDED = [
+        "IncidentId", "ti_score_combined", "ti_score_max",
+        "nb_unique_ips", "nb_unique_devices", "nb_unique_accounts", "spread_score",
+        "detector_tp_rate",
+        "sandbox_c2_beaconing", "sandbox_process_injection", "sandbox_malware_score",
+        "sandbox_evasion", "sandbox_lateral_movement", "sandbox_privilege_escalation",
+        "mitre_lateral_movement", "mitre_credential_access",
+        "mitre_command_and_control", "mitre_exfiltration", "mitre_persistence",
+        "is_privileged_account", "user_criticality_score", "account_inactive",
+        "MFA_enabled", "nb_failed_logins_7d", "login_country_mismatch",
+        "asset_x_ti", "asset_x_alerts", "privileged_x_failed_logins",
+        "alert_rate_per_hour", "incident_duration_min",
+        "has_impacted_entity", "nb_impacted_entities",
+    ]
+    try:
+        parquet_df = pd.read_parquet(DATA_DIR / "features_ml.parquet")
+        available = [c for c in FEAT_COLS_NEEDED if c in parquet_df.columns]
+        feat = parquet_df[available]
+        pred = pred.merge(feat, on="IncidentId", how="left", suffixes=("", "_feat"))
+        ti_col = "ti_score_combined"
+    except Exception:
+        ti_col = None
+
+    if ti_col and ti_col in pred.columns:
+        pred["signaux_faibles"] = (
+            (pred["priority_score"] >= 75) &
+            (pred[ti_col].fillna(0) < 15) &
+            (pred["nb_alerts"] <= 10)
+        )
+    else:
+        # Fallback : lire depuis le texte d'explication
+        import re
+        def _ti_val(text):
+            if pd.isna(text): return 0.0
+            m = re.search(r'ti_score_combined = ([\d.]+)', text)
+            return float(m.group(1)) if m else 0.0
+        pred["_ti_in_expl"] = pred["explanation_text"].apply(_ti_val)
+        pred["signaux_faibles"] = (
+            (pred["priority_score"] >= 75) &
+            (pred["_ti_in_expl"] < 20) &
+            (pred["nb_alerts"] <= 10)
+        )
+        pred = pred.drop(columns=["_ti_in_expl"])
+
     return pred
 
 @st.cache_resource
 def load_shap():
     try:
         data = joblib.load(DATA_DIR / "shap_values_sample.pkl")
-        # Normalisation : gère les deux formats selon la version de SHAP utilisée lors du 04
-        # Ancienne API : liste de 3 arrays (n_samples, n_features)
-        # Nouvelle API : array 3D (n_samples, n_features, n_classes)
         sv = data.get("shap_values")
         if sv is not None and not isinstance(sv, list):
             data["shap_values"] = [sv[:, :, i] for i in range(sv.shape[2])]
@@ -81,23 +137,59 @@ def load_shap():
     except Exception:
         return None
 
+@st.cache_resource
+def load_lime():
+    try:
+        return joblib.load(DATA_DIR / "lime_values_sample.pkl")
+    except Exception:
+        return None
+
 df = load_data()
 shap_data = load_shap()
+lime_data  = load_lime()
 
 # ─── Header ──────────────────────────────────────────────────────────────────
 
-col_logo, col_title, col_stats = st.columns([1, 4, 3])
+col_logo, col_title = st.columns([1, 7])
 with col_logo:
     st.markdown("## 🛡️")
 with col_title:
     st.markdown("### SOC Triage Assistant — POC")
     st.caption("Priorisation ML + Explications XAI pour analyste N1")
-with col_stats:
-    c1, c2, c3, c4 = st.columns(4)
-    c1.metric("Incidents", f"{len(df):,}")
-    c2.metric("Critiques", f"{(df['severity']=='CRITIQUE').sum()}")
-    c3.metric("À escalader", f"{(df['decision_suggested']=='ESCALADE_N2').sum()}")
-    c4.metric("FP probables", f"{(df['decision_suggested']=='CLOTURE_FP').sum()}")
+
+# ─── Métriques ROI ───────────────────────────────────────────────────────────
+# Calculées dynamiquement sur les données chargées
+
+total = len(df[df["is_synthetic"].fillna(False) == False]) if "is_synthetic" in df.columns else len(df)
+action_urgente = df[df["decision_suggested"] == "ACTION_URGENTE"]
+n_au = len(action_urgente)
+tp_in_au = (action_urgente["grade_reel_label"] == "TruePositive").sum()
+total_tp = (df["grade_reel_label"] == "TruePositive").sum()
+pct_volume = n_au / len(df) * 100 if len(df) > 0 else 0
+pct_tp_captured = tp_in_au / total_tp * 100 if total_tp > 0 else 0
+precision_au = tp_in_au / n_au * 100 if n_au > 0 else 0
+
+c1, c2, c3, c4, c5 = st.columns(5)
+c1.metric("Incidents", f"{len(df):,}")
+c2.metric("🔴 Action urgente", f"{n_au}",
+          help="Incidents scorés ≥ 75/100 par le ML")
+c3.metric("Précision ACTION_URGENTE", f"{precision_au:.0f}%",
+          help="Part de vrais positifs parmi les incidents ACTION_URGENTE")
+c4.metric("TP capturés", f"{pct_tp_captured:.0f}%",
+          help=f"Part des vrais incidents (TP) détectés dans les {pct_volume:.0f}% prioritaires")
+c5.metric("Volume priorisé", f"{pct_volume:.0f}%",
+          help=f"L'analyste traite {pct_volume:.0f}% du volume pour capturer {pct_tp_captured:.0f}% des menaces")
+
+st.markdown(
+    f"<div style='background:#f0fdf4; border-left:4px solid #1d9e75; "
+    f"border-radius:6px; padding:8px 14px; font-size:0.82rem; color:#065f46; margin-top:4px;'>"
+    f"💡 <strong>Apport ML</strong> — Sans priorisation, l'analyste traite 500 incidents dans l'ordre d'arrivée. "
+    f"Avec le ML, il se concentre sur <strong>{n_au} incidents ({pct_volume:.0f}%)</strong> "
+    f"qui contiennent <strong>{pct_tp_captured:.0f}% des menaces réelles</strong> "
+    f"avec une précision de <strong>{precision_au:.0f}%</strong>."
+    f"</div>",
+    unsafe_allow_html=True
+)
 
 st.divider()
 
@@ -188,37 +280,114 @@ CATEGORY_DESC = {
 }
 
 FEATURE_LABELS = {
-    "org_tp_rate":              "Taux historique d'incidents réels dans cette organisation",
-    "org_fp_rate":              "Taux historique de faux positifs dans cette organisation",
-    "detector_tp_rate":         "Fiabilité historique de ce type de détecteur",
-    "detector_fp_rate":         "Taux de faux positifs de ce détecteur",
+    # ── Historique SOC ────────────────────────────────────────────────────
+    "detector_tp_rate":         "Taux de vrais positifs (TP) historique de ce détecteur",
+    "detector_fp_rate":         "Taux de faux positifs (FP) de ce détecteur",
+    "detector_bp_rate":         "Taux de bénins positifs (BP) de ce détecteur",
+    "detector_nb_incidents":    "Nombre d'incidents historiques sur ce détecteur",
+    # ── Volume et structure alerte ────────────────────────────────────────
     "nb_alerts":                "Nombre d'alertes agrégées dans cet incident",
+    "nb_evidences":             "Nombre total d'évidences brutes dans l'incident",
     "nb_detectors":             "Nombre de détecteurs différents déclenchés",
-    "alert_rate_per_hour":      "Fréquence d'alertes par heure",
-    "ti_score_combined":        "Score Threat Intelligence (réputation IP/hash)",
-    "ti_ip_score":              "Réputation de l'adresse IP (listes TI)",
-    "ti_hash_score":            "Réputation du hash fichier (listes TI)",
-    "hash_malicious":           "Hash de fichier connu comme malveillant",
+    "nb_categories":            "Nombre de catégories MITRE distinctes dans l'incident",
+    "nb_entity_types":          "Nombre de types d'entités impliquées (IP, device, compte...)",
+    "alert_rate_per_hour":      "Densité d'alertes par heure (burst attack)",
+    "alert_title_tp_rate":      "Taux de vrais positifs (TP) historique pour ce titre d'alerte",
+    "alert_title_fp_rate":      "Taux de faux positifs (FP) pour ce titre d'alerte",
+    "alert_title_bp_rate":      "Taux de bénins positifs (BP) pour ce titre d'alerte",
+    "category_tp_rate":         "Taux de vrais positifs (TP) historique pour cette catégorie MITRE",
+    "category_fp_rate":         "Taux de faux positifs (FP) pour cette catégorie MITRE",
+    "category_bp_rate":         "Taux de bénins positifs (BP) pour cette catégorie MITRE",
+    # ── Threat Intelligence (TI) ──────────────────────────────────────────
+    "ti_score_max":             "Score TI maximum — meilleur signal disponible (IP ou hash)",
+    "ti_score_combined":        "Score TI combiné — somme réputation IP + hash",
+    "ti_ip_score":              "Score TI de l'adresse IP source",
+    "ip_ti_score":              "Score TI de l'adresse IP source",
+    "ti_hash_score":            "Score TI du hash fichier",
+    "hash_ti_score":            "Score TI du hash fichier",
+    "ip_in_blocklist":          "IP présente dans une liste de blocage active (blocklist)",
+    "hash_in_blocklist":        "Hash présent dans une liste de blocage active (blocklist)",
+    "any_ioc_in_blocklist":     "Au moins un IOC (IP ou hash) en blocklist",
+    "hash_malicious":           "Hash de fichier connu comme malveillant en TI",
     "hash_nb_sources":          "Nombre de sources TI signalant ce hash",
     "ip_nb_sources":            "Nombre de sources TI signalant cette IP",
-    "blocklist_hit":            "IP ou hash présent dans une liste de blocage",
-    "sandbox_score":            "Score d'analyse sandbox (comportement fichier)",
-    "sandbox_network_conns":    "Connexions réseau suspectes détectées en sandbox",
-    "sandbox_file_drops":       "Fichiers déposés par le processus analysé",
-    "asset_criticality":        "Criticité de l'actif (serveur critique, DC, etc.)",
-    "asset_internet_exposed":   "Poste ou serveur exposé directement sur Internet",
-    "category_tp_rate":         "Taux de vrais positifs historique pour cette catégorie",
-    "category_bp_rate":         "Taux de bénins pour cette catégorie d'alerte",
+    "blocklist_hit":            "IOC présent dans une liste de blocage (blocklist)",
+    # ── Sandbox ───────────────────────────────────────────────────────────
+    "sandbox_malware_score":        "Score malveillant sandbox (comportement fichier analysé)",
+    "sandbox_score":                "Score malveillant sandbox (comportement fichier analysé)",
+    "sandbox_network_conns":        "Connexions réseau suspectes détectées en sandbox",
+    "sandbox_file_drops":           "Fichiers déposés par le processus analysé en sandbox",
+    "sandbox_process_injection":    "Injection de code dans un processus légitime (sandbox)",
+    "sandbox_c2_beaconing":         "Communication C2 (Command & Control) détectée en sandbox",
+    "sandbox_evasion":              "Évasion sandbox détectée — malware qui contourne l'analyse",
+    "sandbox_lateral_movement":     "Mouvement latéral détecté en sandbox (T1021)",
+    "sandbox_privilege_escalation": "Élévation de privilège détectée en sandbox (T1068)",
+    "sandbox_dns_count":            "Requêtes DNS anormalement nombreuses (signal C2-over-DNS)",
+    "has_sandbox_analysis":         "Fichier analysé en sandbox (0 = hash inconnu)",
+    # ── CMDB / Asset ──────────────────────────────────────────────────────
+    "asset_criticality":        "Criticité de l'asset ciblé (DC, serveur prod, poste...)",
+    "asset_criticality_score":  "Score de criticité asset (1=LOW, 2=MEDIUM, 3=HIGH, 4=CRITICAL)",
+    "asset_sensitivity_score":  "Score de sensibilité de l'asset (données PII, secrets...)",
+    "asset_internet_exposed":   "Asset directement exposé sur Internet",
+    "asset_patch_risk":         "Risque lié au niveau de patching (1=OK, 2=retard, 3=critique)",
+    "asset_risk_score":         "Score de risque global de l'asset",
+    # ── Temporel ──────────────────────────────────────────────────────────
     "hour_sin":                 "Heure de l'incident — composante sin (encodage cyclique)",
     "hour_cos":                 "Heure de l'incident — composante cos (encodage cyclique)",
     "day_sin":                  "Jour de la semaine — composante sin (encodage cyclique)",
     "day_cos":                  "Jour de la semaine — composante cos (encodage cyclique)",
     "hour":                     "Heure de l'incident (horaires atypiques = plus suspect)",
     "day":                      "Jour de la semaine",
+    "is_weekend":               "Incident survenu le week-end",
+    "is_business_hours":        "Incident durant les heures ouvrées (8h-18h)",
+    "incident_duration_min":    "Durée de l'incident en minutes",
     "weekend":                  "Incident survenu en dehors des heures ouvrées",
     "duration":                 "Durée de l'activité suspecte",
-    "alert_title_tp_rate":      "Fiabilité historique de ce titre d'alerte précis",
-    "alert_title_fp_rate":      "Taux de faux positifs pour ce titre d'alerte",
+    # ── Ratios et propagation ─────────────────────────────────────────────
+    "accounts_per_device":      "Ratio comptes / machines (signal de mouvement latéral)",
+    "ips_per_hour":             "Densité d'IPs distinctes par heure (scan ou propagation rapide)",
+    "alerts_per_detector":      "Alertes moyennes par détecteur (faible = convergence multi-détecteurs)",
+    "spread_score":             "Score de propagation pondéré (2×devices + 1.5×comptes + 1×IPs)",
+    # ── User risk ─────────────────────────────────────────────────────────
+    "is_privileged_account":       "Compte administrateur ou à privilèges ciblé",
+    "user_criticality_score":      "Criticité du compte (exec, admin, analyste...)",
+    "account_inactive":            "Compte inactif ou suspendu réactivé (pattern APT)",
+    "MFA_enabled":                 "Authentification multi-facteur activée sur ce compte",
+    "nb_failed_logins_7d":         "Tentatives de login échouées sur 7 jours (credential stuffing)",
+    "login_country_mismatch":      "Connexion depuis un pays inhabituel (impossible travel T1078)",
+    # ── Interactions CMDB × incident ─────────────────────────────────────
+    "asset_x_ti":                  "Asset critique × score TI — double signal convergent",
+    "asset_x_alerts":              "Asset critique × volume d'alertes — attaque sur cible de valeur",
+    "asset_x_sandbox":             "Asset critique × malware score — impact potentiel élevé",
+    "privileged_x_failed_logins":  "Compte privilégié × tentatives login — credential stuffing admin",
+    # ── Propagation enrichie ──────────────────────────────────────────────
+    "has_impacted_entity":         "Au moins une entité directement impactée dans l'incident",
+    "nb_impacted_entities":        "Nombre d'entités directement impactées (EvidenceRole=Impacted)",
+    # ── TI enrichie ───────────────────────────────────────────────────────
+    "ti_actor_APT":                "IOC attribué à un groupe APT (espionnage étatique)",
+    "ti_actor_cybercrime":         "IOC attribué à un groupe cybercriminel organisé",
+    "ti_actor_hacktivist":         "IOC attribué à un groupe hacktivist",
+    "ip_ti_confidence":            "Niveau de confiance du score TI pour cette IP",
+    "hash_ti_confidence":          "Niveau de confiance du score TI pour ce hash",
+    # ── Contexte incident ─────────────────────────────────────────────────
+    "has_ip":                   "Incident implique une adresse IP identifiée",
+    "has_file":                 "Incident implique un fichier (hash SHA256)",
+    "has_account":              "Incident implique un compte utilisateur",
+    "has_device":               "Incident implique un device/machine identifié",
+    "has_email":                "Incident implique un email (NetworkMessageId)",
+    "has_threat_family":        "Famille de malware connue identifiée (ex: Emotet, Cobalt Strike)",
+    "suspicion_level_encoded":  "Niveau de suspicion (Suspicious=1, Incriminated=2)",
+    "is_windows":               "Incident sur un système Windows",
+    # ── MITRE ATT&CK ──────────────────────────────────────────────────────
+    "mitre_initial_access":     "MITRE ATT&CK — Accès initial détecté (T1078, T1190...)",
+    "mitre_execution":          "MITRE ATT&CK — Exécution de code (T1059, T1053...)",
+    "mitre_persistence":        "MITRE ATT&CK — Mécanisme de persistance (T1547, T1543...)",
+    "mitre_credential_access":  "MITRE ATT&CK — Vol de credentials (T1003, T1110...)",
+    "mitre_discovery":          "MITRE ATT&CK — Reconnaissance interne (T1082, T1087...)",
+    "mitre_lateral_movement":   "MITRE ATT&CK — Mouvement latéral (T1021, T1550...)",
+    "mitre_command_and_control":"MITRE ATT&CK — Communication C2 (Command & Control) (T1071, T1095...)",
+    "mitre_exfiltration":       "MITRE ATT&CK — Exfiltration de données (T1041, T1048...)",
+    "mitre_impact":             "MITRE ATT&CK — Impact / destruction (T1485, T1486...)",
 }
 
 def feature_label(feat_name):
@@ -286,6 +455,12 @@ with col_queue:
             border = SEVERITY_BORDER.get(sev, "#888")
             is_selected = (st.session_state.selected_idx == i)
             border_width = "4px" if is_selected else "1px"
+            sf_badge = ""
+            if row.get("signaux_faibles", False):
+                sf_badge = "<span style='background:#7c3aed; color:white; border-radius:3px; padding:1px 5px; font-size:0.68rem; font-weight:700; margin-left:4px;'>⚡ signaux faibles</span>"
+            syn_badge = ""
+            if row.get("is_synthetic", False):
+                syn_badge = "<span style='background:#0369a1; color:white; border-radius:3px; padding:1px 5px; font-size:0.68rem; font-weight:600; margin-left:4px;'>🔬 synthétique</span>"
 
             col_card, col_btn = st.columns([5, 1])
             with col_card:
@@ -293,7 +468,7 @@ with col_queue:
                 <div style='background:{bg}; border-left:{border_width} solid {border};
                             border-radius:6px; padding:6px 10px; margin-bottom:4px;'>
                     <div style='display:flex; justify-content:space-between;'>
-                        <span style='font-weight:600; font-size:0.82rem;'>{cat_fr}</span>
+                        <span style='font-weight:600; font-size:0.82rem;'>{cat_fr}{sf_badge}{syn_badge}</span>
                         <span style='font-weight:700; color:{border};'>{score:.0f}</span>
                     </div>
                     <div style='font-size:0.72rem; color:#555;'>
@@ -329,8 +504,35 @@ with col_detail:
         cat_fr = CATEGORY_FR.get(cat_raw, cat_raw)
         cat_desc = CATEGORY_DESC.get(cat_raw, "")
         first_seen_str = str(incident.get("first_seen", ""))[:16] or "—"
+        is_sf = incident.get("signaux_faibles", False)
+        is_syn = bool(incident.get("is_synthetic", False))
+
+        syn_banner = ""
+        if is_syn:
+            scenario_ref = incident.get("scenario_ref", "")
+            syn_banner = f"""
+            <div style='background:#e0f2fe; border-left:4px solid #0369a1;
+                        border-radius:6px; padding:8px 12px; margin-bottom:10px;
+                        font-size:0.82rem; color:#0c4a6e;'>
+                🔬 <strong>Incident synthétique</strong> — généré pour illustrer un cas réel documenté.<br>
+                <span style='font-size:0.78rem; color:#075985;'>{scenario_ref}</span>
+            </div>
+            """
+
+        sf_banner = ""
+        if is_sf:
+            sf_banner = """
+            <div style='background:#f5f3ff; border-left:4px solid #7c3aed;
+                        border-radius:6px; padding:8px 12px; margin-bottom:10px;
+                        font-size:0.85rem; color:#4c1d95;'>
+                ⚡ <strong>Signaux faibles détectés</strong> — Cet incident a été remonté par le ML
+                sans signal Threat Intelligence ni volume d'alertes élevé.
+                Un analyste humain aurait pu le manquer.
+            </div>
+            """
 
         st.markdown(f"""
+        {syn_banner}{sf_banner}
         <div style='background:{SEVERITY_COLORS.get(sev,"#f8f9fa")};
                     border-left:5px solid {border_color};
                     border-radius:8px; padding:12px 16px; margin-bottom:12px;'>
@@ -367,7 +569,7 @@ with col_detail:
         st.divider()
 
         # Tabs : Contexte | XAI | Décision
-        tab1, tab2, tab3 = st.tabs(["📋 Contexte enrichi", "🧠 Explications XAI", "⚡ Décision"])
+        tab1, tab2, tab3, tab4 = st.tabs(["📋 Contexte enrichi", "🧠 Explications XAI", "⚡ Décision", "🌐 Vue globale ML"])
 
         # ── Tab 1 : Contexte ─────────────────────────────────────────────────
         with tab1:
@@ -390,7 +592,21 @@ with col_detail:
                 if pd.notna(sample_ip):
                     st.markdown(f"- 🌐 **IP** : `{int(sample_ip)}`")
                 if pd.notna(sample_account):
-                    st.markdown(f"- 👤 **Compte** : `{int(sample_account)}`")
+                    # Récupérer le libellé du compte si disponible dans la CMDB
+                    user_name_val = incident.get("user_name", "")
+                    user_role_val = incident.get("user_role", "")
+                    user_dept_val = incident.get("department", "")
+                    if pd.notna(user_name_val) and str(user_name_val).strip() not in ("", "nan"):
+                        account_label = str(user_name_val)
+                        if pd.notna(user_role_val) and str(user_role_val).strip() not in ("", "nan"):
+                            account_label += f" ({user_role_val}"
+                            if pd.notna(user_dept_val) and str(user_dept_val).strip() not in ("", "nan"):
+                                account_label += f" — {user_dept_val}"
+                            account_label += ")"
+                        st.markdown(f"- 👤 **Compte** : `{account_label}`")
+                        st.caption(f"   ID interne : {int(float(sample_account))}")
+                    else:
+                        st.markdown(f"- 👤 **Compte** : `{int(float(sample_account))}`")
                 if pd.notna(sample_sha256):
                     st.markdown(f"- 📁 **Hash** : `{int(sample_sha256)}`")
 
@@ -453,6 +669,115 @@ with col_detail:
             else:
                 st.info("Explication non disponible pour cet incident.")
 
+            # Section signaux faibles
+            if is_sf:
+                nb_alerts   = incident.get("nb_alerts", "?")
+                score       = incident.get("priority_score", 0)
+                ti_val      = float(incident.get("ti_score_combined", 0) or 0)
+                ti_max      = float(incident.get("ti_score_max", 0) or 0)
+                sample_ip   = incident.get("sample_ip", None)
+                sample_sha  = incident.get("sample_sha256", None)
+                device      = incident.get("sample_device", None)
+                nb_ips      = float(incident.get("nb_unique_ips", 1) or 1)
+                nb_devices  = float(incident.get("nb_unique_devices", 1) or 1)
+                nb_accounts = float(incident.get("nb_unique_accounts", 1) or 1)
+                sandbox_c2  = float(incident.get("sandbox_c2_beaconing", 0) or 0)
+                sandbox_inj = float(incident.get("sandbox_process_injection", 0) or 0)
+                mitre_lat   = float(incident.get("mitre_lateral_movement", 0) or 0)
+                mitre_cred  = float(incident.get("mitre_credential_access", 0) or 0)
+                mitre_c2    = float(incident.get("mitre_command_and_control", 0) or 0)
+                mitre_exfil = float(incident.get("mitre_exfiltration", 0) or 0)
+                is_priv     = float(incident.get("is_privileged_account", 0) or 0)
+                spread      = float(incident.get("spread_score", 0) or 0)
+
+                # ── Construction des signaux spécifiques à cet incident ──────
+                signaux = []
+
+                # Signal TI
+                if ti_val < 5:
+                    signaux.append("aucun signal Threat Intelligence (IP et hash absents des bases TI)")
+                elif ti_max > 0:
+                    signaux.append(f"score TI modéré ({ti_max:.0f}/100) — IP ou hash partiellement référencé")
+
+                # Volume alertes
+                signaux.append(f"seulement {int(nb_alerts)} alerte(s) agrégée(s)")
+
+                # Propagation
+                if spread > 5 or nb_ips > 3:
+                    signaux.append(
+                        f"propagation détectée sur {int(nb_ips)} IP(s) distincte(s)"
+                        + (f", {int(nb_devices)} machine(s)" if nb_devices > 1 else "")
+                        + (f", {int(nb_accounts)} compte(s)" if nb_accounts > 1 else "")
+                    )
+
+                # Sandbox enrichi
+                if sandbox_c2 > 0:
+                    signaux.append("communication C2 (Command & Control) confirmée en sandbox")
+                if sandbox_inj > 0:
+                    signaux.append("injection de processus détectée en sandbox")
+                sandbox_evasion = float(incident.get("sandbox_evasion", 0) or 0)
+                sandbox_lat     = float(incident.get("sandbox_lateral_movement", 0) or 0)
+                if sandbox_evasion > 0:
+                    signaux.append("évasion sandbox détectée — malware qui contourne l'analyse")
+                if sandbox_lat > 0:
+                    signaux.append("mouvement latéral détecté en sandbox")
+
+                # MITRE
+                mitre_detected = []
+                if mitre_lat:   mitre_detected.append("mouvement latéral")
+                if mitre_cred:  mitre_detected.append("vol de credentials")
+                if mitre_c2:    mitre_detected.append("C2")
+                if mitre_exfil: mitre_detected.append("exfiltration")
+                if mitre_detected:
+                    signaux.append(f"tactiques MITRE ATT&CK : {', '.join(mitre_detected)}")
+
+                # Compte privilégié + nouveaux signaux user risk
+                if is_priv:
+                    signaux.append("compte à privilèges ciblé")
+                nb_failed = float(incident.get("nb_failed_logins_7d", 0) or 0)
+                mismatch  = float(incident.get("login_country_mismatch", 0) or 0)
+                priv_x_logins = float(incident.get("privileged_x_failed_logins", 0) or 0)
+                if nb_failed > 5:
+                    signaux.append(f"{int(nb_failed)} tentatives de login échouées en 7 jours")
+                if mismatch > 0:
+                    signaux.append("connexion depuis un pays inhabituel (impossible travel)")
+                if priv_x_logins > 0:
+                    signaux.append("attaque sur compte admin détectée (credential stuffing)")
+
+                # ── Drivers qui ont permis la détection ─────────────────────
+                drivers = []
+                if mitre_detected:
+                    drivers.append(f"tactiques ATT&CK convergentes ({', '.join(mitre_detected)})")
+                if sandbox_c2 or sandbox_inj:
+                    drivers.append("analyse sandbox comportementale")
+                if nb_ips > 2 or spread > 4:
+                    drivers.append("score de propagation multi-entités")
+                if not drivers:
+                    drivers = ["historique du détecteur", "pattern temporel", "contexte organisationnel"]
+
+                signaux_txt = " — ".join(signaux)
+                drivers_txt = ", ".join(drivers)
+
+                st.markdown("---")
+                st.markdown(f"""
+                <div style='background:#f5f3ff; border-left:4px solid #7c3aed;
+                            border-radius:8px; padding:12px 16px;'>
+                    <div style='font-size:0.95rem; font-weight:700; color:#4c1d95; margin-bottom:8px;'>
+                        ⚡ Pourquoi cet incident est remarquable
+                    </div>
+                    <div style='font-size:0.85rem; color:#3b0764;'>
+                        <p>Cet incident a été scoré <strong>{score:.0f}/100</strong> malgré :
+                        <em>{signaux_txt}</em>.</p>
+                        <p>Un analyste triant uniquement par volume d'alertes ou réputation TI
+                        <strong>aurait pu manquer cet incident</strong>. Le modèle l'a détecté
+                        grâce à : <strong>{drivers_txt}</strong>.</p>
+                        <p>C'est précisément le cas d'usage pour lequel le ML apporte
+                        de la valeur au-delà des règles et seuils classiques.</p>
+                    </div>
+                </div>
+                """, unsafe_allow_html=True)
+                st.markdown("")
+
             # SHAP waterfall si disponible
             if shap_data is not None:
                 incident_ids_shap = shap_data.get("incident_ids", [])
@@ -492,6 +817,74 @@ with col_detail:
                 else:
                     st.caption("Graphique SHAP : incident non trouvé dans l'index SHAP.")
 
+            # ── LIME dynamique par incident ───────────────────────────────
+            st.markdown("---")
+            st.markdown("**🔬 LIME — Explication alternative (modèle linéaire local)**")
+            st.caption(
+                "LIME perturbe les valeurs de l'incident et entraîne un modèle linéaire "
+                "local pour approximer XGBoost dans ce voisinage. "
+                "Rouge = pousse vers TP | Bleu = tire vers FP. "
+                "Si LIME et SHAP identifient les mêmes features → explication fiable."
+            )
+
+            if lime_data is not None and shap_data is not None:
+                inc_id = incident.get("IncidentId")
+                incident_ids_lime = lime_data.get("incident_ids", [])
+                matches_lime = np.where(incident_ids_lime == inc_id)[0]
+
+                if len(matches_lime) > 0:
+                    lime_idx  = matches_lime[0]
+                    lime_contribs = lime_data["lime_top_features"][lime_idx]
+                    lime_contrib_full = lime_data["lime_contributions"][lime_idx]
+
+                    # Reconstruire les paires (feature, poids) dans l'ordre
+                    lime_pairs = [(f, lime_contrib_full.get(f, 0)) for f in lime_contribs]
+                    lime_feats   = [feature_label(f) for f, _ in lime_pairs]
+                    lime_weights = [w for _, w in lime_pairs]
+
+                    # Convergence avec SHAP pour cet incident
+                    incident_ids_shap = shap_data.get("incident_ids", [])
+                    matches_shap_l = np.where(incident_ids_shap == inc_id)[0]
+                    convergence_txt = ""
+                    if len(matches_shap_l) > 0:
+                        shap_idx_l   = matches_shap_l[0]
+                        shap_tp_l    = shap_data["shap_values"][2][shap_idx_l]
+                        feat_names_l = shap_data["feature_names"]
+                        shap_top_l   = (pd.Series(np.abs(shap_tp_l), index=feat_names_l)
+                                        .nlargest(8).index.tolist())
+                        overlap_l    = set(lime_contribs) & set(shap_top_l)
+                        pct_conv     = len(overlap_l) / 8
+                        if pct_conv >= 0.75:
+                            convergence_txt = f"🟢 Convergence SHAP/LIME : **{pct_conv:.0%}** — explication fiable"
+                        elif pct_conv >= 0.50:
+                            convergence_txt = f"🟡 Convergence SHAP/LIME : **{pct_conv:.0%}** — explication partielle"
+                        else:
+                            convergence_txt = f"🔴 Convergence SHAP/LIME : **{pct_conv:.0%}** — zone complexe, investiguer manuellement"
+
+                    # Graphique LIME dynamique
+                    fig_lime, ax_lime = plt.subplots(figsize=(8, 4))
+                    colors_lime = ['#e24b4a' if w > 0 else '#3b8bd4' for w in lime_weights]
+                    ax_lime.barh(range(len(lime_weights)), lime_weights,
+                                 color=colors_lime, height=0.6)
+                    ax_lime.set_yticks(range(len(lime_feats)))
+                    ax_lime.set_yticklabels(lime_feats, fontsize=9)
+                    ax_lime.invert_yaxis()
+                    ax_lime.axvline(0, color='gray', lw=0.8)
+                    ax_lime.set_xlabel("Coefficient LIME (→ TP)")
+                    ax_lime.set_title("LIME — Approximation linéaire locale")
+                    red_p  = mpatches.Patch(color='#e24b4a', label='↑ Augmente le score TP')
+                    blue_p = mpatches.Patch(color='#3b8bd4', label='↓ Réduit le score TP')
+                    ax_lime.legend(handles=[red_p, blue_p], fontsize=8)
+                    plt.tight_layout()
+                    st.pyplot(fig_lime)
+
+                    if convergence_txt:
+                        st.markdown(convergence_txt)
+                else:
+                    st.caption("Incident non trouvé dans l'index LIME — relancer 04_xai.ipynb.")
+            else:
+                st.info("Relancer 04_xai.ipynb (section LIME batch) pour activer les explications LIME.")
+
             # Counterfactual textuel — basé sur les vraies causes du score
             st.markdown("---")
             st.markdown("**Counterfactual — Qu'est-ce qui changerait la décision ?**")
@@ -500,18 +893,27 @@ with col_detail:
             proba_tp_val = incident.get("proba_tp", 0)
 
             # Déterminer le vrai driver principal depuis l'explanation_text
-            ti_is_zero = "ti_score_combined = 0.00" in str(expl_raw)
-            ti_is_driver = ("ti_score_combined" in str(expl_raw)
-                            and "↑" in str(expl_raw).split("ti_score_combined")[0][-5:]
-                            or ("Raisons principales" in str(expl_raw)
-                                and "ti_score_combined" in str(expl_raw).split("Éléments qui réduisent")[0]))
-            org_tp_is_driver = "org_tp_rate" in str(expl_raw) and "Raisons principales" in str(expl_raw) and \
-                               "org_tp_rate" in str(expl_raw).split("Éléments qui réduisent")[0]
+            ti_is_zero = "ti_score_combined = 0.00" in str(expl_raw) or \
+                         ("ti_score_combined" not in str(expl_raw))
+            ti_is_driver = "ti_score_combined" in str(expl_raw) and \
+                           "Raisons principales" in str(expl_raw) and \
+                           "ti_score_combined" in str(expl_raw).split("Éléments qui réduisent")[0]
+            org_tp_is_driver = False  # org_tp_rate supprimé du modèle
+            mitre_is_driver = any(f"mitre_{t}" in str(expl_raw).split("Éléments qui réduisent")[0]
+                                  for t in ["lateral_movement", "credential_access", "exfiltration",
+                                            "command_and_control", "persistence"])
 
             if proba_tp_val >= 75:
                 if ti_is_zero:
                     # TI est nul ET c'est déjà le cas → le driver réel est ailleurs
-                    if org_tp_is_driver:
+                    if mitre_is_driver:
+                        st.warning(
+                            "Le score est élevé en raison de **techniques MITRE ATT&CK critiques** "
+                            "détectées (mouvement latéral, vol de credentials, C2...). "
+                            "Si ces techniques n'avaient pas été détectées, le score passerait "
+                            "probablement sous le seuil d'action urgente."
+                        )
+                    elif org_tp_is_driver:
                         st.warning(
                             "Le score est élevé principalement parce que **cette organisation a "
                             "un historique élevé d'incidents réels** pour ce type d'alerte. "
@@ -615,12 +1017,97 @@ with col_detail:
                 "+3 à +8 points selon le volume de feedbacks collectés."
             )
 
+        # ── Tab 4 : Vue globale ML ────────────────────────────────────────────
+        with tab4:
+            st.markdown("**Importance globale des features — calculée sur les 29 964 incidents**")
+            st.caption(
+                "Ces graphiques montrent ce que le modèle a appris sur l'ensemble du dataset, "
+                "pas seulement cet incident. Ils permettent de comprendre quelles features "
+                "sont structurellement les plus discriminantes pour détecter les vrais incidents."
+            )
+
+            g1, g2 = st.columns(2)
+            with g1:
+                shap_bar = DATA_DIR / "shap_importance_bar.png"
+                if shap_bar.exists():
+                    st.image(str(shap_bar),
+                             caption="Top 15 features — Importance SHAP moyenne |ϕ|")
+                else:
+                    st.info("Relancer 04_xai.ipynb pour générer ce graphique.")
+            with g2:
+                shap_summary = DATA_DIR / "shap_summary_tp.png"
+                if shap_summary.exists():
+                    st.image(str(shap_summary),
+                             caption="SHAP Summary Plot — Distribution des contributions vers TP")
+                else:
+                    st.info("Relancer 04_xai.ipynb pour générer ce graphique.")
+
+            st.markdown("---")
+            st.markdown("**Counterfactual global — Sensibilité du modèle**")
+            cf_img = DATA_DIR / "counterfactuals.png"
+            if cf_img.exists():
+                st.image(str(cf_img),
+                         caption="Que se passe-t-il si on modifie les features clés de l'incident critique ?")
+            else:
+                st.info("Relancer 04_xai.ipynb pour générer ce graphique.")
+
+            st.markdown("---")
+            st.markdown("**Convergence SHAP/LIME — Analyse sur les 500 incidents**")
+            st.caption(
+                "Mesure à quel point SHAP et LIME s'accordent sur les features importantes "
+                "par type de décision. ≥ 75% = explication fiable. "
+                "Les incidents borderline (ESCALADE_N2) ont typiquement une convergence "
+                "plus faible — le modèle hésite dans ces zones non-linéaires."
+            )
+            conv_img = DATA_DIR / "shap_lime_convergence_analysis.png"
+            if conv_img.exists():
+                st.image(str(conv_img),
+                         caption="Convergence SHAP/LIME par décision et features communes")
+                if lime_data is not None and shap_data is not None:
+                    try:
+                        lime_top_all  = lime_data.get("lime_top_features", [])
+                        decisions_arr = lime_data.get("decisions", [])
+                        feat_names    = shap_data.get("feature_names", [])
+                        shap_tp_all   = shap_data["shap_values"][2]
+                        N_TOP = 8
+                        rows = []
+                        for idx in range(min(len(lime_top_all), len(shap_tp_all))):
+                            if not lime_top_all[idx]:
+                                continue
+                            shap_top = (pd.Series(np.abs(shap_tp_all[idx]), index=feat_names)
+                                        .nlargest(N_TOP).index.tolist())
+                            overlap  = set(shap_top) & set(lime_top_all[idx])
+                            rows.append({
+                                'decision':    decisions_arr[idx] if idx < len(decisions_arr) else '?',
+                                'convergence': len(overlap) / N_TOP,
+                            })
+                        if rows:
+                            conv_df = pd.DataFrame(rows)
+                            st.markdown("**Convergence moyenne par décision :**")
+                            dec_order  = ['ACTION_URGENTE','ESCALADE_N2',
+                                          'INVESTIGATION_N1','CLOTURE_FP']
+                            dec_emoji  = {'ACTION_URGENTE':'🔴','ESCALADE_N2':'🟠',
+                                          'INVESTIGATION_N1':'🔵','CLOTURE_FP':'🟢'}
+                            cols_conv  = st.columns(4)
+                            for col, dec in zip(cols_conv, dec_order):
+                                subset = conv_df[conv_df['decision'] == dec]
+                                if len(subset) > 0:
+                                    col.metric(
+                                        f"{dec_emoji.get(dec,'⚪')} {dec.replace('_',' ')}",
+                                        f"{subset['convergence'].mean():.0%}",
+                                        f"N={len(subset)}"
+                                    )
+                    except Exception:
+                        pass
+            else:
+                st.info("Relancer 04_xai.ipynb (section LIME batch) pour générer cette analyse.")
+
 # ─── Footer ──────────────────────────────────────────────────────────────────
 
 st.divider()
 st.caption(
     "POC SOC Triage — Dataset : Microsoft GUIDE (Kaggle) | "
     "Modèles : Isolation Forest (non-supervisé) + XGBoost (supervisé) | "
-    "XAI : SHAP TreeExplainer | "
+    "XAI : SHAP TreeExplainer + LIME | "
     "Données simulées : TI, CMDB, Sandbox (air-gap compatible)"
 )

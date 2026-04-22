@@ -9,13 +9,18 @@ __pycache__/
 dist/
 build/
 
-# ── Données (trop volumineuses pour GitHub) ───────────────────────────────────
-data/guide_extract_raw.csv
-data/predictions_full.csv
-*.zip
+# ── OS ────────────────────────────────────────────────────────────────────────
+**/.DS_Store
+Thumbs.db
 
-# ── Modèles sérialisés ────────────────────────────────────────────────────────
-models/*.pkl
+# ── IDE & outils locaux ───────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+.claude/
+check.sh
+chemin
+ls.txt
 
 # ── Credentials Kaggle ────────────────────────────────────────────────────────
 kaggle.json
@@ -23,25 +28,39 @@ kaggle.json
 
 # ── Jupyter ───────────────────────────────────────────────────────────────────
 .ipynb_checkpoints/
-*.ipynb_checkpoints
+**/.ipynb_checkpoints/
 
-# ── IDE ───────────────────────────────────────────────────────────────────────
-.vscode/
-.idea/
-*.swp
+# ── Archives ──────────────────────────────────────────────────────────────────
+*.zip
 
-# ── OS ────────────────────────────────────────────────────────────────────────
-.DS_Store
-Thumbs.db
-
-# Données brutes (régénérables via 01_extract_and_simulate.py)
+# ── Données brutes (volumineuses / non régénérables publiquement) ─────────────
+data/GUIDE_Train.csv
+data/GUIDE_Test.csv
 data/guide_extract_raw.csv
+data/incidents_dataset.csv
+
+# ── Données intermédiaires lourdes (régénérables via les notebooks) ───────────
+data/features_ml.csv
+data/features_ml.parquet
 data/predictions_full.csv
-# Les fichiers simulés et l'échantillon de démo sont OK à commiter :
-# data/TI_database.csv       ✓ simulé, pas de données réelles
-# data/CMDB.csv              ✓ simulé
-# data/Sandbox.csv           ✓ simulé
-# data/incidents_aggregated.csv  ✓ agrégé, pas de logs bruts
-# data/predictions_sample.csv    ✓ 500 incidents pour démo
-# data/explanations_sample.csv   ✓ textes XAI.claude/worktrees/
-.claude/
+data/encoder_*.csv
+data/encoder_*.parquet
+data/global_rates.pkl
+data/lime_values_sample.pkl
+data/shap_values_sample.pkl
+
+# ── Modèles sérialisés ────────────────────────────────────────────────────────
+models/*.pkl
+# models/*.json
+
+# ── Fichiers OK à commiter (simulés / démo / agrégés) ────────────────────────
+# data/TI_database.csv              ✓ simulé
+# data/CMDB.csv                     ✓ simulé
+# data/Sandbox.csv                  ✓ simulé
+# data/crit_ratios.csv              ✓ petit, agrégé
+# data/global_rates.csv             ✓ petit, agrégé
+# data/predictions_sample.csv       ✓ 500 incidents pour démo
+# data/explanations_sample.csv      ✓ textes XAI
+# data/README.md                    ✓ documentation
+# data/*.png                        ✓ visualisations EDA/XAI
+# config/                           ✓ configs de simulation (pas de secrets)

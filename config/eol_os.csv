@@ -1,0 +1,22 @@
+os_pattern,official_eol_date,vendor,notes,source
+windows xp,2014-04-08,Microsoft,Fin support étendu,https://learn.microsoft.com/en-us/lifecycle/products/windows-xp
+windows vista,2017-04-11,Microsoft,Fin support étendu,https://learn.microsoft.com/en-us/lifecycle/products/windows-vista
+windows 7,2020-01-14,Microsoft,Fin support étendu (ESU 2023-01-10),https://learn.microsoft.com/en-us/lifecycle/products/windows-7
+windows 8,2016-01-12,Microsoft,Remplacé par Windows 8.1,https://learn.microsoft.com/en-us/lifecycle/products/windows-8
+windows 8.1,2023-01-10,Microsoft,Fin support étendu,https://learn.microsoft.com/en-us/lifecycle/products/windows-81
+server 2003,2015-07-14,Microsoft,Fin support étendu,https://learn.microsoft.com/en-us/lifecycle/products/windows-server-2003
+server 2008,2020-01-14,Microsoft,Fin support étendu (ESU 2023-01-10),https://learn.microsoft.com/en-us/lifecycle/products/windows-server-2008
+server 2012,2023-10-10,Microsoft,Fin support étendu,https://learn.microsoft.com/en-us/lifecycle/products/windows-server-2012
+android 4,2013-10-01,Google,Estimé — Google ne publie pas de dates EOL officielles,https://endoflife.date/android
+android 5,2016-10-01,Google,Estimé — dernière mise à jour sécurité connue,https://endoflife.date/android
+android 6,2017-10-01,Google,Estimé,https://endoflife.date/android
+ios 12,2022-09-01,Apple,Estimé — Apple ne publie pas de dates EOL officielles,https://endoflife.date/ios
+ios 13,2022-09-01,Apple,Estimé,https://endoflife.date/ios
+ubuntu 14,2019-04-30,Canonical,Fin LTS standard (ESM disponible),https://endoflife.date/ubuntu
+ubuntu 16,2021-04-30,Canonical,Fin LTS standard (ESM disponible),https://endoflife.date/ubuntu
+centos 6,2020-11-30,Red Hat,Fin de vie officielle,https://endoflife.date/centos
+centos 7,2024-06-30,Red Hat,Fin de vie officielle,https://endoflife.date/centos
+centos 8,2021-12-31,Red Hat,Arrêt anticipé controversé,https://endoflife.date/centos
+debian 8,2020-06-30,Debian,Fin LTS,https://endoflife.date/debian
+debian 9,2022-06-30,Debian,Fin LTS,https://endoflife.date/debian
+rhel 6,2020-11-30,Red Hat,Fin maintenance phase 2,https://endoflife.date/rhel

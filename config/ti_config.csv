@@ -1,0 +1,97 @@
+parametre,sous_cle,valeur,source,notes
+ti_score_fallback,TruePositive_mean,68.0,"Verizon DBIR 2023, Microsoft MSTIC 2023, CrowdStrike 2023","Score TI moyen quand signal GUIDE trop faible (<50% du fallback). ~60-80% des incidents TP ont un IOC connu (MSTIC 2023)."
+ti_score_fallback,TruePositive_std,18.0,"Verizon DBIR 2023, Microsoft MSTIC 2023, CrowdStrike 2023",Écart-type du score TI pour les TruePositive.
+ti_score_fallback,BenignPositive_mean,28.0,"Verizon DBIR 2023, Microsoft MSTIC 2023, CrowdStrike 2023",Score TI moyen pour les BenignPositive — activité légitime avec TI faible.
+ti_score_fallback,BenignPositive_std,15.0,"Verizon DBIR 2023, Microsoft MSTIC 2023, CrowdStrike 2023",Écart-type du score TI pour les BenignPositive.
+ti_score_fallback,FalsePositive_mean,10.0,"Verizon DBIR 2023, Microsoft MSTIC 2023, CrowdStrike 2023",Score TI moyen pour les FalsePositive — faux déclenchement sans signal TI.
+ti_score_fallback,FalsePositive_std,8.0,"Verizon DBIR 2023, Microsoft MSTIC 2023, CrowdStrike 2023",Écart-type du score TI pour les FalsePositive.
+ti_score_signal_weights,verdict_weight,0.25,Pondération empirique GUIDE,"Poids LastVerdict dans calcul signal TI brut (~10% renseigné dans GUIDE)."
+ti_score_signal_weights,suspicion_weight,0.45,Pondération empirique GUIDE,"Poids SuspicionLevel (~40% renseigné dans GUIDE)."
+ti_score_signal_weights,threat_family_weight,0.30,Pondération empirique GUIDE,"Poids ThreatFamily (~4% renseigné dans GUIDE)."
+suspicion_level_numeric,High,1.0,Échelle ordinale GUIDE,Mapping SuspicionLevel → valeur numérique pour feature ML.
+suspicion_level_numeric,Medium,0.5,Échelle ordinale GUIDE,Mapping SuspicionLevel → valeur numérique pour feature ML.
+suspicion_level_numeric,Low,0.1,Échelle ordinale GUIDE,Mapping SuspicionLevel → valeur numérique pour feature ML.
+suspicion_level_numeric,Unknown,0.0,Échelle ordinale GUIDE,Mapping SuspicionLevel → valeur numérique pour feature ML.
+last_verdict_numeric,Malicious,1.0,Échelle ordinale GUIDE,Mapping LastVerdict → valeur numérique pour feature ML.
+last_verdict_numeric,Suspicious,0.6,Échelle ordinale GUIDE,Mapping LastVerdict → valeur numérique pour feature ML.
+last_verdict_numeric,NoThreatsFound,0.0,Échelle ordinale GUIDE,Mapping LastVerdict → valeur numérique pour feature ML.
+last_verdict_numeric,Clean,0.0,Échelle ordinale GUIDE,Mapping LastVerdict → valeur numérique pour feature ML.
+last_verdict_numeric,Unknown,0.1,Échelle ordinale GUIDE,"Léger signal par défaut pour Unknown — pas totalement neutre."
+ti_coverage_rates,ip_TP_high_score_pct,0.30,"Mandiant M-Trends 2023 (~50% des attaques ont IOC préalablement référencés)",30% des IPs exclusivement TP reçoivent un score élevé dans la TI simulée.
+ti_coverage_rates,ip_TP_low_score_pct,0.25,"Mandiant M-Trends 2023",25% des IPs TP restantes reçoivent un score faible.
+ti_coverage_rates,ip_BP_high_score_pct,0.02,Estimation réaliste — faux positifs TI,2% des IPs BP ont un score élevé (faux positif TI).
+ti_coverage_rates,ip_BP_low_score_pct,0.01,Estimation réaliste,1% des IPs BP restantes ont un score faible.
+ti_coverage_rates,ip_FP_high_score_pct,0.02,Estimation réaliste — faux positifs TI,2% des IPs FP ont un score élevé (faux positif TI).
+ti_coverage_rates,ip_FP_low_score_pct,0.01,Estimation réaliste,1% des IPs FP restantes ont un score faible.
+ti_coverage_rates,hash_TP_high_score_pct,0.30,"Mandiant M-Trends 2023",Même logique que pour les IPs — hashes TP.
+ti_coverage_rates,hash_TP_low_score_pct,0.25,"Mandiant M-Trends 2023",Hashes TP peu signalés.
+ti_coverage_rates,hash_BP_high_score_pct,0.02,Estimation réaliste,Faux positifs TI pour les hashes BP.
+ti_coverage_rates,hash_BP_low_score_pct,0.01,Estimation réaliste,Signal faible sur hashes BP.
+ti_coverage_rates,hash_FP_high_score_pct,0.02,Estimation réaliste,Faux positifs TI pour les hashes FP.
+ti_coverage_rates,hash_FP_low_score_pct,0.01,Estimation réaliste,Signal faible sur hashes FP.
+ti_score_params,ip_tp_high_mean,80,Calibration empirique — scores VirusTotal observés,Score moyen IP TP bien connue (50-100 détections sur 72 moteurs).
+ti_score_params,ip_tp_high_std,8,Calibration empirique,Écart-type score IP TP élevée.
+ti_score_params,ip_tp_high_min,60,Calibration empirique,Minimum score IP TP élevée.
+ti_score_params,ip_tp_high_max,100,Calibration empirique,Maximum score IP TP élevée.
+ti_score_params,ip_tp_low_mean,47,Calibration empirique,Score moyen IP TP peu signalée.
+ti_score_params,ip_tp_low_std,8,Calibration empirique,Écart-type score IP TP faible.
+ti_score_params,ip_tp_low_min,30,Calibration empirique,Minimum score IP TP faible.
+ti_score_params,ip_tp_low_max,60,Calibration empirique,Maximum score IP TP faible.
+ti_score_params,ip_bp_high_mean,70,Calibration empirique,Score moyen faux positif TI sur IP BP.
+ti_score_params,ip_bp_high_std,8,Calibration empirique,Écart-type faux positif TI sur IP BP.
+ti_score_params,ip_bp_high_min,52,Calibration empirique,Minimum faux positif TI sur IP BP.
+ti_score_params,ip_bp_high_max,85,Calibration empirique,Maximum faux positif TI sur IP BP.
+ti_score_params,ip_bp_low_mean,32,Calibration empirique,Score moyen signal faible IP BP.
+ti_score_params,ip_bp_low_std,8,Calibration empirique,Écart-type signal faible IP BP.
+ti_score_params,ip_bp_low_min,15,Calibration empirique,Minimum signal faible IP BP.
+ti_score_params,ip_bp_low_max,48,Calibration empirique,Maximum signal faible IP BP.
+ti_score_params,ip_fp_high_mean,70,Calibration empirique,Score moyen faux positif TI sur IP FP.
+ti_score_params,ip_fp_high_std,8,Calibration empirique,Écart-type faux positif TI sur IP FP.
+ti_score_params,ip_fp_high_min,52,Calibration empirique,Minimum faux positif TI sur IP FP.
+ti_score_params,ip_fp_high_max,85,Calibration empirique,Maximum faux positif TI sur IP FP.
+ti_score_params,ip_fp_low_mean,32,Calibration empirique,Score moyen signal faible IP FP.
+ti_score_params,ip_fp_low_std,8,Calibration empirique,Écart-type signal faible IP FP.
+ti_score_params,ip_fp_low_min,15,Calibration empirique,Minimum signal faible IP FP.
+ti_score_params,ip_fp_low_max,48,Calibration empirique,Maximum signal faible IP FP.
+ti_score_params,hash_tp_high_mean,82,Calibration empirique,Score moyen hash TP bien connu.
+ti_score_params,hash_tp_high_std,8,Calibration empirique,Écart-type hash TP élevé.
+ti_score_params,hash_tp_high_min,62,Calibration empirique,Minimum hash TP élevé.
+ti_score_params,hash_tp_high_max,100,Calibration empirique,Maximum hash TP élevé.
+ti_score_params,hash_tp_low_mean,48,Calibration empirique,Score moyen hash TP peu signalé.
+ti_score_params,hash_tp_low_std,8,Calibration empirique,Écart-type hash TP faible.
+ti_score_params,hash_tp_low_min,30,Calibration empirique,Minimum hash TP faible.
+ti_score_params,hash_tp_low_max,62,Calibration empirique,Maximum hash TP faible.
+ti_score_params,hash_bp_high_mean,70,Calibration empirique,Score moyen faux positif TI sur hash BP.
+ti_score_params,hash_bp_high_std,8,Calibration empirique,Écart-type faux positif TI hash BP.
+ti_score_params,hash_bp_high_min,52,Calibration empirique,Minimum faux positif TI hash BP.
+ti_score_params,hash_bp_high_max,85,Calibration empirique,Maximum faux positif TI hash BP.
+ti_score_params,hash_bp_low_mean,32,Calibration empirique,Score moyen signal faible hash BP.
+ti_score_params,hash_bp_low_std,8,Calibration empirique,Écart-type signal faible hash BP.
+ti_score_params,hash_bp_low_min,15,Calibration empirique,Minimum signal faible hash BP.
+ti_score_params,hash_bp_low_max,48,Calibration empirique,Maximum signal faible hash BP.
+ti_score_params,hash_fp_high_mean,70,Calibration empirique,Score moyen faux positif TI sur hash FP.
+ti_score_params,hash_fp_high_std,8,Calibration empirique,Écart-type faux positif TI hash FP.
+ti_score_params,hash_fp_high_min,52,Calibration empirique,Minimum faux positif TI hash FP.
+ti_score_params,hash_fp_high_max,85,Calibration empirique,Maximum faux positif TI hash FP.
+ti_score_params,hash_fp_low_mean,32,Calibration empirique,Score moyen signal faible hash FP.
+ti_score_params,hash_fp_low_std,8,Calibration empirique,Écart-type signal faible hash FP.
+ti_score_params,hash_fp_low_min,15,Calibration empirique,Minimum signal faible hash FP.
+ti_score_params,hash_fp_low_max,48,Calibration empirique,Maximum signal faible hash FP.
+ti_score_noise_ratio,signal_ratio,0.95,Estimation — overlap naturel IOC cross-grade,"95% du signal vient du grade propre. 5% de bruit global pour simuler les cas atypiques."
+ti_score_noise_ratio,noise_ratio,0.05,Estimation — overlap naturel IOC cross-grade,Part de bruit dans le score TI final.
+actor_type_by_grade,TruePositive_APT,0.20,"APPROXIMATION — Verizon DBIR 2023 (19% espionnage étatique), CrowdStrike GTR 2023","Proportion d'APT parmi les IOCs TP. Valeur approximative — aucune étude ne publie cette distribution par grade."
+actor_type_by_grade,TruePositive_cybercrime,0.55,"APPROXIMATION — Verizon DBIR 2023 (73% cybercrime organisé)","Proportion cybercrime parmi les IOCs TP."
+actor_type_by_grade,TruePositive_hacktivist,0.10,"APPROXIMATION — Verizon DBIR 2023","Proportion hacktivistes parmi les IOCs TP."
+actor_type_by_grade,TruePositive_unknown,0.15,"APPROXIMATION — Verizon DBIR 2023","Proportion non-attribué parmi les IOCs TP."
+actor_type_by_grade,BenignPositive_APT,0.02,APPROXIMATION raisonnée,Très rare — BP rarement attribué à un APT.
+actor_type_by_grade,BenignPositive_cybercrime,0.05,APPROXIMATION raisonnée,Rare — activité légitime rarement attribuée.
+actor_type_by_grade,BenignPositive_hacktivist,0.02,APPROXIMATION raisonnée,Très rare.
+actor_type_by_grade,BenignPositive_unknown,0.91,APPROXIMATION raisonnée,BP quasi-exclusivement non attribué (pas de TI disponible).
+actor_type_by_grade,FalsePositive_APT,0.01,APPROXIMATION raisonnée,Quasi-inexistant.
+actor_type_by_grade,FalsePositive_cybercrime,0.03,APPROXIMATION raisonnée,Très rare.
+actor_type_by_grade,FalsePositive_hacktivist,0.01,APPROXIMATION raisonnée,Quasi-inexistant.
+actor_type_by_grade,FalsePositive_unknown,0.95,APPROXIMATION raisonnée,FP quasi-exclusivement non attribué.
+geo_country_distribution,countries,"RU|CN|IR|KP|US|DE|FR|NL|BR","CrowdStrike GTR 2023, Mandiant M-Trends 2023, CISA advisories","Pays d'origine IOC — séparés par | dans la valeur."
+geo_country_distribution,probabilities,"0.15|0.15|0.08|0.05|0.12|0.10|0.10|0.10|0.15","CrowdStrike GTR 2023, Mandiant M-Trends 2023, CISA advisories","Probabilités correspondantes — même ordre que countries."
+ti_trend_distribution,values,"increasing|stable|decreasing",Approximation raisonnée,"Tendance d'activité d'un IOC — séparés par |."
+ti_trend_distribution,probabilities,"0.30|0.50|0.20",Approximation raisonnée,"30% croissant, 50% stable, 20% décroissant."

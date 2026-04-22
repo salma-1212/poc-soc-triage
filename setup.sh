@@ -57,21 +57,36 @@ echo "  ✓ Packages installés"
 
 # Vérification des imports clés
 python3 -c "
-import pandas, numpy, sklearn, xgboost, shap, streamlit, joblib
+import pandas, numpy, sklearn, xgboost, shap, lime, streamlit, joblib, pyarrow
 print(f'  pandas     {pandas.__version__}')
 print(f'  numpy      {numpy.__version__}')
 print(f'  sklearn    {sklearn.__version__}')
 print(f'  xgboost    {xgboost.__version__}')
 print(f'  shap       {shap.__version__}')
+print(f'  lime       {lime.__version__}')
 print(f'  streamlit  {streamlit.__version__}')
+print(f'  pyarrow    {pyarrow.__version__}')
 print('  ✓ Tous les imports OK')
 "
 
 # ── Création de la structure de dossiers ─────────────────
 echo ""
 echo "[4/5] Création de la structure de dossiers..."
-mkdir -p data models
-echo "  ✓ data/ et models/ créés"
+mkdir -p data models config
+echo "  ✓ data/, models/ et config/ créés"
+
+# ── Vérification config/ ──────────────────────────────────
+MISSING_CFG=0
+for f in eol_os.csv ti_config.csv cmdb_config.csv sandbox_config.csv; do
+    if [ ! -f "config/$f" ]; then
+        echo "  ⚠️  config/$f manquant"
+        MISSING_CFG=1
+    fi
+done
+if [ "$MISSING_CFG" -eq 1 ]; then
+    echo "  → Les fichiers config/ sont requis par 01_extract_and_simulate.py"
+    echo "    Copier les fichiers depuis config_template/ ou les générer manuellement."
+fi
 
 # ── Git ───────────────────────────────────────────────────
 echo ""

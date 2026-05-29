@@ -37,20 +37,20 @@ kaggle.json
 data/GUIDE_Train.csv
 data/GUIDE_Test.csv
 data/guide_extract_raw.csv
-data/incidents_dataset.csv
+# data/incidents_dataset.csv
 
 # ── Données intermédiaires lourdes (régénérables via les notebooks) ───────────
-data/features_ml.csv
-data/features_ml.parquet
-data/predictions_full.csv
-data/encoder_*.csv
-data/encoder_*.parquet
-data/global_rates.pkl
-data/lime_values_sample.pkl
-data/shap_values_sample.pkl
+# data/features_ml.csv
+# data/features_ml.parquet
+# data/predictions_full.csv
+# data/encoder_*.csv
+# data/encoder_*.parquet
+# data/global_rates.pkl
+# data/lime_values_sample.pkl
+# data/shap_values_sample.pkl
 
 # ── Modèles sérialisés ────────────────────────────────────────────────────────
-models/*.pkl
+# models/*.pkl
 # models/*.json
 
 # ── Fichiers OK à commiter (simulés / démo / agrégés) ────────────────────────

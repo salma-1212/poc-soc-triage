@@ -1,9 +1,31 @@
 """
 POC SOC Triage — 05 Démo Streamlit
 ====================================
-Lancer avec : streamlit run 05_demo_app.py
 
-Nécessite : pip install streamlit pandas numpy matplotlib shap lime joblib
+Tableau de bord analyste N1 — matérialisation opérationnelle du POC :
+  - File d'incidents priorisée par score 0-100 (zones ACTION_URGENTE / 
+    INVESTIGATION / CLÔTURE_FP).
+  - Contexte CMDB et TI pré-agrégé par incident.
+  - Panneau d'explication XAI (SHAP local + LIME) déroulable.
+  - Interface de validation analyste (TP/BP/FP) alimentant la boucle de
+    feedback simulée.
+
+Inputs (data/) :
+    predictions_sample.csv      — scores des 500 incidents (depuis 03_)
+    explanations_sample.csv     — textes XAI (depuis 04_)
+    CMDB.csv                    — enrichissement contextuel (depuis 01_)
+    features_ml.parquet         — features ML pour la narrative dynamique (depuis 02_)
+    shap_values_sample.pkl      — valeurs SHAP locales des 500 incidents (depuis 04_)
+    lime_values_sample.pkl      — coefficients LIME des 500 incidents (depuis 04_)
+    synthetic_predictions.csv   — incidents synthétiques optionnels (démo, facultatif)
+    synthetic_explanations.csv  — textes XAI synthétiques optionnels (démo, facultatif)
+    Figures du 04_ (shap_*.png, counterfactuals.png, isolation_forest_scores.png)
+
+Lancement :
+    streamlit run 05_demo_app.py
+
+Dépendances :
+    pip install streamlit pandas numpy matplotlib shap lime joblib
 """
 
 import streamlit as st
@@ -966,7 +988,7 @@ with col_detail:
 
             # Counterfactual textuel — basé sur les vraies causes du score
             st.markdown("---")
-            st.markdown("**Counterfactual — Qu'est-ce qui changerait la décision ?**")
+            st.markdown("**Qu'est-ce qui changerait la décision ?**")
 
             expl_raw = incident.get("explanation_text", "")
             proba_tp_val = incident.get("proba_tp", 0)
@@ -1092,13 +1114,14 @@ with col_detail:
             st.caption(
                 "En production, chaque décision de l'analyste est enregistrée comme nouveau label "
                 "et intégrée au prochain cycle d'entraînement (batch hebdomadaire). "
-                "La simulation dans le notebook 03 montre une amélioration du F2-score de "
-                "+3 à +8 points selon le volume de feedbacks collectés."
+                "La simulation dans le notebook 03 montre une amélioration du F2-score "
+                "d'environ +2,5 points dès le premier cycle de feedback (0,792 → 0,817), "
+                "le gain se stabilisant ensuite."
             )
 
         # ── Tab 4 : Vue globale ML ────────────────────────────────────────────
         with tab4:
-            st.markdown("**Importance globale des features — calculée sur les 29 964 incidents**")
+            st.markdown("**Importance globale des features — calculée sur les 30 000 incidents**")
 
             # Distribution Isolation Forest par grade
             iso_img = DATA_DIR / "isolation_forest_scores.png"
@@ -1135,11 +1158,13 @@ with col_detail:
                     st.info("Relancer 04_xai.ipynb pour générer ce graphique.")
 
             st.markdown("---")
-            st.markdown("**Counterfactual global — Sensibilité du modèle**")
+            st.markdown("**Counterfactual — Sensibilité du modèle (exemple)**")
             cf_img = DATA_DIR / "counterfactuals.png"
             if cf_img.exists():
                 st.image(str(cf_img),
-                         caption="Que se passe-t-il si on modifie les features clés de l'incident critique ?")
+                         caption="Exemple sur un incident à score élevé : comment la probabilité TP "
+                                 "varie quand on modifie ses features clés. L'analyse de sensibilité "
+                                 "est ici illustrée sur un incident, non calculée pour les 500.")
             else:
                 st.info("Relancer 04_xai.ipynb pour générer ce graphique.")
 

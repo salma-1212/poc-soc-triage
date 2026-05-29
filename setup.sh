@@ -57,7 +57,7 @@ echo "  ✓ Packages installés"
 
 # Vérification des imports clés
 python3 -c "
-import pandas, numpy, sklearn, xgboost, shap, lime, streamlit, joblib, pyarrow
+import pandas, numpy, sklearn, xgboost, shap, lime, streamlit, joblib, pyarrow, seaborn
 print(f'  pandas     {pandas.__version__}')
 print(f'  numpy      {numpy.__version__}')
 print(f'  sklearn    {sklearn.__version__}')
@@ -65,6 +65,7 @@ print(f'  xgboost    {xgboost.__version__}')
 print(f'  shap       {shap.__version__}')
 print(f'  lime       {lime.__version__}')
 print(f'  streamlit  {streamlit.__version__}')
+print(f'  seaborn    {seaborn.__version__}')
 print(f'  pyarrow    {pyarrow.__version__}')
 print('  ✓ Tous les imports OK')
 "
@@ -85,7 +86,7 @@ for f in eol_os.csv ti_config.csv cmdb_config.csv sandbox_config.csv; do
 done
 if [ "$MISSING_CFG" -eq 1 ]; then
     echo "  → Les fichiers config/ sont requis par 01_extract_and_simulate.py"
-    echo "    Copier les fichiers depuis config_template/ ou les générer manuellement."
+    echo "    Sans eux, le script s'arrête avec une FileNotFoundError."
 fi
 
 # ── Git ───────────────────────────────────────────────────
@@ -116,14 +117,16 @@ echo ""
 echo "  # Activer l'env à chaque session :"
 echo "  source .venv/bin/activate"
 echo ""
-echo "  # Configurer Kaggle et télécharger le dataset :"
-echo "  # → Copier kaggle.json dans ~/.kaggle/"
-echo "  # → chmod 600 ~/.kaggle/kaggle.json"
+echo "  # Récupérer le dataset GUIDE (au choix) :"
+echo "  #  A) Téléchargement manuel depuis kaggle.com :"
+echo "  #     microsoft-security-incident-prediction → placer GUIDE_Train.csv dans data/"
+echo "  #  B) Via la CLI Kaggle :"
+echo "  #     → Copier kaggle.json dans ~/.kaggle/  puis  chmod 600 ~/.kaggle/kaggle.json"
 echo "  kaggle datasets download -d Microsoft/microsoft-security-incident-prediction"
-echo "  unzip microsoft-security-incident-prediction.zip"
+echo "  unzip microsoft-security-incident-prediction.zip -d data/"
 echo ""
 echo "  # Lancer l'extraction (10-15 min) :"
-echo "  python 01_extract_and_simulate.py --input GUIDE_train.csv --n_incidents 15000"
+echo "  python 01_extract_and_simulate.py --input data/GUIDE_Train.csv --n_incidents 30000 --no-expand"
 echo ""
 echo "  # Puis ouvrir les notebooks dans l'ordre :"
 echo "  jupyter lab"

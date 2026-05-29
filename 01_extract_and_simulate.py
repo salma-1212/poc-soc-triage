@@ -1,40 +1,65 @@
 """
-POC SOC Triage - Script 01 : Extraction + Simulation
-=====================================================
-version 2
-- Lecture en chunks (pas de crash RAM sur 2.43 Go)
-- Stratification double IncidentGrade x OrgId
-- Expansion incidents liés (IP, hash, device, category, threat family, MITRE techniques)
-- Features dérivées : alerts_per_min, multi_entity, features GUIDE enrichies
-- 9 nouvelles colonnes GUIDE exploitées : EvidenceRole, RegistryKey, ApplicationName,
-  Url, OSVersion, AntispamDirection, ResourceType, ActionGrouped, ActionGranular
-- CMDB : criticité device/user corrélée au grade (60% grade / 40% bruit)
-  + noms assets cohérents avec la criticité + champs enrichis pour XAI
-- TI : actor_type, nb_campaigns, ti_last_seen_days_ago
-- Sandbox : evasion_detected, persistence_mechanism, lateral_movement_attempt,
-  privilege_escalation, dns_requests_count
-- Toutes les valeurs de simulation chargées depuis config/ (plus de valeurs en dur)
+POC SOC Triage - Script 01 : Extraction + Simulation (v2)
+==========================================================
 
-Fichiers de configuration (config/) :
-    eol_os.csv        — OS en fin de support (sources officielles par éditeur)
-    ti_config.json    — Paramètres TI simulée (scores, couvertures, actor_type…)
-    cmdb_config.json  — Paramètres CMDB (criticité, patch lag, MFA, zones réseau…)
-    sandbox_config.json — Paramètres comportements sandbox (proba par grade…)
+Pipeline sur dataset Microsoft GUIDE (Freitas et al., 2024) :
 
-Usage:
-    python 01_extract_and_simulate.py \
-        --input GUIDE_train.csv \
-        --output data/ \
-        --config config/ \
-        --n_incidents 15000 \
-        [--no-expand] \
-        [--load-existing]
+  [1]   Passe 1 — identification des incidents (3 colonnes, lecture par chunks)
+  [1.5] Passe pivot — index leger pour expansion (7 colonnes)
+        (ignoree si --no-expand)
+  [2]   Stratification IncidentGrade x OrgId (random_state=42)
+  [3]   Expansion des incidents lies (IP, hash, device, category,
+        threat family, MITRE techniques) — plafonnee a 2x n_incidents
+        (desactivable avec --no-expand)
+  [4]   Passe 2 — agregation complete des incidents selectionnes (34 colonnes)
+  [5]   Simulation TI / CMDB / Sandbox calibree sur GUIDE
+  [6]   Sauvegarde des fichiers de sortie
 
-Fichiers de configuration (config/) :
-    eol_os.csv          — OS en fin de support
-    ti_config.csv       — Paramètres TI simulée
-    cmdb_config.csv     — Paramètres CMDB
-    sandbox_config.csv  — Paramètres sandbox
+Optimisations memoire :
+  - Lecture par chunks (CHUNK_SIZE = 500 000 lignes) — evite le crash RAM
+    sur 2,4 Go de CSV brut.
+  - Support Parquet optionnel (--to-parquet) : filtrage colonnaire pyarrow,
+    passe 2 en quelques dizaines de secondes au lieu de de ~260 s en CSV 
+    (run standard 30 000 incidents, --no-expand).
+  - Passe pivot 7 colonnes : permet une expansion fidele sans charger
+    les 34 colonnes du dataset complet.
+
+Calibration des simulations (toutes correlees au grade SOC reel) :
+  - TI    : couverture differenciee par grade (TP 30 % high score, BP/FP < 2 %)
+           + actor_type (APT/cybercrime/hacktivist), nb_campaigns, fraicheur IOC.
+  - CMDB  : criticite asset/user ponderee 60 % grade / 40 % bruit
+           + patch lag, MFA, zones reseau, OS EOL (eol_os.csv).
+  - Sandbox : evasion / persistence / lateral / privesc / C2 — probabilites
+           conditionnees par LastVerdict GUIDE.
+
+Fichiers de configuration (config/) — externalisation totale :
+  eol_os.csv         — OS en fin de support (date EOL officielle par editeur)
+  ti_config.csv      — Parametres TI (scores, couvertures, actor_type, geo)
+  cmdb_config.csv    — Parametres CMDB (criticite, patch lag, MFA, zones)
+  sandbox_config.csv — Parametres comportementaux sandbox (probas par grade)
+
+Fichiers de sortie (data/) :
+  incidents_dataset.csv  — dataset principal (56 colonnes apres agregation)
+  TI_database.csv        — reputation IOC (IP + SHA256)
+  CMDB.csv               — assets + users avec criticite
+  Sandbox.csv            — analyse comportementale par hash
+  crit_ratios.csv        — ratios de criticite utilises
+
+Reproductibilite : RANDOM_SEED = 42 applique a np.random et a toutes les
+sources de bruit (echantillonnage, simulation TI/CMDB/Sandbox).
+
+Usage standard (reproduction du POC) :
+    python 01_extract_and_simulate.py \\
+        --input data/GUIDE_Train.csv \\
+        --n_incidents 30000 \\
+        --no-expand
+
+Options :
+    --output data/          dossier de sortie (defaut : data)
+    --config config/        dossier de configuration (defaut : config)
+    --to-parquet            convertit le CSV en Parquet (runs suivants plus rapides)
+    --no-expand             desactive l'expansion des incidents lies
+    --load-existing         recharge data/incidents_dataset.csv sans retraiter GUIDE
 """
 
 import re
@@ -47,7 +72,7 @@ from pathlib import Path
 RANDOM_SEED = 42
 np.random.seed(RANDOM_SEED)
 
-# Colonnes réellement présentes dans GUIDE_train.csv
+# Colonnes réellement présentes dans GUIDE_Train.csv
 # (noms exacts — sensibles à la casse)
 # AccountSid, AccountUpn, State, City, Usage, EmailClusterId,
 # ApplicationId, OAuthApplicationId, ResourceIdName délibérément exclus
@@ -313,22 +338,22 @@ def _choice_from_cfg(section: str, key: str, default: dict, rng) -> str:
 def parse_args():
     p = argparse.ArgumentParser()
     p.add_argument("--input",
-                   help="Chemin vers GUIDE_train.csv")
+                   help="Chemin vers GUIDE_Train.csv")
     p.add_argument("--output", default="data",
                    help="Dossier de sortie")
     p.add_argument("--config", default="config",
                    help="Dossier contenant les fichiers de configuration "
-                        "(eol_os.csv, ti_config.json, cmdb_config.json, sandbox_config.json)")
-    p.add_argument("--n_incidents", type=int, default=15000,
+                        "(eol_os.csv, ti_config.csv, cmdb_config.csv, sandbox_config.csv)")
+    p.add_argument("--n_incidents", type=int, default=30000,
                    help="Nb incidents cibles dans l'extrait")
     p.add_argument("--to-parquet", action="store_true",
-                   help="Convertir GUIDE_train.csv en Parquet optimisé (une seule fois) "
+                   help="Convertir GUIDE_Train.csv en Parquet optimisé (une seule fois) "
                         "puis continuer le traitement normal")
     p.add_argument("--no-expand", action="store_true",
                    help="Désactiver l'expansion des incidents liés")
     p.add_argument("--load-existing", action="store_true",
                    help="Charger les incidents depuis data/incidents_dataset.csv "
-                        "au lieu de traiter GUIDE_train.csv")
+                        "au lieu de traiter GUIDE_Train.csv")
     return p.parse_args()
 
 
@@ -406,7 +431,7 @@ def aggregate_selected(input_path: str, selected_ids: set) -> pd.DataFrame:
       Fallback si le Parquet n'a pas encore été généré.
 
     Pour générer le Parquet (une seule fois) :
-        python 01_extract_and_simulate.py --input GUIDE_train.csv \
+        python 01_extract_and_simulate.py --input GUIDE_Train.csv \
                --to-parquet --output data/
     Puis les runs suivants passent --input data/guide_train.parquet
     """
@@ -976,7 +1001,7 @@ def build_expansion_index(input_path: str) -> pd.DataFrame:
 
 def convert_to_parquet(csv_path: str, output_dir: Path) -> str:
     """
-    Convertit GUIDE_train.csv en Parquet partitionné par IncidentId.
+    Convertit GUIDE_Train.csv en Parquet partitionné par IncidentId.
 
     À faire UNE SEULE FOIS. Le fichier Parquet résultant est :
     - ~5-8× plus petit que le CSV (compression snappy)
@@ -1338,7 +1363,7 @@ def _generate_ti(incidents, output_dir, ti_stats, global_stats):
     hash_fp_low  = select_pct([h for h in hash_excl_fp if h not in set(hash_fp_high)],
                                _cov_hash.get("FP_low_score_pct",  0.01), rng)
 
-    # ── Scores par catégorie — chargés depuis ti_config.json ─────────────
+    # ── Scores par catégorie — chargés depuis ti_config.csv ──────────────
     def _build_score_params(cfg_section: dict) -> dict:
         """Convertit {cat: {mean,std,min,max}} → {cat: (mean,std,min,max)}."""
         return {
@@ -1853,7 +1878,7 @@ def _generate_sandbox(incidents, output_dir, ti_stats, global_stats, hash_scores
     rng     = np.random.default_rng(RANDOM_SEED)
     records = []
 
-    # Probabilités comportements — chargées depuis sandbox_config.json
+    # Probabilités comportements — chargées depuis sandbox_config.csv
     _sb_cfg       = _CFG.get("sandbox", {})
     _bhv_raw      = _sb_cfg.get("behavior_probabilities_by_grade", {})
     # Exclure les clés de métadonnées (_description, _source…)

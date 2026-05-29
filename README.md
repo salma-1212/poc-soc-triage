@@ -4,7 +4,7 @@
 
 Proof-of-concept de priorisation automatique des alertes de sécurité pour analystes N1, combinant Machine Learning supervisé (XGBoost) et non-supervisé (Isolation Forest) avec des explications XAI (SHAP + LIME).
 
-**Dataset** : Microsoft GUIDE — Security Incident Prediction (Kaggle)  
+**Dataset** : Microsoft GUIDE — Security Incident Prediction (Kaggle)
 **Cible** : classer chaque incident en TP / BenignPositive / FP et calculer un score de priorisation 0-100
 
 ---
@@ -14,7 +14,7 @@ Proof-of-concept de priorisation automatique des alertes de sécurité pour anal
 ```
 poc-soc-triage/
 ├── 01_extract_and_simulate.py   # Extraction dataset + génération données simulées
-├── 02_feature_engineering.ipynb # Construction des ~40 features ML
+├── 02_feature_engineering.ipynb # Construction des features ML
 ├── 03_ml_models.ipynb           # Isolation Forest + XGBoost + évaluation
 ├── 04_xai.ipynb                 # SHAP global + local + LIME + counterfactuals
 ├── 05_demo_app.py               # Dashboard Streamlit analyste N1
@@ -24,23 +24,25 @@ poc-soc-triage/
 │   ├── cmdb_config.csv          # Paramètres CMDB (criticité, MFA, zones réseau…)
 │   └── sandbox_config.csv       # Paramètres comportements sandbox
 ├── data/                        # Généré automatiquement
-│   ├── guide_extract_raw.csv
-│   ├── incidents_aggregated.csv
-│   ├── TI_database.csv          # Threat Intel simulée (air-gap)
-│   ├── CMDB.csv                 # CMDB simulée (air-gap)
-│   ├── Sandbox.csv              # Résultats sandbox simulés (air-gap)
-│   ├── features_ml.csv
-│   ├── features_ml.parquet
-│   ├── predictions_sample.csv   # 500 incidents pour la démo
-│   ├── explanations_sample.csv
-│   ├── shap_values_sample.pkl   # Valeurs SHAP (généré par 04_)
-│   ├── lime_values_sample.pkl   # Valeurs LIME (généré par 04_)
-│   └── isolation_forest_scores.png
-├── models/
-│   ├── isolation_forest.pkl
-│   ├── xgboost_model.pkl
-│   └── xgboost_booster.json
-└── README.md
+│   ├── incidents_dataset.csv             # 01_ — dataset principal
+│   ├── TI_database.csv                   # 01_ — Threat Intel simulée (air-gap)
+│   ├── CMDB.csv                          # 01_ — CMDB simulée (air-gap)
+│   ├── Sandbox.csv                       # 01_ — résultats sandbox simulés (air-gap)
+│   ├── crit_ratios.csv                   # 01_ — ratios de criticité
+│   ├── features_ml.csv                   # 02_ — dataset ML
+│   ├── features_ml.parquet               # 02_ — dataset ML (format ML, dtypes préservés)
+│   ├── encoder_alert_title.{csv,parquet} # 02_ — table de taux par titre d'alerte
+│   ├── encoder_category.{csv,parquet}    # 02_ — table de taux par catégorie
+│   ├── encoder_detector.{csv,parquet}    # 02_ — table de taux par détecteur
+│   ├── global_rates.pkl                  # 02_ — taux globaux de fallback
+│   ├── predictions_sample.csv            # 03_ — 500 incidents pour la démo
+│   ├── explanations_sample.csv           # 04_ — textes d'explication XAI
+│   ├── shap_values_sample.pkl            # 04_ — valeurs SHAP
+│   └── lime_values_sample.pkl            # 04_ — valeurs LIME
+└── models/
+    ├── isolation_forest.pkl     # 03_ — modèle non-supervisé + scaler
+    ├── xgboost_booster.json     # 03_ — booster XGBoost natif (chargé par 04_ et 05_)
+    └── inference_config.pkl     # 03_ — FEATURE_COLS + config d'inférence
 ```
 
 ---
@@ -57,19 +59,25 @@ Le script vérifie Python 3.10+, crée un virtualenv `.venv`, installe les dépe
 
 ## Étapes d'exécution
 
-### 1. Télécharger le dataset
+### 1. Récupérer le dataset
+
+Deux options au choix :
+
+**A) Téléchargement manuel** depuis [kaggle.com](https://www.kaggle.com/datasets/Microsoft/microsoft-security-incident-prediction) — récupérer `GUIDE_Train.csv` et le placer dans `data/`.
+
+**B) Via la CLI Kaggle :**
 
 ```bash
 # Configurer l'API Kaggle : kaggle.com > Account > Create New Token > kaggle.json dans ~/.kaggle/
 chmod 600 ~/.kaggle/kaggle.json
 kaggle datasets download -d Microsoft/microsoft-security-incident-prediction
-unzip microsoft-security-incident-prediction.zip
+unzip microsoft-security-incident-prediction.zip -d data/
 ```
 
 ### 2. Extraire un échantillon représentatif + générer les données simulées
 
 ```bash
-python 01_extract_and_simulate.py --input GUIDE_train.csv --n_incidents 15000
+python 01_extract_and_simulate.py --input data/GUIDE_Train.csv --n_incidents 30000 --no-expand
 # Durée : ~10-15 min selon la machine
 # Output : ./data/*.csv
 ```
@@ -79,7 +87,7 @@ python 01_extract_and_simulate.py --input GUIDE_train.csv --n_incidents 15000
 **Option Parquet** (recommandé si plusieurs runs) :
 
 ```bash
-python 01_extract_and_simulate.py --input GUIDE_train.csv --n_incidents 15000 --to-parquet
+python 01_extract_and_simulate.py --input data/GUIDE_Train.csv --n_incidents 30000 --no-expand --to-parquet
 # Les runs suivants passent directement : --input data/guide_train.parquet
 ```
 
@@ -87,22 +95,23 @@ python 01_extract_and_simulate.py --input GUIDE_train.csv --n_incidents 15000 --
 
 Ouvrir et exécuter `02_feature_engineering.ipynb` cellule par cellule.
 
-**Features construites (~40) :**
+**Familles de features construites :**
 | Famille | Features clés |
 |---------|--------------|
-| Alerte brute | alert_title_tp_rate, category_fp_rate, nb_alerts, nb_detectors |
-| Temporelle | hour_sin/cos, is_weekend, alert_rate_per_hour |
-| Threat Intelligence | ip_ti_score, hash_ti_score, any_ioc_in_blocklist |
-| CMDB / Asset | asset_criticality_score, asset_sensitivity_score |
-| Sandbox | sandbox_malware_score, sandbox_c2_beaconing |
-| Historique SOC | detector_fp_rate, detector_tp_rate ⬅ feature n°1 |
-| Contexte | entity_diversity, suspicion_level_encoded, has_threat_family |
+| Alerte brute | alert_title_tp_rate, alert_title_fp_rate, category_fp_rate, nb_alerts, nb_detectors |
+| Temporelle | hour_sin/cos, is_weekend, is_after_midnight, alert_rate_per_hour |
+| Threat Intelligence | ip_ti_score, hash_ti_score, any_ioc_in_blocklist, ti_actor_* |
+| CMDB / Asset | asset_criticality_score, asset_risk_score, asset_x_ti |
+| CMDB / User | user_criticality_score, MFA_enabled, nb_failed_logins_7d, login_country_mismatch |
+| Sandbox | sandbox_malware_score, sandbox_c2_beaconing, sandbox_evasion |
+| Historique SOC | detector_fp_rate, detector_tp_rate, alert_title_fp_rate ⬅ feature SHAP n°1 |
+| MITRE | mitre_initial_access, mitre_lateral_movement, mitre_impact… |
 
 ### 4. Entraînement ML
 
 Exécuter `03_ml_models.ipynb` :
 - **Isolation Forest** (non-supervisé) : score anomalie sans labels
-- **XGBoost** (supervisé) : classification TP/BP/FP avec SMOTE + évaluation F2-score
+- **XGBoost** (supervisé) : classification TP/BP/FP avec `sample_weight` + évaluation F2-score
 - **Simulation feedback loop** : amélioration du modèle avec les validations analyste
 
 ### 5. XAI
@@ -132,8 +141,10 @@ streamlit run 05_demo_app.py
 
 ### XGBoost (supervisé)
 - Labels GUIDE utilisés : TP=2, BenignPositive=1, FP=0
-- SMOTE pour rééquilibrer les classes
-- Split stratifié par OrgId (évite le data leakage organisationnel)
+- Rééquilibrage des classes via `sample_weight` (`compute_sample_weight('balanced')`),
+  pas de SMOTE : en multiclasse avec BP majoritaire, SMOTE génère trop de BP
+  synthétiques qui noient le signal TP et font chuter le F2-score
+- Split stratifié par OrgId (StratifiedGroupKFold) — évite le data leakage organisationnel
 - Métriques : F2-score (macro), AUC-ROC multi-classe, Precision-Recall
 
 ### Score de priorisation (0-100)
@@ -155,7 +166,7 @@ Deux méthodes d'explication complémentaires sont utilisées pour chaque incide
 
 **LIME** perturbe les valeurs de l'incident et entraîne un modèle linéaire local pour approximer XGBoost dans son voisinage. Il est model-agnostic et apporte une perspective indépendante.
 
-La convergence SHAP/LIME (≥ 75% de features communes dans le top 8) est calculée par incident et par type de décision. Une convergence faible sur les incidents `ESCALADE_N2` est normale — le modèle hésite dans ces zones non-linéaires, ce qui est précisément l'information utile pour l'analyste.
+La convergence SHAP/LIME (part de features communes dans le top 8) est calculée par incident et par type de décision ; un seuil de 60% est utilisé comme repère de cohérence. Une convergence faible sur certains incidents est normale — le modèle hésite dans ces zones non-linéaires, ce qui est précisément l'information utile pour l'analyste.
 
 ---
 

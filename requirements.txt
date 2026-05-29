@@ -9,7 +9,6 @@ numpy==1.26.4
 # ── ML ────────────────────────────────────────────────────────────────────────
 scikit-learn==1.5.1
 xgboost==2.1.1
-imbalanced-learn==0.12.3
 joblib==1.4.2
 
 # ── XAI ───────────────────────────────────────────────────────────────────────
@@ -23,8 +22,9 @@ seaborn==0.13.2
 # ── Démo ──────────────────────────────────────────────────────────────────────
 streamlit==1.38.0
 
-# ── Dataset download ──────────────────────────────────────────────────────────
-kaggle==1.6.17
-
-# ── Parquet (optionnel — fallback CSV si absent) ───────────────────────────────
+# ── Parquet (requis — features_ml.parquet, encodeurs) ──────────────────────────
 pyarrow==17.0.0
+
+# ── Dataset download (optionnel — uniquement si téléchargement via CLI Kaggle) ─
+# Le dataset GUIDE peut aussi être téléchargé manuellement depuis kaggle.com.
+kaggle==1.6.17

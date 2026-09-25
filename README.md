@@ -1,4 +1,40 @@
-# POC SOC Triage — Priorisation ML + XAI
+# POC SOC Triage — ML Prioritisation + XAI
+
+> 🇬🇧 English summary · 🇫🇷 Documentation complète en français ci-dessous
+
+**Proof-of-concept that reduces SOC alert fatigue**: security incidents are automatically prioritised for Tier-1 analysts by combining supervised ML (XGBoost), unsupervised anomaly detection (Isolation Forest) and explainable AI (SHAP + LIME). It was built for an MSc thesis in cybersecurity (Télécom SudParis, 2026).
+
+**Dataset**: [Microsoft GUIDE](https://www.kaggle.com/datasets/Microsoft/microsoft-security-incident-prediction), a set of real, anonymised security incidents labelled TruePositive / BenignPositive / FalsePositive. The POC uses a stratified sample of 30,000 incidents. It is enriched with simulated Threat Intel, CMDB and Sandbox data that can be generated offline, so the pipeline also works in air-gapped environments.
+
+### Key results (test set: 3,187 incidents from organisations unseen during training)
+| Metric | Value |
+|---|---|
+| F2-score (macro, XGBoost) | 0.792 |
+| AUC-ROC (macro OvR) | 0.948 |
+| True-positive recall | 89 % |
+| Precision of the URGENT zone (score ≥ 75) | 86.1 % TP, 0.5 % FP |
+| Share of incoming flow pre-filtered as likely FP (score < 20) | 51.3 % |
+| Mean SHAP/LIME explanation agreement | 60.6 % |
+| Simulated feedback loop, cycle 1 | F2 0.792 → 0.817 |
+
+### Pipeline
+`01_extract_and_simulate.py` (sampling + contextual data simulation) → `02_feature_engineering.ipynb` (83 features: alert, temporal, TI, asset/user, sandbox, SOC history, MITRE ATT&CK) → `03_ml_models.ipynb` (Isolation Forest, XGBoost with class weighting, OrgId-grouped split to prevent leakage) → `04_xai.ipynb` (SHAP, LIME, counterfactuals, convergence analysis) → `05_demo_app.py` (Streamlit dashboard for analysts).
+
+### Quick start
+```bash
+bash setup.sh                    # Python 3.10+, creates .venv, installs requirements
+# download GUIDE_Train.csv into data/ (see "Étapes d'exécution" below)
+python 01_extract_and_simulate.py --input data/GUIDE_Train.csv --n_incidents 30000 --no-expand
+streamlit run 05_demo_app.py     # the repo already ships the generated data/ and models/
+```
+
+**Known limitations**: target encoding was computed on the full sample (partial leakage, mitigated by smoothing), the feedback loop is simulated, decision thresholds are fixed rather than learned, and TI/CMDB/Sandbox data are simulated. See *Résultats et limites* for details.
+
+> 🔒 **Security note**: `models/*.pkl` and `data/*.pkl` are Python pickles. Only load them from this repository or another trusted source, because unpickling untrusted files can execute arbitrary code.
+
+---
+
+# 🇫🇷 POC SOC Triage — Priorisation ML + XAI
 
 ## Vue d'ensemble
 
@@ -149,12 +185,12 @@ streamlit run 05_demo_app.py
 
 ### Score de priorisation (0-100)
 Basé sur P(TP) du modèle XGBoost, avec seuils :
-| Score | Sévérité | Décision suggérée |
-|-------|----------|-------------------|
-| ≥ 75  | CRITIQUE | Action urgente (isolation) |
-| 45–74 | HAUTE    | Escalade N2/N3 |
-| 20–44 | MOYENNE  | Investigation N1 |
-| < 20  | FAIBLE   | Clôture FP probable |
+| Score | Zone de décision | Sévérité affichée | Action de l'analyste |
+|-------|------------------|-------------------|----------------------|
+| ≥ 75  | ACTION_URGENTE   | CRITIQUE | Traitement prioritaire immédiat |
+| 45–74 | ESCALADE_N2      | HAUTE    | Escalade vers le niveau 2 |
+| 20–44 | INVESTIGATION_N1 | MOYENNE  | Investigation standard N1 |
+| < 20  | CLÔTURE_FP       | FAIBLE   | Pré-filtrage sous contrôle (FP probable) |
 
 ---
 
@@ -227,3 +263,13 @@ La simulation dans `03_ml_models.ipynb` montre l'amélioration attendue du F2-sc
 3. **L'analyste N1 ne cherche plus** : tout le contexte (TI, CMDB, sandbox, timeline) est pré-agrégé
 4. **XAI = confiance** : SHAP explique POURQUOI le score est élevé ; LIME confirme indépendamment
 5. **Air-gap compatible** : toutes les données simulées sont générées et consultées localement
+
+---
+
+## Dataset, citation et licence
+
+**Dataset** : Freitas, S., Kalajdjieski, J., Gharib, A., & McCann, R. (2024). *AI-Driven Guided Response for Security Operation Centers with Microsoft Copilot for Security* [GUIDE dataset]. Microsoft Security Research. [arXiv:2407.09017](https://arxiv.org/abs/2407.09017). Les fichiers de `data/` dérivés de GUIDE restent soumis à la licence du dataset (voir la page Kaggle).
+
+**Code** : licence MIT, voir [LICENSE](LICENSE).
+
+**Auteure** : Salma El Bougrini

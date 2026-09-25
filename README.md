@@ -4,7 +4,7 @@
 
 **Proof-of-concept that reduces SOC alert fatigue**: security incidents are automatically prioritised for Tier-1 analysts by combining supervised ML (XGBoost), unsupervised anomaly detection (Isolation Forest) and explainable AI (SHAP + LIME). It was built for an MSc thesis in cybersecurity (Télécom SudParis, 2026).
 
-**Dataset**: [Microsoft GUIDE](https://www.kaggle.com/datasets/Microsoft/microsoft-security-incident-prediction), a set of real, anonymised security incidents labelled TruePositive / BenignPositive / FalsePositive. The POC uses a stratified sample of 30,000 incidents. It is enriched with simulated Threat Intel, CMDB and Sandbox data that can be generated offline, so the pipeline also works in air-gapped environments.
+**Dataset**: [Microsoft GUIDE](https://www.kaggle.com/datasets/Microsoft/microsoft-security-incident-prediction) (license [CDLA-Permissive-2.0](https://cdla.dev/permissive-2-0/)), a set of real, anonymised security incidents labelled TruePositive / BenignPositive / FalsePositive. The POC uses a stratified sample of 30,000 incidents. It is enriched with simulated Threat Intel, CMDB and Sandbox data that can be generated offline, so the pipeline also works in air-gapped environments.
 
 ### Key results (test set: 3,187 incidents from organisations unseen during training)
 | Metric | Value |
@@ -268,7 +268,7 @@ La simulation dans `03_ml_models.ipynb` montre l'amélioration attendue du F2-sc
 
 ## Dataset, citation et licence
 
-**Dataset** : Freitas, S., Kalajdjieski, J., Gharib, A., & McCann, R. (2024). *AI-Driven Guided Response for Security Operation Centers with Microsoft Copilot for Security* [GUIDE dataset]. Microsoft Security Research. [arXiv:2407.09017](https://arxiv.org/abs/2407.09017). Les fichiers de `data/` dérivés de GUIDE restent soumis à la licence du dataset (voir la page Kaggle).
+**Dataset** : Freitas, S., Kalajdjieski, J., Gharib, A., & McCann, R. (2024). *AI-Driven Guided Response for Security Operation Centers with Microsoft Copilot for Security* [GUIDE dataset]. Microsoft Security Research. [arXiv:2407.09017](https://arxiv.org/abs/2407.09017). GUIDE est publié par Microsoft sous licence [CDLA-Permissive-2.0](https://cdla.dev/permissive-2-0/) ; les fichiers de `data/` qui en sont dérivés sont redistribués selon cette licence.
 
 **Code** : licence MIT, voir [LICENSE](LICENSE).
 

@@ -104,7 +104,7 @@ Ouvrir et exécuter `02_feature_engineering.ipynb` cellule par cellule.
 | CMDB / Asset | asset_criticality_score, asset_risk_score, asset_x_ti |
 | CMDB / User | user_criticality_score, MFA_enabled, nb_failed_logins_7d, login_country_mismatch |
 | Sandbox | sandbox_malware_score, sandbox_c2_beaconing, sandbox_evasion |
-| Historique SOC | detector_fp_rate, detector_tp_rate, alert_title_fp_rate ⬅ feature SHAP n°1 |
+| Historique SOC | detector_fp_rate, detector_tp_rate, alert_title_fp_rate ⬅ feature n°1 (gain XGBoost) ; alert_title_tp_rate = n°1 en mean \|SHAP\| |
 | MITRE | mitre_initial_access, mitre_lateral_movement, mitre_impact… |
 
 ### 4. Entraînement ML
@@ -167,6 +167,31 @@ Deux méthodes d'explication complémentaires sont utilisées pour chaque incide
 **LIME** perturbe les valeurs de l'incident et entraîne un modèle linéaire local pour approximer XGBoost dans son voisinage. Il est model-agnostic et apporte une perspective indépendante.
 
 La convergence SHAP/LIME (part de features communes dans le top 8) est calculée par incident et par type de décision ; un seuil de 60% est utilisé comme repère de cohérence. Une convergence faible sur certains incidents est normale — le modèle hésite dans ces zones non-linéaires, ce qui est précisément l'information utile pour l'analyste.
+
+---
+
+## Résultats et limites
+
+**Jeu de test** : 3 187 incidents (split 26 813 / 3 187 sur 30 000, stratifié par OrgId).
+
+| Métrique | Valeur |
+|----------|--------|
+| F2-score | 0.792 |
+| AUC-ROC | 0.948 |
+| Rappel TP | 89 % |
+| Précision zone ACTION_URGENTE (≥ 75) | 86.1 % (0.5 % de FP) |
+| Flux filtré en CLÔTURE_FP (< 20) | 51.3 % |
+| AUC-ROC Isolation Forest | 0.686 |
+| Convergence SHAP/LIME moyenne | 60.6 % (62.4 % en ACTION_URGENTE) |
+| Feedback loop, cycle 1 | +2.5 points de F2 (0.792 → 0.817) |
+
+Le score 0-100 correspond uniquement à P(TP) × 100 (XGBoost). Le score Isolation Forest est affiché séparément, il n'est pas fusionné dans le score de priorisation.
+
+**Limites connues :**
+- Le target encoding est calculé sur les 30 000 incidents (et non sur le train seul) : fuite de données partielle, atténuée par un lissage bayésien et le retrait des features de taux par organisation (`org_tp_rate`).
+- La feedback loop est une simulation fondée sur les labels GUIDE, pas sur de vraies décisions d'analystes. L'app Streamlit ne collecte pas les reclassifications.
+- Les seuils de décision (75 / 45 / 20) sont des constantes fixées puis validées a posteriori, pas dérivées automatiquement de la courbe PR.
+- Les données TI, CMDB et Sandbox sont simulées.
 
 ---
 
